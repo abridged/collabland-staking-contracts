@@ -2,3 +2,5 @@ node_modules/
 dist/
 coverage/
 .eslintrc.js
+src/types/
+hardhat.config.js

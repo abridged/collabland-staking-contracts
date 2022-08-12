@@ -4,29 +4,31 @@
 // License text available at https://opensource.org/licenses/MIT
 
 import {
-  Application,
-  injectable,
   Component,
-  config,
   ContextTags,
-  CoreBindings,
-  inject,
+  injectable,
+  ServiceOrProviderClass,
 } from '@loopback/core';
-import {StakingContractsComponentBindings} from './keys';
-import {
-  DEFAULT_COLLABLAND_STAKING_OPTIONS,
-  StakingContractsComponentOptions,
-} from './types';
+import {CocoStakingContractAdapter} from './adapters/coco.adapter';
+import {MtgStakingContractAdapter} from './adapters/mtg.adapter';
+import {RirsuStakingContractAdapter} from './adapters/rirsu.adapter';
+import {RoboStakingContractAdapter} from './adapters/robo.adapter';
+import {SkyFarmContractAdapter} from './adapters/sky-farm.adapter';
+import {STAKING_CONTRACTS_COMPONENT} from './keys';
+import {StakingContractsService} from './services/staking-contracts.service';
 
 // Configure the binding for StakingContractsComponent
 @injectable({
-  tags: {[ContextTags.KEY]: StakingContractsComponentBindings.COMPONENT},
+  tags: {[ContextTags.KEY]: STAKING_CONTRACTS_COMPONENT},
 })
 export class StakingContractsComponent implements Component {
-  constructor(
-    @inject(CoreBindings.APPLICATION_INSTANCE)
-    private application: Application,
-    @config()
-    private options: StakingContractsComponentOptions = DEFAULT_COLLABLAND_STAKING_OPTIONS,
-  ) {}
+  services: ServiceOrProviderClass<unknown>[] = [
+    StakingContractsService,
+    CocoStakingContractAdapter,
+    MtgStakingContractAdapter,
+    RirsuStakingContractAdapter,
+    RoboStakingContractAdapter,
+    SkyFarmContractAdapter,
+  ];
+  constructor() {}
 }

@@ -4,13 +4,17 @@
 // License text available at https://opensource.org/licenses/MIT
 
 import {BindingKey, CoreBindings} from '@loopback/core';
-import {StakingContractsComponent} from './component';
+import type {StakingContractsComponent} from './component';
+import type {StakingContractsService} from './services/staking-contracts.service';
 
-/**
- * Binding keys used by this component.
- */
-export namespace StakingContractsComponentBindings {
-  export const COMPONENT = BindingKey.create<StakingContractsComponent>(
+export const STAKING_CONTRACTS_COMPONENT =
+  BindingKey.create<StakingContractsComponent>(
     `${CoreBindings.COMPONENTS}.StakingContractsComponent`,
   );
-}
+
+export const STAKING_CONTRACTS_SERVICE =
+  BindingKey.create<StakingContractsService>(
+    'services.StakingContractsService',
+  );
+
+export const STAKING_ADAPTERS_EXTENSION_POINT = 'collabland.stakingContracts';

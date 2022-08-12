@@ -1,0 +1,336 @@
+[
+  {
+    "inputs": [
+      {"internalType": "address", "name": "ririAddress", "type": "address"},
+      {"internalType": "address", "name": "sanctumAddress", "type": "address"},
+      {"internalType": "address", "name": "aeonAddress", "type": "address"}
+    ],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "previousOwner",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "OwnershipTransferred",
+    "type": "event"
+  },
+  {
+    "inputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
+    "name": "ENCHANT_COST",
+    "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "MAX_RIRI_LEVEL",
+    "outputs": [{"internalType": "uint128", "name": "", "type": "uint128"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
+    "name": "MODIFIERS",
+    "outputs": [{"internalType": "uint128", "name": "", "type": "uint128"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "uint256", "name": "", "type": "uint256"},
+      {"internalType": "uint256", "name": "", "type": "uint256"}
+    ],
+    "name": "RARITIES",
+    "outputs": [{"internalType": "uint128", "name": "", "type": "uint128"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "uint256[]", "name": "ririIds", "type": "uint256[]"}
+    ],
+    "name": "claimAll",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [{"internalType": "bool", "name": "autoStake", "type": "bool"}],
+    "name": "claimAllSanctums",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [{"internalType": "uint256", "name": "id", "type": "uint256"}],
+    "name": "claimForRiri",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [{"internalType": "bool", "name": "autoStake", "type": "bool"}],
+    "name": "claimSanctum",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [{"internalType": "uint256", "name": "id", "type": "uint256"}],
+    "name": "claimable",
+    "outputs": [
+      {"internalType": "uint256", "name": "amount_", "type": "uint256"}
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "uint256[]", "name": "ids", "type": "uint256[]"},
+      {
+        "internalType": "enum RirisuStaking.Actions[]",
+        "name": "actions",
+        "type": "uint8[]"
+      },
+      {"internalType": "uint256[]", "name": "sanctumIds", "type": "uint256[]"}
+    ],
+    "name": "doActionsWithRiris",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "uint256[]", "name": "ids", "type": "uint256[]"},
+      {
+        "internalType": "enum RirisuStaking.Actions[]",
+        "name": "actions",
+        "type": "uint8[]"
+      }
+    ],
+    "name": "doActionsWithSanctums",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "uint256", "name": "_ririId", "type": "uint256"},
+      {"internalType": "uint256", "name": "_sanctumId", "type": "uint256"},
+      {"internalType": "uint256", "name": "_roomNumber", "type": "uint256"}
+    ],
+    "name": "enchantRoom",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [{"internalType": "uint256", "name": "_id", "type": "uint256"}],
+    "name": "getSanctumRooms",
+    "outputs": [{"internalType": "uint128[]", "name": "", "type": "uint128[]"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{"internalType": "address", "name": "addr", "type": "address"}],
+    "name": "isDelegate",
+    "outputs": [{"internalType": "bool", "name": "", "type": "bool"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "uint256", "name": "_id", "type": "uint256"},
+      {"internalType": "string", "name": "_name", "type": "string"}
+    ],
+    "name": "nameRiri",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "address", "name": "", "type": "address"},
+      {"internalType": "address", "name": "", "type": "address"},
+      {"internalType": "uint256", "name": "", "type": "uint256"},
+      {"internalType": "bytes", "name": "", "type": "bytes"}
+    ],
+    "name": "onERC721Received",
+    "outputs": [{"internalType": "bytes4", "name": "", "type": "bytes4"}],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "owner",
+    "outputs": [{"internalType": "address", "name": "", "type": "address"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{"internalType": "uint256", "name": "id", "type": "uint256"}],
+    "name": "ownerOfRiri",
+    "outputs": [{"internalType": "address", "name": "", "type": "address"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{"internalType": "uint256", "name": "id", "type": "uint256"}],
+    "name": "ownerOfSanctum",
+    "outputs": [{"internalType": "address", "name": "", "type": "address"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "uint256[]", "name": "_legendaries", "type": "uint256[]"}
+    ],
+    "name": "removeLegendaries",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "renounceOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [{"internalType": "uint256", "name": "_id", "type": "uint256"}],
+    "name": "ririMeta",
+    "outputs": [
+      {
+        "components": [
+          {"internalType": "address", "name": "owner", "type": "address"},
+          {"internalType": "uint256", "name": "sanctum", "type": "uint256"},
+          {"internalType": "uint256", "name": "timestamp", "type": "uint256"},
+          {"internalType": "uint128", "name": "level", "type": "uint128"},
+          {"internalType": "uint128", "name": "rerolls", "type": "uint128"},
+          {
+            "internalType": "enum RirisuStaking.Actions",
+            "name": "action",
+            "type": "uint8"
+          },
+          {"internalType": "string", "name": "name", "type": "string"},
+          {"internalType": "string", "name": "description", "type": "string"}
+        ],
+        "internalType": "struct RirisuStaking.Riri",
+        "name": "riri_",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "uint256", "name": "_id", "type": "uint256"},
+      {"internalType": "uint256", "name": "_roomNumber", "type": "uint256"}
+    ],
+    "name": "roomInfo",
+    "outputs": [
+      {"internalType": "uint128", "name": "roomType_", "type": "uint128"},
+      {"internalType": "uint128", "name": "rarity_", "type": "uint128"}
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{"internalType": "uint256", "name": "id", "type": "uint256"}],
+    "name": "sanctumInfo",
+    "outputs": [
+      {
+        "components": [
+          {"internalType": "address", "name": "owner", "type": "address"},
+          {"internalType": "uint128", "name": "totalStaked", "type": "uint128"},
+          {"internalType": "uint128", "name": "level", "type": "uint128"},
+          {
+            "internalType": "enum RirisuStaking.Actions",
+            "name": "action",
+            "type": "uint8"
+          }
+        ],
+        "internalType": "struct RirisuStaking.Sanctum",
+        "name": "sanctum_",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "address", "name": "addr", "type": "address"},
+      {"internalType": "bool", "name": "isDelegate_", "type": "bool"}
+    ],
+    "name": "setDelegate",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "uint256[]", "name": "_legendaries", "type": "uint256[]"}
+    ],
+    "name": "setLegendaries",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "address", "name": "_owner", "type": "address"}
+    ],
+    "name": "stakedRiris",
+    "outputs": [
+      {"internalType": "uint256[]", "name": "riris_", "type": "uint256[]"}
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "address", "name": "_owner", "type": "address"}
+    ],
+    "name": "stakedSanctums",
+    "outputs": [
+      {"internalType": "uint256[]", "name": "sanctums_", "type": "uint256[]"}
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "address", "name": "newOwner", "type": "address"}
+    ],
+    "name": "transferOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "uint256", "name": "id", "type": "uint256"},
+      {"internalType": "string", "name": "lore", "type": "string"}
+    ],
+    "name": "writeLore",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]

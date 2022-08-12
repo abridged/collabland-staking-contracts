@@ -1,0 +1,72 @@
+{
+  "name": "@collabland/staking-contracts",
+  "version": "0.0.1",
+  "description": "Staking contracts supported by Collab.Land",
+  "keywords": [
+    "collabland",
+    "Collab.Land",
+    "staking"
+  ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "engines": {
+    "node": ">=16"
+  },
+  "scripts": {
+    "build": "npm run build:solidity && lb-tsc",
+    "build:watch": "lb-tsc --watch",
+    "lint": "npm run eslint && npm run prettier:check",
+    "lint:fix": "npm run eslint:fix && npm run prettier:fix",
+    "prettier:cli": "lb-prettier \"**/*.ts\" \"**/*.js\"",
+    "prettier:check": "npm run prettier:cli -- -l",
+    "prettier:fix": "npm run prettier:cli -- --write",
+    "eslint": "lb-eslint --report-unused-disable-directives .",
+    "eslint:fix": "npm run eslint -- --fix",
+    "pretest": "npm run rebuild",
+    "test": "lb-mocha --allow-console-logs \"dist/__tests__\"",
+    "posttest": "npm run lint",
+    "test:dev": "lb-mocha --allow-console-logs dist/__tests__/**/*.js && npm run posttest",
+    "rebuild": "npm run clean && npm run build",
+    "clean": "hardhat clean && lb-clean src/types dist *.tsbuildinfo .eslintcache",
+    "build:solidity": "hardhat compile",
+    "build:package": "hardhat compile"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:abridged/collabland-staking-contracts.git"
+  },
+  "author": "Abridged, Inc.",
+  "files": [
+    "README.md",
+    "dist",
+    "src",
+    "!*/__tests__"
+  ],
+  "peerDependencies": {
+    "@loopback/core": "^4.0.2"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0",
+    "ethers": "^5.6.9"
+  },
+  "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.0.6",
+    "@nomiclabs/hardhat-solhint": "^2.0.1",
+    "@typechain/ethers-v5": "^10.1.0",
+    "@typechain/hardhat": "^6.1.1",
+    "@types/chai": "^4.2.15",
+    "@types/mocha": "^9.1.1",
+    "@types/node": "^16.11.45",
+    "hardhat": "^2.9.9",
+    "typechain": "^8.1.0",
+    "@loopback/build": "^9.0.2",
+    "source-map-support": "^0.5.21",
+    "@loopback/core": "^4.0.2",
+    "@loopback/testlab": "^5.0.2",
+    "@loopback/eslint-config": "^13.0.2",
+    "eslint": "^8.19.0",
+    "typescript": "~4.7.4"
+  },
+  "license": "MIT",
+  "copyright.owner": "Abridged, Inc."
+}

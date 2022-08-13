@@ -14,7 +14,10 @@ import {RoboStaking__factory} from '../types/factories/RoboStaking__factory';
 export class RoboStakingContractAdapter implements StackingContractAdapter {
   contractAddress = '0x5dACC3a466fD9E39DCCB2fabE0852285a76a2c59';
 
-  getStakedTokenIds(provider: Provider, owner: string): Promise<BigNumber[]> {
+  async getStakedTokenIds(
+    provider: Provider,
+    owner: string,
+  ): Promise<BigNumber[]> {
     const contract = RoboStaking__factory.connect(
       this.contractAddress,
       provider,

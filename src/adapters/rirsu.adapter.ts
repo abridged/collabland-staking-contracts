@@ -12,7 +12,7 @@ import {RirsuStaking__factory} from '../types/factories/RirsuStaking__factory';
   extensionFor(STAKING_ADAPTERS_EXTENSION_POINT),
 )
 export class RirsuStakingContractAdapter implements StackingContractAdapter {
-  contractAddress = '0x5dACC3a466fD9E39DCCB2fabE0852285a76a2c59';
+  contractAddress = '0x2fBe96A414add128DB33C90a81Ed781f4dF14885';
 
   getStakedTokenIds(provider: Provider, owner: string): Promise<BigNumber[]> {
     const contract = RirsuStaking__factory.connect(

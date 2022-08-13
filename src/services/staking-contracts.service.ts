@@ -1,3 +1,4 @@
+import {debugFactory} from '@collabland/common';
 import {
   BindingScope,
   ContextTags,
@@ -10,6 +11,8 @@ import {
   STAKING_CONTRACTS_SERVICE,
 } from '../keys';
 import {StackingContractAdapter} from '../staking';
+
+const debug = debugFactory('collabland:staking-contracts');
 
 @injectable({
   scope: BindingScope.SINGLETON,
@@ -37,8 +40,20 @@ export class StakingContractsService {
       if (adapter != null) {
         try {
           const ids = await adapter.getStakedTokenIds(provider, owner);
+          debug(
+            'Staked token ids from contract %s for account %s: %O',
+            address,
+            owner,
+            ids,
+          );
           tokens[address] = ids;
         } catch (err) {
+          debug(
+            'Fail to get staked token ids from contract %s for account %s',
+            address,
+            owner,
+            err,
+          );
           // Ignore
         }
       }

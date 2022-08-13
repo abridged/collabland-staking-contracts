@@ -23,30 +23,33 @@ export interface StackingContractAdapter {
    * Get a list of asset types that can be staked to the contract
    * @param provider - Ethers provider
    */
-  getStakingAssetTypes(provider: providers.Provider): Promise<AssetType[]>;
+  getStakingAssetType(
+    provider: providers.Provider,
+    name?: string,
+  ): Promise<AssetType>;
 
   /**
    * Get a list token ids staked by the owner
    * @param provider - Ethers provider
    * @param owner - Owner address
-   * @param assetType - Asset type
+   * @param assetName - Asset name
    */
   getStakedTokenIds(
     provider: providers.Provider,
     owner: string,
-    assetType?: string,
+    assetName?: string,
   ): Promise<BigNumber[]>;
 
   /**
    * Get number of token ids staked by the owner
    * @param provider - Ethers provider
    * @param owner - Owner address
-   * @param assetType - Asset type
+   * @param assetName - Asset name
    */
   getStakedTokenBalance(
     provider: providers.Provider,
     owner: string,
-    assetType?: string,
+    assetName?: string,
   ): Promise<BigNumber>;
 }
 
@@ -56,36 +59,38 @@ export abstract class BaseStakingContractAdapter
   chainId = 1;
   contractAddress: string;
 
-  abstract getStakingAsset(provider: providers.Provider): Promise<AssetName>;
-
-  async getStakingAssetTypes(
+  abstract getStakingAsset(
     provider: providers.Provider,
-  ): Promise<AssetType[]> {
-    const assetName = await this.getStakingAsset(provider);
-    return [
-      new AssetType({
-        chainId: {
-          namespace: 'evm',
-          reference: this.chainId.toString(),
-        },
-        assetName,
-      }),
-    ];
+    name?: string,
+  ): Promise<AssetName>;
+
+  async getStakingAssetType(
+    provider: providers.Provider,
+    name?: string,
+  ): Promise<AssetType> {
+    const assetName = await this.getStakingAsset(provider, name);
+    return new AssetType({
+      chainId: {
+        namespace: 'evm',
+        reference: this.chainId.toString(),
+      },
+      assetName,
+    });
   }
 
   async getStakedTokenBalance(
     provider: providers.Provider,
     owner: string,
-    assetType?: string,
+    assetName?: string,
   ): Promise<BigNumber> {
-    const ids = await this.getStakedTokenIds(provider, owner, assetType);
+    const ids = await this.getStakedTokenIds(provider, owner, assetName);
     return BigNumber.from(ids.length);
   }
 
   getStakedTokenIds(
     provider: providers.Provider,
     owner: string,
-    assetType?: string,
+    assetName?: string,
   ): Promise<BigNumber[]> {
     throw new Error('Method not implemented.');
   }

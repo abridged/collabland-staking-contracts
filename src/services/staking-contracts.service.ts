@@ -81,12 +81,12 @@ export class StakingContractsService {
     owner: string,
     address: string,
     chainId = 1,
-    assetType?: string,
+    assetName?: string,
   ) {
     const {adapter, provider} = this.getAdapter(address, chainId);
     if (adapter == null) return undefined;
     try {
-      const ids = await adapter.getStakedTokenIds(provider, owner, assetType);
+      const ids = await adapter.getStakedTokenIds(provider, owner, assetName);
       debug(
         'Staked token ids from contract %s for account %s: %O',
         address,
@@ -109,7 +109,7 @@ export class StakingContractsService {
     owner: string,
     address: string,
     chainId = 1,
-    assetType?: string,
+    assetName?: string,
   ) {
     const {adapter, provider} = this.getAdapter(address, chainId);
     if (adapter == null) return undefined;
@@ -117,7 +117,7 @@ export class StakingContractsService {
       const balance = await adapter.getStakedTokenBalance(
         provider,
         owner,
-        assetType,
+        assetName,
       );
       debug(
         'Staked token balance from contract %s for account %s: %O',
@@ -137,13 +137,13 @@ export class StakingContractsService {
     }
   }
 
-  async getStakingAssetTypes(address: string, chainId = 1) {
+  async getStakingAssetType(address: string, chainId = 1, name?: string) {
     const {adapter, provider} = this.getAdapter(address, chainId);
     if (adapter == null) return undefined;
     try {
-      const types = await adapter.getStakingAssetTypes(provider);
-      debug('Staking asset types from contract %s: %O', address, types);
-      return types;
+      const assetType = await adapter.getStakingAssetType(provider, name);
+      debug('Staking asset types from contract %s: %O', address, assetType);
+      return assetType;
     } catch (err) {
       debug('Fail to get staking asset types from contract %s', address, err);
       throw err;

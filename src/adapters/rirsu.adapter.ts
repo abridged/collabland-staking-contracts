@@ -45,11 +45,14 @@ export class RirsuStakingContractAdapter extends BaseStakingContractAdapter {
         aeon = IAeon(aeonAddress);
     }
   */
-  async getStakingAsset(provider: providers.Provider): Promise<AssetName> {
+  async getStakingAsset(
+    provider: providers.Provider,
+    name = 'riri',
+  ): Promise<AssetName> {
     return new AssetName({
       namespace: 'ERC721',
       // FIXME(rfeng): There is no view method to get the staking asset
-      reference: 'riri',
+      reference: name,
     });
   }
 }

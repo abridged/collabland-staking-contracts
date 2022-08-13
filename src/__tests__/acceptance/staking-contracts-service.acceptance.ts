@@ -3,6 +3,7 @@
 // This file is licensed under the MIT License.
 // License text available at https://opensource.org/licenses/MIT
 
+import {AssetType} from '@collabland/chain';
 import {BigNumber, pMap} from '@collabland/common';
 import {Application} from '@loopback/core';
 import {expect} from '@loopback/testlab';
@@ -45,9 +46,8 @@ describe('Staking contracts service', () => {
   it('gets staking asset types', async () => {
     const contracts = service.getStakingContracts();
     await pMap(contracts, async contract => {
-      const assetTypes = await service.getStakingAssetTypes(contract.address);
-      console.log(assetTypes);
-      expect(assetTypes).to.be.Array();
+      const assetType = await service.getStakingAssetType(contract.address);
+      expect(assetType).to.be.instanceOf(AssetType);
     });
   });
 });

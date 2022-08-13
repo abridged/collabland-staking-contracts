@@ -29,7 +29,9 @@
     "rebuild": "npm run clean && npm run build",
     "clean": "hardhat clean && lb-clean src/types dist *.tsbuildinfo .eslintcache",
     "build:solidity": "hardhat compile",
-    "build:package": "hardhat compile"
+    "build:package": "hardhat compile",
+    "postversion": "git push && git push --tags",
+    "release": "npm run rebuild && npm version patch -m \"chore: update version to %s\" && npm publish"
   },
   "repository": {
     "type": "git",

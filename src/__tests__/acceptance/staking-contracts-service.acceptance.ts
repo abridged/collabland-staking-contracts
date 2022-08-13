@@ -41,4 +41,13 @@ describe('Staking contracts service', () => {
       expect(staked).to.be.instanceOf(BigNumber);
     });
   });
+
+  it('gets staking asset types', async () => {
+    const contracts = service.getStakingContracts();
+    await pMap(contracts, async contract => {
+      const assetTypes = await service.getStakingAssetTypes(contract.address);
+      console.log(assetTypes);
+      expect(assetTypes).to.be.Array();
+    });
+  });
 });

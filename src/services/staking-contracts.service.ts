@@ -136,4 +136,17 @@ export class StakingContractsService {
       throw err;
     }
   }
+
+  async getStakingAssetTypes(address: string, chainId = 1) {
+    const {adapter, provider} = this.getAdapter(address, chainId);
+    if (adapter == null) return undefined;
+    try {
+      const types = await adapter.getStakingAssetTypes(provider);
+      debug('Staking asset types from contract %s: %O', address, types);
+      return types;
+    } catch (err) {
+      debug('Fail to get staking asset types from contract %s', address, err);
+      throw err;
+    }
+  }
 }

@@ -3,9 +3,9 @@
 // This file is licensed under the MIT License.
 // License text available at https://opensource.org/licenses/MIT
 
-import {Provider} from '@ethersproject/abstract-provider';
+import {AssetName} from '@collabland/chain';
 import {BindingScope, extensionFor, injectable} from '@loopback/core';
-import {BigNumber} from 'ethers';
+import {BigNumber, providers} from 'ethers';
 import {STAKING_ADAPTERS_EXTENSION_POINT} from '../keys';
 import {BaseStakingContractAdapter} from '../staking';
 import {RoboStaking__factory} from '../types/factories/RoboStaking__factory';
@@ -20,7 +20,7 @@ export class RoboStakingContractAdapter extends BaseStakingContractAdapter {
   contractAddress = '0x5dACC3a466fD9E39DCCB2fabE0852285a76a2c59';
 
   async getStakedTokenIds(
-    provider: Provider,
+    provider: providers.Provider,
     owner: string,
   ): Promise<BigNumber[]> {
     const contract = RoboStaking__factory.connect(
@@ -31,7 +31,7 @@ export class RoboStakingContractAdapter extends BaseStakingContractAdapter {
   }
 
   async getStakedTokenBalance(
-    provider: Provider,
+    provider: providers.Provider,
     owner: string,
   ): Promise<BigNumber> {
     const contract = RoboStaking__factory.connect(
@@ -39,5 +39,17 @@ export class RoboStakingContractAdapter extends BaseStakingContractAdapter {
       provider,
     );
     return contract.getStakedCount(owner);
+  }
+
+  async getStakingAsset(provider: providers.Provider): Promise<AssetName> {
+    const contract = RoboStaking__factory.connect(
+      this.contractAddress,
+      provider,
+    );
+    const asset = await contract.stakingToken();
+    return new AssetName({
+      namespace: 'ERC721',
+      reference: asset,
+    });
   }
 }

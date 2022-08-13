@@ -3,9 +3,9 @@
 // This file is licensed under the MIT License.
 // License text available at https://opensource.org/licenses/MIT
 
-import {Provider} from '@ethersproject/abstract-provider';
+import {AssetName} from '@collabland/chain';
 import {BindingScope, extensionFor, injectable} from '@loopback/core';
-import {BigNumber} from 'ethers';
+import {BigNumber, providers} from 'ethers';
 import {STAKING_ADAPTERS_EXTENSION_POINT} from '../keys';
 import {BaseStakingContractAdapter} from '../staking';
 // Use the full path to import instead of `../types`
@@ -30,8 +30,20 @@ export class CocoStakingContractAdapter extends BaseStakingContractAdapter {
    * @param owner - Owner address
    * @returns
    */
-  getStakedTokenIds(provider: Provider, owner: string): Promise<BigNumber[]> {
+  getStakedTokenIds(
+    provider: providers.Provider,
+    owner: string,
+  ): Promise<BigNumber[]> {
     const contract = Coco__factory.connect(this.contractAddress, provider);
     return contract.getStakes(owner);
+  }
+
+  async getStakingAsset(provider: providers.Provider): Promise<AssetName> {
+    const contract = Coco__factory.connect(this.contractAddress, provider);
+    const asset = await contract.waveCatchers();
+    return new AssetName({
+      namespace: 'ERC721',
+      reference: asset,
+    });
   }
 }

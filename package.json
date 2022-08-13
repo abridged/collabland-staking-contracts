@@ -31,7 +31,7 @@
     "build:solidity": "hardhat compile",
     "build:package": "hardhat compile",
     "postversion": "git push && git push --tags",
-    "release": "npm run rebuild && npm version patch -m \"chore: update version to %s\" && npm publish"
+    "release": "npm run rebuild && npm version minor -m \"chore: update version to %s\" && npm publish"
   },
   "repository": {
     "type": "git",
@@ -51,6 +51,7 @@
   "dependencies": {
     "@loopback/core": "^4.0.2",
     "@collabland/common": "^0.34.0",
+    "@collabland/chain": "^0.25.0",
     "tslib": "^2.0.0",
     "ethers": "^5.6.9"
   },

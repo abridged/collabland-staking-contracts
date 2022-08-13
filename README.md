@@ -24,15 +24,21 @@ This project provides support for a curated list of stacking contracts for Colla
 
 ## Format code and check style
 
-    ```sh
-    npm run lint
-    ```
+```sh
+npm run lint
+```
 
 or
 
-    ```sh
-    npm run lint:fix
-    ```
+```sh
+npm run lint:fix
+```
+
+## Publish a new release
+
+```sh
+npm run release
+```
 
 ## Add a new staking contract
 

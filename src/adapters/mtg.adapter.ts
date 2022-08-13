@@ -7,7 +7,7 @@ import {Provider} from '@ethersproject/abstract-provider';
 import {BindingScope, extensionFor, injectable} from '@loopback/core';
 import {BigNumber} from 'ethers';
 import {STAKING_ADAPTERS_EXTENSION_POINT} from '../keys';
-import {StackingContractAdapter} from '../staking';
+import {BaseStakingContractAdapter} from '../staking';
 import {MtgStaking__factory} from '../types/factories/MtgStaking__factory';
 
 @injectable(
@@ -16,7 +16,7 @@ import {MtgStaking__factory} from '../types/factories/MtgStaking__factory';
   },
   extensionFor(STAKING_ADAPTERS_EXTENSION_POINT),
 )
-export class MtgStakingContractAdapter implements StackingContractAdapter {
+export class MtgStakingContractAdapter extends BaseStakingContractAdapter {
   contractAddress = '0x2eb255a465c828837d6e8ba73072ec2c965dcf13';
 
   async getStakedTokenIds(

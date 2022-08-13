@@ -1,0 +1,44 @@
+// Copyright Abridged, Inc. 2022. All Rights Reserved.
+// Node module: @collabland/staking-contracts
+// This file is licensed under the MIT License.
+// License text available at https://opensource.org/licenses/MIT
+
+import {BigNumber, pMap} from '@collabland/common';
+import {Application} from '@loopback/core';
+import {expect} from '@loopback/testlab';
+import {StakingContractsComponent} from '../../component';
+import {STAKING_CONTRACTS_SERVICE} from '../../keys';
+import {StakingContractsService} from '../../services';
+
+describe('Staking contracts service', () => {
+  let app: Application;
+  let service: StakingContractsService;
+
+  before(async () => {
+    app = new Application();
+    app.component(StakingContractsComponent);
+    service = await app.get(STAKING_CONTRACTS_SERVICE);
+  });
+
+  it('gets staked token ids', async () => {
+    const contracts = service.getStakingContracts();
+    await pMap(contracts, async contract => {
+      const staked = await service.getStakedTokenIds(
+        '0x9abbf7218c65c4d22c8483b5d6be93075a3c159c',
+        contract.address,
+      );
+      expect(staked).to.be.Array();
+    });
+  });
+
+  it('gets staked token balances', async () => {
+    const contracts = service.getStakingContracts();
+    await pMap(contracts, async contract => {
+      const staked = await service.getStakedTokenBalance(
+        '0x9abbf7218c65c4d22c8483b5d6be93075a3c159c',
+        contract.address,
+      );
+      expect(staked).to.be.instanceOf(BigNumber);
+    });
+  });
+});

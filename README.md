@@ -56,7 +56,7 @@ import {Provider} from '@ethersproject/abstract-provider';
 import {BindingScope, extensionFor, injectable} from '@loopback/core';
 import {BigNumber} from 'ethers';
 import {STAKING_ADAPTERS_EXTENSION_POINT} from '../keys';
-import {StackingContractAdapter} from '../staking';
+import {BaseStakingContractAdapter} from '../staking';
 // Use the full path to import instead of `../types`
 import {Coco__factory} from '../types/factories/Coco__factory';
 
@@ -67,7 +67,7 @@ import {Coco__factory} from '../types/factories/Coco__factory';
   // Mark it as an extension to staking contracts service
   extensionFor(STAKING_ADAPTERS_EXTENSION_POINT),
 )
-export class CocoStakingContractAdapter implements StackingContractAdapter {
+export class CocoStakingContractAdapter extends BaseStakingContractAdapter {
   /**
    * The contract address
    */

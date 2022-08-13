@@ -11,7 +11,7 @@ import {
   inject,
   injectable,
 } from '@loopback/core';
-import {getDefaultProvider, utils} from 'ethers';
+import {providers, utils} from 'ethers';
 import {
   STAKING_ADAPTERS_EXTENSION_POINT,
   STAKING_CONTRACTS_SERVICE,
@@ -27,11 +27,9 @@ const debug = debugFactory('collabland:staking-contracts');
 
 const defaultEthereumFactory = {
   getProvider(chainId: string | number) {
-    return getDefaultProvider(chainId, {
-      infura: {
-        projectId: getEnvVar('INFURA_PROJECT_ID'),
-        projectSecret: getEnvVar('INFURA_PROJECT_SECRET'),
-      },
+    return new providers.InfuraProvider(chainId, {
+      projectId: getEnvVar('INFURA_PROJECT_ID'),
+      projectSecret: getEnvVar('INFURA_PROJECT_SECRET'),
     });
   },
 };

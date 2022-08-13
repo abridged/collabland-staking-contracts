@@ -10,22 +10,37 @@ export interface EthereumProviderFactory {
   getProvider(chainIdOrNetwork: string | number): providers.Provider;
 }
 
+/**
+ * Staking contract information
+ */
 export interface StakingContract {
   address: string;
   chainId: number;
 }
 
+/**
+ * Interface to be implemented to support specific staking contracts
+ */
 export interface StackingContractAdapter {
+  /**
+   * Chain id for the staking contract, default to `1` (Ethereum Mainnet)
+   */
   chainId?: number;
+
+  /**
+   * Contract address
+   */
   contractAddress: string;
 
   /**
-   * Get a list of asset types that can be staked to the contract
+   * Get asset type that can be staked to the contract
    * @param provider - Ethers provider
+   * @param assetName - Name of the asset if the staking contract allows multiple
+   * types of tokens to be staked
    */
   getStakingAssetType(
     provider: providers.Provider,
-    name?: string,
+    assetName?: string,
   ): Promise<AssetType>;
 
   /**
@@ -53,12 +68,21 @@ export interface StackingContractAdapter {
   ): Promise<BigNumber>;
 }
 
+/**
+ * Base class for staking contract adapters
+ */
 export abstract class BaseStakingContractAdapter
   implements StackingContractAdapter
 {
+  protected cachedAssetTypes = new Map<string, AssetType>();
   chainId = 1;
   contractAddress: string;
 
+  /**
+   * To be implemented by subclasses
+   * @param provider - Ethers provider
+   * @param name - Name of the staking token
+   */
   abstract getStakingAsset(
     provider: providers.Provider,
     name?: string,
@@ -68,14 +92,18 @@ export abstract class BaseStakingContractAdapter
     provider: providers.Provider,
     name?: string,
   ): Promise<AssetType> {
+    let assetType = this.cachedAssetTypes.get(name ?? '');
+    if (assetType != null) return assetType;
     const assetName = await this.getStakingAsset(provider, name);
-    return new AssetType({
+    assetType = new AssetType({
       chainId: {
         namespace: 'evm',
         reference: this.chainId.toString(),
       },
       assetName,
     });
+    this.cachedAssetTypes.set(name ?? '', assetType);
+    return assetType;
   }
 
   async getStakedTokenBalance(
@@ -87,11 +115,9 @@ export abstract class BaseStakingContractAdapter
     return BigNumber.from(ids.length);
   }
 
-  getStakedTokenIds(
+  abstract getStakedTokenIds(
     provider: providers.Provider,
     owner: string,
     assetName?: string,
-  ): Promise<BigNumber[]> {
-    throw new Error('Method not implemented.');
-  }
+  ): Promise<BigNumber[]>;
 }

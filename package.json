@@ -37,6 +37,9 @@
     "type": "git",
     "url": "git@github.com:abridged/collabland-staking-contracts.git"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "author": "Abridged, Inc.",
   "files": [
     "README.md",

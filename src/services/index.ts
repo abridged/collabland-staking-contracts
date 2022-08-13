@@ -3,7 +3,4 @@
 // This file is licensed under the MIT License.
 // License text available at https://opensource.org/licenses/MIT
 
-export * from './component';
-export * from './keys';
-export * from './services';
-export * from './types';
+export * from './staking-contracts.service';

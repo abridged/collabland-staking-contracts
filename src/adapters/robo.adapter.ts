@@ -1,3 +1,8 @@
+// Copyright Abridged, Inc. 2022. All Rights Reserved.
+// Node module: @collabland/staking-contracts
+// This file is licensed under the MIT License.
+// License text available at https://opensource.org/licenses/MIT
+
 import {Provider} from '@ethersproject/abstract-provider';
 import {BindingScope, extensionFor, injectable} from '@loopback/core';
 import {BigNumber} from 'ethers';

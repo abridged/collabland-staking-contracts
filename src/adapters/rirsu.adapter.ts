@@ -19,11 +19,18 @@ import {RirsuStaking__factory} from '../types/factories/RirsuStaking__factory';
 export class RirsuStakingContractAdapter implements StackingContractAdapter {
   contractAddress = '0x2fBe96A414add128DB33C90a81Ed781f4dF14885';
 
-  getStakedTokenIds(provider: Provider, owner: string): Promise<BigNumber[]> {
+  getStakedTokenIds(
+    provider: Provider,
+    owner: string,
+    assetType = 'riris',
+  ): Promise<BigNumber[]> {
     const contract = RirsuStaking__factory.connect(
       this.contractAddress,
       provider,
     );
+    if (assetType === 'sanctums') {
+      return contract.stakedSanctums(owner);
+    }
     return contract.stakedRiris(owner);
   }
 }

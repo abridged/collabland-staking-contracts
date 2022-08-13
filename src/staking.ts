@@ -11,5 +11,6 @@ export interface StackingContractAdapter {
   getStakedTokenIds(
     provider: providers.Provider,
     owner: string,
+    assetType?: string,
   ): Promise<BigNumber[]>;
 }

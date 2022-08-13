@@ -10,7 +10,7 @@ import {
   extensions,
   injectable,
 } from '@loopback/core';
-import {BigNumber, providers} from 'ethers';
+import {providers} from 'ethers';
 import {
   STAKING_ADAPTERS_EXTENSION_POINT,
   STAKING_CONTRACTS_SERVICE,
@@ -31,38 +31,36 @@ export class StakingContractsService {
     private adapters: StackingContractAdapter[],
   ) {}
 
+  getStakingContractAddresses() {
+    return this.adapters.map(a => a.contractAddress);
+  }
+
   async getStakedTokenIds(
     provider: providers.Provider,
     owner: string,
-    ...contractAddresses: string[]
+    address: string,
+    assetType?: string,
   ) {
-    const tokens: Record<string, BigNumber[]> = {};
-    if (contractAddresses.length === 0) {
-      contractAddresses = this.adapters.map(a => a.contractAddress);
-    }
-    for (const address of contractAddresses) {
-      const adapter = this.adapters.find(a => a.contractAddress === address);
-      if (adapter != null) {
-        try {
-          const ids = await adapter.getStakedTokenIds(provider, owner);
-          debug(
-            'Staked token ids from contract %s for account %s: %O',
-            address,
-            owner,
-            ids,
-          );
-          tokens[address] = ids;
-        } catch (err) {
-          debug(
-            'Fail to get staked token ids from contract %s for account %s',
-            address,
-            owner,
-            err,
-          );
-          // Ignore
-        }
+    const adapter = this.adapters.find(a => a.contractAddress === address);
+    if (adapter != null) {
+      try {
+        const ids = await adapter.getStakedTokenIds(provider, owner, assetType);
+        debug(
+          'Staked token ids from contract %s for account %s: %O',
+          address,
+          owner,
+          ids,
+        );
+        return ids;
+      } catch (err) {
+        debug(
+          'Fail to get staked token ids from contract %s for account %s',
+          address,
+          owner,
+          err,
+        );
+        throw err;
       }
     }
-    return tokens;
   }
 }

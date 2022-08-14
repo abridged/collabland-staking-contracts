@@ -28,11 +28,14 @@ export class SkyFarmContractAdapter extends BaseStakingContractAdapter {
   }
 
   async getStakingAsset(provider: providers.Provider): Promise<AssetName> {
+    return new AssetName('ERC721:0x573cA38Eb1353a0e8507bE82eC6111F0AF1F1E02');
+    /*
     const contract = SkyFarm__factory.connect(this.contractAddress, provider);
     const asset = await contract.skyverseContract();
     return new AssetName({
       namespace: 'ERC721',
       reference: asset,
     });
+    */
   }
 }

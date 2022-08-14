@@ -42,6 +42,8 @@ export class RoboStakingContractAdapter extends BaseStakingContractAdapter {
   }
 
   async getStakingAsset(provider: providers.Provider): Promise<AssetName> {
+    return new AssetName('ERC721:0x01f61f3c7f27893b30E8abDAFD4a84cA8bD24B96');
+    /*
     const contract = RoboStaking__factory.connect(
       this.contractAddress,
       provider,
@@ -51,5 +53,6 @@ export class RoboStakingContractAdapter extends BaseStakingContractAdapter {
       namespace: 'ERC721',
       reference: asset,
     });
+    */
   }
 }

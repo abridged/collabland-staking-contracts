@@ -43,6 +43,8 @@ export class MtgStakingContractAdapter extends BaseStakingContractAdapter {
   }
 
   async getStakingAsset(provider: providers.Provider): Promise<AssetName> {
+    return new AssetName('ERC721:0x49907029e80dE1cBB3A46fD44247BF8BA8B5f12F');
+    /*
     const contract = MtgStaking__factory.connect(
       this.contractAddress,
       provider,
@@ -52,5 +54,6 @@ export class MtgStakingContractAdapter extends BaseStakingContractAdapter {
       namespace: 'ERC721',
       reference: asset,
     });
+    */
   }
 }

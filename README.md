@@ -66,11 +66,10 @@ To add a new staking contract, please follow the steps below.
 3. Add an adapter class to `src/adapters`:
 
 ```ts
-import {Provider} from '@ethersproject/abstract-provider';
 import {BindingScope, extensionFor, injectable} from '@loopback/core';
 import {BigNumber} from 'ethers';
 import {STAKING_ADAPTERS_EXTENSION_POINT} from '../keys';
-import {BaseStakingContractAdapter} from '../staking';
+import {BaseStakingContractAdapter, StakingAsset} from '../staking';
 // Use the full path to import instead of `../types`
 import {Coco__factory} from '../types/factories/Coco__factory';
 
@@ -88,13 +87,22 @@ export class CocoStakingContractAdapter extends BaseStakingContractAdapter {
   contractAddress = '0x0Df016Fb18ef4195b2CF9d8623E236272ec52e14';
 
   /**
+   * Assets that can be staked to this contract
+   */
+  supportedAssets: StakingAsset[] = [
+    {
+      asset: 'ERC721:0x1A331c89898C37300CccE1298c62aefD3dFC016c',
+    },
+  ];
+
+  /**
    * Get staked token ids for the given owner
    * @param provider - Ethers provider
    * @param owner - Owner address
    * @returns
    */
-  getStakedTokenIds(provider: Provider, owner: string): Promise<BigNumber[]> {
-    const contract = Coco__factory.connect(this.contractAddress, provider);
+  getStakedTokenIds(owner: string): Promise<BigNumber[]> {
+    const contract = Coco__factory.connect(this.contractAddress, this.provider);
     return contract.getStakes(owner);
   }
 }

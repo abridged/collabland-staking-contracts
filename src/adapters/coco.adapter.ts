@@ -23,6 +23,9 @@ export class CocoStakingContractAdapter extends BaseStakingContractAdapter {
    */
   contractAddress = '0x0Df016Fb18ef4195b2CF9d8623E236272ec52e14';
 
+  /**
+   * Assets that can be staked to this contract
+   */
   supportedAssets: StakingAsset[] = [
     {
       asset: 'ERC721:0x1A331c89898C37300CccE1298c62aefD3dFC016c',

@@ -46,6 +46,16 @@ npm run release
 
 ## Add a new staking contract
 
+Please collect the following information for your staking contract:
+
+- Chain id, contract address, and optional asset names (if multiple asset types
+  can be staked to the contract) for the staking contract
+- Solidity source code and/or ABI for the staking contract
+- Chain id and contract address(es) for the original contract containing tokens
+  to be staked
+
+### Contribute extension code for your staking contract
+
 To add a new staking contract, please follow the steps below.
 
 1. Add the contract ABI json file, go to `src/contracts` and create a file such

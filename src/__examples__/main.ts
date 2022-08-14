@@ -11,7 +11,7 @@ async function main() {
   const app = new Application();
   app.component(StakingContractsComponent);
   const service = await app.get(STAKING_CONTRACTS_SERVICE);
-  for (const contract of service.getStakingContracts()) {
+  for (const contract of service.stakingContracts) {
     const staked = await service.getStakedTokenIds(
       '0x9abbf7218c65c4d22c8483b5d6be93075a3c159c',
       contract.contractAddress,

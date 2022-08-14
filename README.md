@@ -1,6 +1,6 @@
 # @collabland/staking-contracts
 
-This project provides support for a curated list of stacking contracts for Collab.Land's token gating capabilities.
+This project maintains a curated list of stacking contracts for Collab.Land's token gating capabilities.
 
 ## Get started
 
@@ -39,6 +39,10 @@ npm run lint:fix
 ```sh
 npm run release
 ```
+
+## High level architecture
+
+![staking-contracts](docs/collabland-staking-contracts.png)
 
 ## Add a new staking contract
 

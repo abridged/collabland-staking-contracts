@@ -14,9 +14,9 @@ async function main() {
   for (const contract of service.getStakingContracts()) {
     const staked = await service.getStakedTokenIds(
       '0x9abbf7218c65c4d22c8483b5d6be93075a3c159c',
-      contract.address,
+      contract.contractAddress,
     );
-    console.log('Staked tokens on %s: %O', contract.address, staked);
+    console.log('Staked tokens on %s: %O', contract.contractAddress, staked);
   }
   await app.stop();
   process.exit(0);

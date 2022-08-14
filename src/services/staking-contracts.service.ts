@@ -3,36 +3,21 @@
 // This file is licensed under the MIT License.
 // License text available at https://opensource.org/licenses/MIT
 
-import {debugFactory, getEnvVar} from '@collabland/common';
+import {debugFactory} from '@collabland/common';
 import {
   BindingScope,
   ContextTags,
   extensions,
-  inject,
   injectable,
 } from '@loopback/core';
-import {providers, utils} from 'ethers';
+import {utils} from 'ethers';
 import {
   STAKING_ADAPTERS_EXTENSION_POINT,
   STAKING_CONTRACTS_SERVICE,
-  STAKING_ETHEREUM_PROVIDER_FACTORY,
 } from '../keys';
-import {
-  EthereumProviderFactory,
-  StackingContractAdapter,
-  StakingContract,
-} from '../staking';
+import {StackingContractAdapter, StakingContractMetadata} from '../staking';
 
 const debug = debugFactory('collabland:staking-contracts');
-
-const defaultEthereumFactory = {
-  getProvider(chainId: string | number) {
-    return new providers.InfuraProvider(chainId, {
-      projectId: getEnvVar('INFURA_PROJECT_ID'),
-      projectSecret: getEnvVar('INFURA_PROJECT_SECRET'),
-    });
-  },
-};
 
 @injectable({
   scope: BindingScope.SINGLETON,
@@ -44,14 +29,13 @@ export class StakingContractsService {
   constructor(
     @extensions.list(STAKING_ADAPTERS_EXTENSION_POINT)
     private adapters: StackingContractAdapter[],
-    @inject(STAKING_ETHEREUM_PROVIDER_FACTORY, {optional: true})
-    private providerFactory: EthereumProviderFactory = defaultEthereumFactory,
   ) {}
 
-  getStakingContracts(): StakingContract[] {
+  getStakingContracts(): StakingContractMetadata[] {
     return this.adapters.map(a => ({
       chainId: a.chainId ?? 1,
-      address: utils.getAddress(a.contractAddress),
+      contractAddress: utils.getAddress(a.contractAddress),
+      supportedAssets: a.supportedAssets,
     }));
   }
 
@@ -71,10 +55,8 @@ export class StakingContractsService {
         (a.chainId ?? 1 === chainId) &&
         utils.getAddress(a.contractAddress) === address,
     );
-    if (adapter == null) return {adapter};
-
-    const provider = this.providerFactory.getProvider(adapter.chainId ?? 1);
-    return {adapter, provider};
+    if (adapter == null) return adapter;
+    return adapter;
   }
 
   async getStakedTokenIds(
@@ -83,10 +65,10 @@ export class StakingContractsService {
     chainId = 1,
     assetName?: string,
   ) {
-    const {adapter, provider} = this.getAdapter(address, chainId);
+    const adapter = this.getAdapter(address, chainId);
     if (adapter == null) return undefined;
     try {
-      const ids = await adapter.getStakedTokenIds(provider, owner, assetName);
+      const ids = await adapter.getStakedTokenIds(owner, assetName);
       debug(
         'Staked token ids from contract %s for account %s: %O',
         address,
@@ -111,14 +93,10 @@ export class StakingContractsService {
     chainId = 1,
     assetName?: string,
   ) {
-    const {adapter, provider} = this.getAdapter(address, chainId);
+    const adapter = this.getAdapter(address, chainId);
     if (adapter == null) return undefined;
     try {
-      const balance = await adapter.getStakedTokenBalance(
-        provider,
-        owner,
-        assetName,
-      );
+      const balance = await adapter.getStakedTokenBalance(owner, assetName);
       debug(
         'Staked token balance from contract %s for account %s: %O',
         address,
@@ -137,11 +115,11 @@ export class StakingContractsService {
     }
   }
 
-  async getStakingAssetType(address: string, chainId = 1, name?: string) {
-    const {adapter, provider} = this.getAdapter(address, chainId);
+  getStakingAssetType(address: string, chainId = 1, name?: string) {
+    const adapter = this.getAdapter(address, chainId);
     if (adapter == null) return undefined;
     try {
-      const assetType = await adapter.getStakingAssetType(provider, name);
+      const assetType = adapter.getStakingAssetType(name);
       debug('Staking asset types from contract %s: %O', address, assetType);
       return assetType;
     } catch (err) {

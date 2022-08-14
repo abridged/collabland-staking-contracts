@@ -3,19 +3,43 @@
 // This file is licensed under the MIT License.
 // License text available at https://opensource.org/licenses/MIT
 
-import {AssetName, AssetType} from '@collabland/chain';
+import {AssetType} from '@collabland/chain';
+import {getEnvVar} from '@collabland/common';
+import {inject} from '@loopback/core';
 import {BigNumber, providers} from 'ethers';
+import {STAKING_ETHEREUM_PROVIDER_FACTORY} from './keys';
 
 export interface EthereumProviderFactory {
   getProvider(chainIdOrNetwork: string | number): providers.Provider;
 }
 
+export interface StakingAsset {
+  /**
+   * Optional name for the staking asset (required if multiple assets are supported)
+   */
+  name?: string;
+  /**
+   * CAIP asset name, such as `ERC721:<0x...>`
+   */
+  asset: string;
+}
+
 /**
  * Staking contract information
  */
-export interface StakingContract {
-  address: string;
+export interface StakingContractMetadata {
+  /**
+   * Staking contract address
+   */
+  contractAddress: string;
+  /**
+   * Chain id
+   */
   chainId: number;
+  /**
+   * Assets that can be staked to this contract
+   */
+  supportedAssets: StakingAsset[];
 }
 
 /**
@@ -33,15 +57,16 @@ export interface StackingContractAdapter {
   contractAddress: string;
 
   /**
+   * Supported assets to be staked
+   */
+  supportedAssets: StakingAsset[];
+
+  /**
    * Get asset type that can be staked to the contract
-   * @param provider - Ethers provider
    * @param assetName - Name of the asset if the staking contract allows multiple
    * types of tokens to be staked
    */
-  getStakingAssetType(
-    provider: providers.Provider,
-    assetName?: string,
-  ): Promise<AssetType>;
+  getStakingAssetType(assetName?: string): AssetType | undefined;
 
   /**
    * Get a list token ids staked by the owner
@@ -49,11 +74,7 @@ export interface StackingContractAdapter {
    * @param owner - Owner address
    * @param assetName - Asset name
    */
-  getStakedTokenIds(
-    provider: providers.Provider,
-    owner: string,
-    assetName?: string,
-  ): Promise<BigNumber[]>;
+  getStakedTokenIds(owner: string, assetName?: string): Promise<BigNumber[]>;
 
   /**
    * Get number of token ids staked by the owner
@@ -61,12 +82,17 @@ export interface StackingContractAdapter {
    * @param owner - Owner address
    * @param assetName - Asset name
    */
-  getStakedTokenBalance(
-    provider: providers.Provider,
-    owner: string,
-    assetName?: string,
-  ): Promise<BigNumber>;
+  getStakedTokenBalance(owner: string, assetName?: string): Promise<BigNumber>;
 }
+
+const defaultEthereumFactory = {
+  getProvider(chainId: string | number) {
+    return new providers.InfuraProvider(chainId, {
+      projectId: getEnvVar('INFURA_PROJECT_ID'),
+      projectSecret: getEnvVar('INFURA_PROJECT_SECRET'),
+    });
+  },
+};
 
 /**
  * Base class for staking contract adapters
@@ -74,49 +100,49 @@ export interface StackingContractAdapter {
 export abstract class BaseStakingContractAdapter
   implements StackingContractAdapter
 {
-  protected cachedAssetTypes = new Map<string, AssetType>();
+  @inject(STAKING_ETHEREUM_PROVIDER_FACTORY, {optional: true})
+  factory: EthereumProviderFactory = defaultEthereumFactory;
+
   chainId = 1;
   contractAddress: string;
 
-  /**
-   * To be implemented by subclasses
-   * @param provider - Ethers provider
-   * @param name - Name of the staking token
-   */
-  abstract getStakingAsset(
-    provider: providers.Provider,
-    name?: string,
-  ): Promise<AssetName>;
+  abstract supportedAssets: StakingAsset[];
 
-  async getStakingAssetType(
-    provider: providers.Provider,
-    name?: string,
-  ): Promise<AssetType> {
-    let assetType = this.cachedAssetTypes.get(name ?? '');
-    if (assetType != null) return assetType;
-    const assetName = await this.getStakingAsset(provider, name);
-    assetType = new AssetType({
+  private _provider: providers.Provider;
+
+  get provider(): providers.Provider {
+    if (this._provider) return this._provider;
+    this._provider = this.factory.getProvider(this.chainId);
+    return this.provider;
+  }
+
+  getStakingAssetType(name?: string) {
+    let asset = this.supportedAssets.find(a => a.name === name);
+    if (asset == null) {
+      asset = this.supportedAssets.find(a => a.name == null);
+      if (asset == null) {
+        asset = this.supportedAssets[0];
+      }
+    }
+    if (asset == null) return undefined;
+    return new AssetType({
       chainId: {
         namespace: 'evm',
         reference: this.chainId.toString(),
       },
-      assetName,
+      assetName: asset.asset,
     });
-    this.cachedAssetTypes.set(name ?? '', assetType);
-    return assetType;
   }
 
   async getStakedTokenBalance(
-    provider: providers.Provider,
     owner: string,
     assetName?: string,
   ): Promise<BigNumber> {
-    const ids = await this.getStakedTokenIds(provider, owner, assetName);
+    const ids = await this.getStakedTokenIds(owner, assetName);
     return BigNumber.from(ids.length);
   }
 
   abstract getStakedTokenIds(
-    provider: providers.Provider,
     owner: string,
     assetName?: string,
   ): Promise<BigNumber[]>;

@@ -26,7 +26,7 @@ describe('Staking contracts service', () => {
     await pMap(contracts, async contract => {
       const staked = await service.getStakedTokenIds(
         '0x9abbf7218c65c4d22c8483b5d6be93075a3c159c',
-        contract.address,
+        contract.contractAddress,
       );
       expect(staked).to.be.Array();
     });
@@ -37,7 +37,7 @@ describe('Staking contracts service', () => {
     await pMap(contracts, async contract => {
       const staked = await service.getStakedTokenBalance(
         '0x9abbf7218c65c4d22c8483b5d6be93075a3c159c',
-        contract.address,
+        contract.contractAddress,
       );
       expect(staked).to.be.instanceOf(BigNumber);
     });
@@ -46,7 +46,7 @@ describe('Staking contracts service', () => {
   it('gets staking asset types', async () => {
     const contracts = service.getStakingContracts();
     await pMap(contracts, async contract => {
-      const assetType = await service.getStakingAssetType(contract.address);
+      const assetType = service.getStakingAssetType(contract.contractAddress);
       expect(assetType).to.be.instanceOf(AssetType);
     });
   });

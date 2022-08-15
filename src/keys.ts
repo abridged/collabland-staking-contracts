@@ -6,7 +6,7 @@
 import {BindingKey, CoreBindings} from '@loopback/core';
 import type {StakingContractsComponent} from './component';
 import type {StakingContractsService} from './services/staking-contracts.service';
-import type {EthereumProviderFactory} from './staking';
+import type {EthersProviderService} from './staking';
 
 export const STAKING_CONTRACTS_COMPONENT =
   BindingKey.create<StakingContractsComponent>(
@@ -18,9 +18,8 @@ export const STAKING_CONTRACTS_SERVICE =
     'services.StakingContractsService',
   );
 
-export const STAKING_ETHEREUM_PROVIDER_FACTORY =
-  BindingKey.create<EthereumProviderFactory>(
-    'services.EthereumProviderFactory',
-  );
+export const ETHERS_PROVIDER_SERVICE = BindingKey.create<EthersProviderService>(
+  'services.EthersProviderService',
+);
 
 export const STAKING_ADAPTERS_EXTENSION_POINT = 'collabland.stakingContracts';

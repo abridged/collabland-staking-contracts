@@ -7,9 +7,9 @@ import {AssetType} from '@collabland/chain';
 import {getEnvVar} from '@collabland/common';
 import {inject} from '@loopback/core';
 import {BigNumber, providers} from 'ethers';
-import {STAKING_ETHEREUM_PROVIDER_FACTORY} from './keys';
+import {ETHERS_PROVIDER_SERVICE} from './keys';
 
-export interface EthereumProviderFactory {
+export interface EthersProviderService {
   getProvider(chainIdOrNetwork: string | number): providers.Provider;
 }
 
@@ -85,7 +85,7 @@ export interface StackingContractAdapter {
   getStakedTokenBalance(owner: string, assetName?: string): Promise<BigNumber>;
 }
 
-const defaultEthereumFactory = {
+const defaultEthersProviderService = {
   getProvider(chainId: string | number) {
     return new providers.InfuraProvider(chainId, {
       projectId: getEnvVar('INFURA_PROJECT_ID'),
@@ -100,8 +100,8 @@ const defaultEthereumFactory = {
 export abstract class BaseStakingContractAdapter
   implements StackingContractAdapter
 {
-  @inject(STAKING_ETHEREUM_PROVIDER_FACTORY, {optional: true})
-  factory: EthereumProviderFactory = defaultEthereumFactory;
+  @inject(ETHERS_PROVIDER_SERVICE, {optional: true})
+  providerService: EthersProviderService = defaultEthersProviderService;
 
   chainId = 1;
   contractAddress: string;
@@ -112,7 +112,7 @@ export abstract class BaseStakingContractAdapter
 
   get provider(): providers.Provider {
     if (this._provider) return this._provider;
-    this._provider = this.factory.getProvider(this.chainId);
+    this._provider = this.providerService.getProvider(this.chainId);
     return this.provider;
   }
 

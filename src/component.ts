@@ -13,7 +13,7 @@ import {CocoStakingContractAdapter} from './adapters/coco.adapter';
 import {MtgStakingContractAdapter} from './adapters/mtg.adapter';
 import {RirsuStakingContractAdapter} from './adapters/rirsu.adapter';
 import {RoboStakingContractAdapter} from './adapters/robo.adapter';
-import {SkyFarmContractAdapter} from './adapters/sky-farm.adapter';
+import {SkyFarmStakingContractAdapter} from './adapters/sky-farm.adapter';
 import {STAKING_CONTRACTS_COMPONENT} from './keys';
 import {StakingContractsService} from './services/staking-contracts.service';
 
@@ -28,7 +28,7 @@ export class StakingContractsComponent implements Component {
     MtgStakingContractAdapter,
     RirsuStakingContractAdapter,
     RoboStakingContractAdapter,
-    SkyFarmContractAdapter,
+    SkyFarmStakingContractAdapter,
     // NFTWEscrowStakingContractAdapter,
   ];
   constructor() {}

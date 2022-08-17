@@ -28,19 +28,21 @@ export class StakingAsset {
  */
 @model()
 export class StakingContractMetadata {
+  @property({type: 'string', description: 'Contract name'})
+  contractName: string;
   /**
    * Staking contract address
    */
-  @property()
+  @property({description: 'Staking contract address'})
   contractAddress: string;
   /**
    * Chain id
    */
-  @property()
+  @property({description: 'Chain id'})
   chainId: number;
   /**
    * Assets that can be staked to this contract
    */
-  @property.array(StakingAsset)
+  @property.array(StakingAsset, {description: 'Staking asset addresses'})
   supportedAssets: StakingAsset[];
 }

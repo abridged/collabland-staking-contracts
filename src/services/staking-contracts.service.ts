@@ -43,6 +43,9 @@ export class StakingContractsService {
       chainId: a.chainId ?? 1,
       contractAddress: utils.getAddress(a.contractAddress),
       supportedAssets: a.supportedAssets,
+      contractName:
+        a.contractName ??
+        a.constructor.name.replace('StakingContractAdapter', ''),
     }));
   }
 

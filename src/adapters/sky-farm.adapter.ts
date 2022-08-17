@@ -15,7 +15,7 @@ import {SkyFarm__factory} from '../types/factories/SkyFarm__factory';
   },
   extensionFor(STAKING_ADAPTERS_EXTENSION_POINT),
 )
-export class SkyFarmContractAdapter extends BaseStakingContractAdapter {
+export class SkyFarmStakingContractAdapter extends BaseStakingContractAdapter {
   contractAddress = '0xc5933172228E273CF829672921290ca107611757';
 
   supportedAssets: StakingAsset[] = [

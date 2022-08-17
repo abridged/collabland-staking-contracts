@@ -20,6 +20,7 @@ export interface EthersProviderService {
  * Interface to be implemented to support specific staking contracts
  */
 export interface StackingContractAdapter {
+  contractName?: string;
   /**
    * Chain id for the staking contract, default to `1` (Ethereum Mainnet)
    */

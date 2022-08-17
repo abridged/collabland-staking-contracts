@@ -50,15 +50,15 @@
   ],
   "peerDependencies": {
     "@collabland/common": "^0.34.0",
-    "@collabland/chain": "^0.25.0",
-    "@loopback/core": "^4.0.2",
-    "@loopback/repository": "^5.0.2",
-    "ethers": "^5.6.9"
+    "@collabland/chain": "^0.25.0"
   },
   "dependencies": {
     "tslib": "^2.0.0"
   },
   "devDependencies": {
+    "@loopback/core": "^4.0.2",
+    "@loopback/repository": "^5.0.2",
+    "ethers": "^5.6.9",
     "@nomiclabs/hardhat-ethers": "^2.0.6",
     "@nomiclabs/hardhat-solhint": "^2.0.1",
     "@typechain/ethers-v5": "^10.1.0",
@@ -70,7 +70,6 @@
     "typechain": "^8.1.0",
     "@loopback/build": "^9.0.2",
     "source-map-support": "^0.5.21",
-    "@loopback/core": "^4.0.2",
     "@loopback/testlab": "^5.0.2",
     "@loopback/eslint-config": "^13.0.2",
     "eslint": "^8.19.0",

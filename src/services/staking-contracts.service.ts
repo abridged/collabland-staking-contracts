@@ -56,7 +56,7 @@ export class StakingContractsService {
     contractAddress = utils.getAddress(contractAddress);
     return this.adapters.some(
       a =>
-        (a.chainId ?? 1 === chainId) &&
+        (a.chainId ?? 1) === chainId &&
         utils.getAddress(a.contractAddress) === contractAddress,
     );
   }

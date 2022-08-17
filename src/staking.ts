@@ -8,38 +8,12 @@ import {getEnvVar} from '@collabland/common';
 import {inject} from '@loopback/core';
 import {BigNumber, providers} from 'ethers';
 import {ETHERS_PROVIDER_SERVICE} from './keys';
+import {StakingAsset} from './models/staking.model';
+
+export {StakingAsset, StakingContractMetadata} from './models/staking.model';
 
 export interface EthersProviderService {
   getProvider(chainIdOrNetwork: string | number): providers.Provider;
-}
-
-export interface StakingAsset {
-  /**
-   * Optional name for the staking asset (required if multiple assets are supported)
-   */
-  name?: string;
-  /**
-   * CAIP asset name, such as `ERC721:<0x...>`
-   */
-  asset: string;
-}
-
-/**
- * Staking contract information
- */
-export interface StakingContractMetadata {
-  /**
-   * Staking contract address
-   */
-  contractAddress: string;
-  /**
-   * Chain id
-   */
-  chainId: number;
-  /**
-   * Assets that can be staked to this contract
-   */
-  supportedAssets: StakingAsset[];
 }
 
 /**

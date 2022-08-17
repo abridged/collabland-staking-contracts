@@ -48,12 +48,14 @@
     "!*/__tests__",
     "!*/__examples__"
   ],
+  "peerDependencies": {
+    "@collabland/common": "^0.34.0",
+    "@collabland/chain": "^0.25.0"
+  },
   "dependencies": {
     "@loopback/core": "^4.0.2",
     "@loopback/rest": "^12.0.2",
     "@loopback/repository": "^5.0.2",
-    "@collabland/common": "^0.34.0",
-    "@collabland/chain": "^0.25.0",
     "tslib": "^2.0.0",
     "ethers": "^5.6.9"
   },

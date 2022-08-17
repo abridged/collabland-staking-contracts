@@ -31,7 +31,7 @@ export class StakingContractsComponent implements Component {
     RoboStakingContractAdapter,
     SkyFarmContractAdapter,
     // NFTWEscrowStakingContractAdapter,
-    StakingContractsController,
   ];
+  controllers = [StakingContractsController];
   constructor() {}
 }

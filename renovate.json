@@ -32,6 +32,10 @@
 
   "packageRules": [
     {
+      "matchPackagePrefixes": ["@collabland/"],
+      "groupName": "collabland packages"
+    },
+    {
       "matchPackagePrefixes": ["@loopback/"],
       "groupName": "loopback packages"
     },

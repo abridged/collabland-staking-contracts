@@ -31,21 +31,21 @@ export class RirsuStakingContractAdapter extends BaseStakingContractAdapter {
   */
   supportedAssets: StakingAsset[] = [
     {
-      name: 'riri',
-      asset: 'ERC721:riri',
+      name: 'Ririsu',
+      asset: 'ERC721:0x8d6238920D9A54Bf048436d4119475A002D51FD6',
     },
     {
-      name: 'sanctum',
-      asset: 'ERC721:sanctum',
+      name: 'Sanctum',
+      asset: 'ERC721:0xF4908f72c83bfdC2E79a3D30e00aA7f128Da3953',
     },
   ];
 
-  getStakedTokenIds(owner: string, assetType = 'riri'): Promise<BigNumber[]> {
+  getStakedTokenIds(owner: string, assetType = 'Ririsu'): Promise<BigNumber[]> {
     const contract = RirsuStaking__factory.connect(
       this.contractAddress,
       this.provider,
     );
-    if (assetType === 'sanctum') {
+    if (assetType.toLowerCase() === 'sanctum') {
       return contract.stakedSanctums(owner);
     }
     return contract.stakedRiris(owner);

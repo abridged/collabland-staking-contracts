@@ -117,8 +117,10 @@ export abstract class BaseStakingContractAdapter
     return BigNumber.from(ids.length);
   }
 
-  abstract getStakedTokenIds(
+  async getStakedTokenIds(
     owner: string,
     assetName?: string,
-  ): Promise<BigNumber[]>;
+  ): Promise<BigNumber[]> {
+    return [];
+  }
 }

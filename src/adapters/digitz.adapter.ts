@@ -8,7 +8,6 @@ import {BigNumber} from 'ethers';
 import {STAKING_ADAPTERS_EXTENSION_POINT} from '../keys';
 import {BaseStakingContractAdapter, StakingAsset} from '../staking';
 // Use the full path to import instead of `../types`
-import {Coco__factory} from '../types/factories/Coco__factory';
 
 @injectable(
   {
@@ -17,7 +16,7 @@ import {Coco__factory} from '../types/factories/Coco__factory';
   // Mark it as an extension to staking contracts service
   extensionFor(STAKING_ADAPTERS_EXTENSION_POINT),
 )
-export class CocoStakingContractAdapter extends BaseStakingContractAdapter {
+export class DigitzStakingContractAdapter extends BaseStakingContractAdapter {
   /**
    * The contract address
    */
@@ -28,17 +27,21 @@ export class CocoStakingContractAdapter extends BaseStakingContractAdapter {
    */
   supportedAssets: StakingAsset[] = [
     {
-      asset: 'ERC721:0x1A331c89898C37300CccE1298c62aefD3dFC016c',
+      asset: 'ERC721:0x92b3282DD1BfE571323CC1324177d0Def2D4c218',
     },
   ];
 
   /**
    * Get staked token ids for the given owner
+   * @param provider - Ethers provider
    * @param owner - Owner address
    * @returns
    */
-  getStakedTokenIds(owner: string): Promise<BigNumber[]> {
+  async getStakedTokenIds(owner: string): Promise<BigNumber[]> {
+    return [];
+    /*
     const contract = Coco__factory.connect(this.contractAddress, this.provider);
     return contract.getStakes(owner);
+    */
   }
 }

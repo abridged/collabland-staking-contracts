@@ -8,7 +8,7 @@ import {BigNumber} from 'ethers';
 import {STAKING_ADAPTERS_EXTENSION_POINT} from '../keys';
 import {BaseStakingContractAdapter, StakingAsset} from '../staking';
 // Use the full path to import instead of `../types`
-import {Coco__factory} from '../types/factories/Coco__factory';
+import {IStakingModule__factory} from '../types/factories/IStakingModule__factory';
 
 @injectable(
   {
@@ -17,18 +17,19 @@ import {Coco__factory} from '../types/factories/Coco__factory';
   // Mark it as an extension to staking contracts service
   extensionFor(STAKING_ADAPTERS_EXTENSION_POINT),
 )
-export class CocoStakingContractAdapter extends BaseStakingContractAdapter {
+export class PerionCreditsStakingContractAdapter extends BaseStakingContractAdapter {
   /**
    * The contract address
    */
-  contractAddress = '0x0Df016Fb18ef4195b2CF9d8623E236272ec52e14';
+  contractAddress = '0xadb112c62b87da63645ecdba93046a2e13f585a1';
 
   /**
    * Assets that can be staked to this contract
    */
   supportedAssets: StakingAsset[] = [
     {
-      asset: 'ERC721:0x1A331c89898C37300CccE1298c62aefD3dFC016c',
+      name: 'PerionCredits',
+      asset: 'ERC20:0x60bE1e1fE41c1370ADaF5d8e66f07Cf1C2Df2268',
     },
   ];
 
@@ -37,8 +38,20 @@ export class CocoStakingContractAdapter extends BaseStakingContractAdapter {
    * @param owner - Owner address
    * @returns
    */
-  getStakedTokenIds(owner: string): Promise<BigNumber[]> {
-    const contract = Coco__factory.connect(this.contractAddress, this.provider);
-    return contract.getStakes(owner);
+  async getStakedTokenBalance(owner: string): Promise<BigNumber> {
+    const contract = IStakingModule__factory.connect(
+      this.contractAddress,
+      this.provider,
+    );
+    const balances = await contract.balances(owner);
+    return balances[0];
+  }
+
+  async getStakedTokenIds(
+    owner: string,
+    assetName?: string,
+  ): Promise<BigNumber[]> {
+    const balance = await this.getStakedTokenBalance(owner);
+    return new Array<BigNumber>(balance).fill(BigNumber.from(0));
   }
 }

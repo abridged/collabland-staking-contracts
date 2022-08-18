@@ -97,7 +97,6 @@ export class CocoStakingContractAdapter extends BaseStakingContractAdapter {
 
   /**
    * Get staked token ids for the given owner
-   * @param provider - Ethers provider
    * @param owner - Owner address
    * @returns
    */

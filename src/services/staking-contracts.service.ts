@@ -3,7 +3,12 @@
 // This file is licensed under the MIT License.
 // License text available at https://opensource.org/licenses/MIT
 
-import {asCaipId, AssetType, AssetTypeParams} from '@collabland/chain';
+import {
+  asCaipId,
+  AssetName,
+  AssetType,
+  AssetTypeParams,
+} from '@collabland/chain';
 import {debugFactory} from '@collabland/common';
 import {
   BindingScope,
@@ -62,6 +67,20 @@ export class StakingContractsService {
         (a.chainId ?? 1) === chainId &&
         utils.getAddress(a.contractAddress) === contractAddress,
     );
+  }
+
+  getStakingAssetTypes(contractAddress: string, chainId = 1) {
+    contractAddress = utils.getAddress(contractAddress);
+    const adapters = this.adapters.filter(
+      a =>
+        (a.chainId ?? 1) === chainId &&
+        utils.getAddress(a.contractAddress) === contractAddress,
+    );
+    if (adapters.length === 0) return [];
+    const types = adapters[0].supportedAssets.map(a =>
+      new AssetName(a.asset).namespace.toUpperCase(),
+    );
+    return Array.from(new Set(types));
   }
 
   /**

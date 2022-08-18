@@ -10,6 +10,8 @@ import {
   ServiceOrProviderClass,
 } from '@loopback/core';
 import {CocoStakingContractAdapter} from './adapters/coco.adapter';
+import {DigitzStakingContractAdapter} from './adapters/digitz.adapter';
+import {PerionCreditsStakingContractAdapter} from './adapters/erc20-staking.adapter';
 import {MtgStakingContractAdapter} from './adapters/mtg.adapter';
 import {RirsuStakingContractAdapter} from './adapters/rirsu.adapter';
 import {RoboStakingContractAdapter} from './adapters/robo.adapter';
@@ -30,6 +32,8 @@ export class StakingContractsComponent implements Component {
     RoboStakingContractAdapter,
     SkyFarmStakingContractAdapter,
     // NFTWEscrowStakingContractAdapter,
+    PerionCreditsStakingContractAdapter,
+    DigitzStakingContractAdapter,
   ];
   constructor() {}
 }

@@ -15,7 +15,7 @@ import {RirsuStaking__factory} from '../types/factories/RirsuStaking__factory';
   },
   extensionFor(STAKING_ADAPTERS_EXTENSION_POINT),
 )
-export class RirsuStakingContractAdapter extends BaseStakingContractAdapter {
+export class RirisuStakingContractAdapter extends BaseStakingContractAdapter {
   contractAddress = '0x2fBe96A414add128DB33C90a81Ed781f4dF14885';
 
   /*

@@ -7,7 +7,7 @@ import {BindingScope, extensionFor, injectable} from '@loopback/core';
 import {BigNumber} from 'ethers';
 import {STAKING_ADAPTERS_EXTENSION_POINT} from '../keys';
 import {BaseStakingContractAdapter, StakingAsset} from '../staking';
-import {RirsuStaking__factory} from '../types/factories/RirsuStaking__factory';
+import {RirisuStaking__factory} from '../types/factories/RirisuStaking__factory';
 
 @injectable(
   {
@@ -41,7 +41,7 @@ export class RirisuStakingContractAdapter extends BaseStakingContractAdapter {
   ];
 
   getStakedTokenIds(owner: string, assetType = 'Ririsu'): Promise<BigNumber[]> {
-    const contract = RirsuStaking__factory.connect(
+    const contract = RirisuStaking__factory.connect(
       this.contractAddress,
       this.provider,
     );

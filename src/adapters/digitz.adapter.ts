@@ -20,7 +20,7 @@ export class DigitzStakingContractAdapter extends BaseStakingContractAdapter {
   /**
    * The contract address
    */
-  contractAddress = '0x0Df016Fb18ef4195b2CF9d8623E236272ec52e14';
+  contractAddress = '0x60f6DC07A2E18f44Afe497fbe8B0B4C6103D94d1';
 
   /**
    * Assets that can be staked to this contract

@@ -62,9 +62,10 @@ export interface StackingContractAdapter {
 
 const defaultEthersProviderService = {
   getProvider(chainId: string | number) {
-    return new providers.InfuraProvider(chainId, {
-      projectId: getEnvVar('INFURA_PROJECT_ID'),
-      projectSecret: getEnvVar('INFURA_PROJECT_SECRET'),
+    const projectId = getEnvVar('INFURA_PROJECT_ID');
+    const projectSecret = getEnvVar('INFURA_PROJECT_SECRET');
+    return providers.getDefaultProvider(chainId, {
+      infura: {projectId, projectSecret},
     });
   },
 };

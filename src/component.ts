@@ -16,6 +16,7 @@ import {MtgStakingContractAdapter} from './adapters/mtg.adapter';
 import {RirisuStakingContractAdapter} from './adapters/ririsu.adapter';
 import {RoboStakingContractAdapter} from './adapters/robo.adapter';
 import {SkyFarmStakingContractAdapter} from './adapters/sky-farm.adapter';
+import {UwULendStakingContractAdapter} from './adapters/uwulend-staking.adapter';
 import {STAKING_CONTRACTS_COMPONENT} from './keys';
 import {StakingContractsService} from './services/staking-contracts.service';
 
@@ -31,10 +32,11 @@ export class StakingContractsComponent implements Component {
     RirisuStakingContractAdapter,
     RoboStakingContractAdapter,
     SkyFarmStakingContractAdapter,
+    UwULendStakingContractAdapter,
     DogsUnchainedStakingContractAdapter,
     // NFTWEscrowStakingContractAdapter,
     PerionCreditsStakingContractAdapter,
     // DigitzStakingContractAdapter,
   ];
-  constructor() {}
+  constructor() { }
 }

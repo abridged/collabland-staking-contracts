@@ -64,9 +64,11 @@ const defaultEthersProviderService = {
   getProvider(chainId: string | number) {
     const projectId = getEnvVar('INFURA_PROJECT_ID');
     const projectSecret = getEnvVar('INFURA_PROJECT_SECRET');
-    return providers.getDefaultProvider(chainId, {
-      infura: {projectId, projectSecret},
-    });
+    if (projectId == null) {
+      return providers.getDefaultProvider(chainId);
+    } else {
+      return new providers.InfuraProvider(chainId, {projectId, projectSecret});
+    }
   },
 };
 

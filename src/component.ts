@@ -10,7 +10,7 @@ import {
   ServiceOrProviderClass,
 } from '@loopback/core';
 import {CocoStakingContractAdapter} from './adapters/coco.adapter';
-import {DogsUnchainedStakingContractAdapter} from './adapters/dogs-unchained';
+import {DogsUnchainedStakingContractAdapter} from './adapters/dogs-unchained.adapter';
 import {PerionCreditsStakingContractAdapter} from './adapters/erc20-staking.adapter';
 import {MtgStakingContractAdapter} from './adapters/mtg.adapter';
 import {RirisuStakingContractAdapter} from './adapters/ririsu.adapter';

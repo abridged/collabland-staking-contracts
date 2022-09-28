@@ -7,7 +7,7 @@ import {BindingScope, extensionFor, injectable} from '@loopback/core';
 import {BigNumber} from 'ethers';
 import {STAKING_ADAPTERS_EXTENSION_POINT} from '../keys';
 import {BaseStakingContractAdapter, StakingAsset} from '../staking';
-import {UwulendStaking__factory} from '../types/factories/uwulendstaking__factory';
+import {UwulendStaking__factory} from '../types/factories/UwulendStaking__factory';
 
 @injectable(
   {

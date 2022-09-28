@@ -38,5 +38,5 @@ export class StakingContractsComponent implements Component {
     PerionCreditsStakingContractAdapter,
     // DigitzStakingContractAdapter,
   ];
-  constructor() { }
+  constructor() {}
 }

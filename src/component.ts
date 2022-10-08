@@ -13,6 +13,7 @@ import {CocoStakingContractAdapter} from './adapters/coco.adapter';
 import {DogsUnchainedStakingContractAdapter} from './adapters/dogs-unchained.adapter';
 import {PerionCreditsStakingContractAdapter} from './adapters/erc20-staking.adapter';
 import {LifestoryPlanetStakingAdapter} from './adapters/lifestory-planet-staking.adapter';
+import {IdolMarketplaceContractAdapter} from './adapters/idol-marketplace.adapter';
 import {MtgStakingContractAdapter} from './adapters/mtg.adapter';
 import {RirisuStakingContractAdapter} from './adapters/ririsu.adapter';
 import {RoboStakingContractAdapter} from './adapters/robo.adapter';
@@ -29,6 +30,7 @@ export class StakingContractsComponent implements Component {
   services: ServiceOrProviderClass<unknown>[] = [
     StakingContractsService,
     LifestoryPlanetStakingAdapter,
+    IdolMarketplaceContractAdapter,
     CocoStakingContractAdapter,
     MtgStakingContractAdapter,
     RirisuStakingContractAdapter,

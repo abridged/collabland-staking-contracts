@@ -53,7 +53,6 @@
     "@collabland/chain": "^0.26.0"
   },
   "dependencies": {
-    "@collabland/sdk": "^0.36.0",
     "tslib": "^2.0.0"
   },
   "devDependencies": {

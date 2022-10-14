@@ -1,44 +1,33 @@
 # @collabland/staking-contracts
 
-This project maintains a curated list of stacking contracts for Collab.Land's token gating capabilities.
+This project maintains a curated list of stacking contracts for Collab.Land's
+token gating capabilities.
 
 ## Get started
 
-1. Install dependencies
+1. Check out the project
+
+   ```sh
+   git clone git@github.com:abridged/collabland-staking-contracts.git
+   ```
+
+2. Install dependencies
 
    ```sh
    npm install
    ```
 
-2. Run the build
+3. Run the build
 
    ```sh
    npm run build
    ```
 
-3. Run the example
+4. Run the example
 
    ```sh
    node dist/__examples__/main
    ```
-
-## Format code and check style
-
-```sh
-npm run lint
-```
-
-or
-
-```sh
-npm run lint:fix
-```
-
-## Publish a new release
-
-```sh
-npm run release
-```
 
 ## High level architecture
 
@@ -144,4 +133,45 @@ export class StakingContractsComponent implements Component {
   ];
   constructor() {}
 }
+```
+
+## Submit a pull request
+
+When you contribute code to this project, please check the following steps
+before submitting a pull request.
+
+1.  Run the tests
+
+    ```sh
+    npm test
+    ```
+
+2.  Format the code
+
+    ```sh
+    npm run lint:fix
+    ```
+
+3.  Sign off commits
+
+    Add a Signed-off-by trailer by the committer at the end of the commit log
+    message. The **sign-off** certifies that the committer has the rights to
+    submit the work under the project’s license or agrees to a
+    [Developer Certificate of Origin (DCO)](http://developercertificate.org).
+
+    See instructions at
+    https://git-scm.com/docs/git-commit#Documentation/git-commit.txt--s.
+
+## What's Next?
+
+After your pull request is merged, we'll publish a release of
+[this package](https://www.npmjs.com/package/@collabland/staking-contracts) to
+npm. The new version will be picked up by Collab.Land servers (QA first, then
+production). Community admins can then use the newly added staking contract to
+define token gating rules.
+
+## Publish a new release (for maintainers only)
+
+```sh
+npm run release
 ```

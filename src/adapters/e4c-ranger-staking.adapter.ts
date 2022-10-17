@@ -25,17 +25,21 @@ export class E4CRangerStakingContractAdapter extends BaseStakingContractAdapter 
     },
   ];
 
-  async getStakedTokenIds(owner: string): Promise<BigNumber[]> {
-    const ecProvider = new Provider();
-    ecProvider.init(this.provider);
+  ecProvider = new Provider();
 
+  constructor() {
+    super();
+    this.ecProvider.init(this.provider);
+  }
+
+  async getStakedTokenIds(owner: string): Promise<BigNumber[]> {
     const contract = new Contract(this.contractAddress, E4cRangerStaking__factory.abi);
 
     const items = new Array(650);
     for (let i = 0; i < 650; i++) {
       items[i] = i + 1;
     }
-    const owners = await ecProvider.all(items.map(i => contract.originalOwner(i)));
+    const owners = await this.ecProvider.all(items.map(i => contract.originalOwner(i)));
 
     const tokens: BigNumber[] = []
     for (let i = 0; i < owners.length; i++) {

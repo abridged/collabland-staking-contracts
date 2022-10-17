@@ -3,8 +3,8 @@
 // This file is licensed under the MIT License.
 // License text available at https://opensource.org/licenses/MIT
 
-import {pMap} from '@collabland/common';
 import {BindingScope, extensionFor, injectable} from '@loopback/core';
+import {Contract, Provider} from 'ethcall';
 import {BigNumber} from 'ethers';
 import {STAKING_ADAPTERS_EXTENSION_POINT} from '../keys';
 import {BaseStakingContractAdapter, StakingAsset} from '../staking';
@@ -26,20 +26,21 @@ export class E4CRangerStakingContractAdapter extends BaseStakingContractAdapter 
   ];
 
   async getStakedTokenIds(owner: string): Promise<BigNumber[]> {
-    const contract = E4cRangerStaking__factory.connect(
-      this.contractAddress,
-      this.provider,
-    );
+    const ecProvider = new Provider();
+    ecProvider.init(this.provider);
 
-    const items = new Array(1024);
-    for (let i=0; i<1024; i++) {
-      items[i] = i;
+    const contract = new Contract(this.contractAddress, E4cRangerStaking__factory.abi);
+
+    const items = new Array(650);
+    for (let i = 0; i < 650; i++) {
+      items[i] = i + 1;
     }
-    let tokens:BigNumber[] = []
-    await pMap(items, async i => {
-      const target = await contract.originalOwner(i);
-      if (target === owner) tokens.push(BigNumber.from(i));
-    }, {concurrency: 5});
+    const owners = await ecProvider.all(items.map(i => contract.originalOwner(i)));
+
+    const tokens: BigNumber[] = []
+    for (let i = 0; i < owners.length; i++) {
+      if (owners[i] === owner) tokens.push(BigNumber.from(i + 1));
+    }
     return tokens;
   }
 

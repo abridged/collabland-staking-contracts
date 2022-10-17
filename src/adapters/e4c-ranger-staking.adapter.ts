@@ -3,6 +3,7 @@
 // This file is licensed under the MIT License.
 // License text available at https://opensource.org/licenses/MIT
 
+import {pMap} from '@collabland/common';
 import {BindingScope, extensionFor, injectable} from '@loopback/core';
 import {BigNumber} from 'ethers';
 import {STAKING_ADAPTERS_EXTENSION_POINT} from '../keys';
@@ -30,13 +31,16 @@ export class E4CRangerStakingContractAdapter extends BaseStakingContractAdapter 
       this.provider,
     );
 
-    const z = [];
-
-    for (let i = 0; i < 1024; ++i) {
-      const target = await contract.originalOwner(i);
-      if (target === owner) z.push(BigNumber.from(i));
+    const items = new Array(1024);
+    for (let i=0; i<1024; i++) {
+      items[i] = i;
     }
-    return z;
+    let tokens:BigNumber[] = []
+    await pMap(items, async i => {
+      const target = await contract.originalOwner(i);
+      if (target === owner) tokens.push(BigNumber.from(i));
+    }, {concurrency: 5});
+    return tokens;
   }
 
   async getStakedTokenBalance(owner: string): Promise<BigNumber> {

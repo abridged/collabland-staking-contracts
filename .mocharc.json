@@ -1,5 +1,5 @@
 {
   "exit": true,
   "recursive": true,
-  "timeout": 30000
+  "timeout": 60000
 }

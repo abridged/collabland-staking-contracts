@@ -17,11 +17,11 @@ import {E4cRangerStaking__factory} from '../types/factories/E4cRangerStaking__fa
   extensionFor(STAKING_ADAPTERS_EXTENSION_POINT),
 )
 export class E4CRangerStakingContractAdapter extends BaseStakingContractAdapter {
-  contractAddress = '0xadf4343f4e8eb6faf88c06a97ed6e0c229566e1d';
+  contractAddress = '0x9c18beA91AE053397918410311dbB89295baE18b';
 
   supportedAssets: StakingAsset[] = [
     {
-      asset: 'ERC721:0xC17Aa29c43e4cE0c349749C8986a03B2734813fa',
+      asset: 'ERC721:0xbA265B93519E6473F34F46ee35F4B23970F41a3f',
     },
   ];
 

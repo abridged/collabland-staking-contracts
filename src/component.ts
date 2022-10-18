@@ -7,11 +7,12 @@ import {
   Component,
   ContextTags,
   injectable,
-  ServiceOrProviderClass,
+  ServiceOrProviderClass
 } from '@loopback/core';
 import {ChillRxStakingContractAdapter} from './adapters/chillrx.adapter';
 import {CocoStakingContractAdapter} from './adapters/coco.adapter';
 import {DogsUnchainedStakingContractAdapter} from './adapters/dogs-unchained.adapter';
+import {E4CGoldStakingContractAdapter} from './adapters/e4c-gold-staking.adapter';
 import {E4CRangerStakingContractAdapter} from './adapters/e4c-ranger-staking.adapter';
 import {PerionCreditsStakingContractAdapter} from './adapters/erc20-staking.adapter';
 import {IdolMarketplaceContractAdapter} from './adapters/idol-marketplace.adapter';
@@ -30,6 +31,7 @@ import {StakingContractsService} from './services/staking-contracts.service';
 })
 export class StakingContractsComponent implements Component {
   services: ServiceOrProviderClass<unknown>[] = [
+    E4CGoldStakingContractAdapter,
     E4CRangerStakingContractAdapter,
     StakingContractsService,
     LifestoryPlanetStakingAdapter,

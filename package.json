@@ -49,8 +49,8 @@
     "!*/__examples__"
   ],
   "peerDependencies": {
-    "@collabland/common": "^0.36.0",
-    "@collabland/chain": "^0.27.0"
+    "@collabland/common": "^0.37.0",
+    "@collabland/chain": "^0.28.0"
   },
   "dependencies": {
     "ethcall": "^4.8.5",

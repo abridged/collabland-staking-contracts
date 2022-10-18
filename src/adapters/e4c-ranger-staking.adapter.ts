@@ -10,21 +10,7 @@ import {STAKING_ADAPTERS_EXTENSION_POINT} from '../keys';
 import {BaseStakingContractAdapter, StakingAsset} from '../staking';
 import {E4cRangerStaking__factory} from '../types/factories/E4cRangerStaking__factory';
 
-@injectable(
-  {
-    scope: BindingScope.SINGLETON,
-  },
-  extensionFor(STAKING_ADAPTERS_EXTENSION_POINT),
-)
-export class E4CRangerStakingContractAdapter extends BaseStakingContractAdapter {
-  contractAddress = '0x9c18beA91AE053397918410311dbB89295baE18b';
-
-  supportedAssets: StakingAsset[] = [
-    {
-      asset: 'ERC721:0xbA265B93519E6473F34F46ee35F4B23970F41a3f',
-    },
-  ];
-
+abstract class E4CStakingContractAdapter extends BaseStakingContractAdapter {
   private ecProvider: Provider;
   private contract: Contract;
 
@@ -62,4 +48,38 @@ export class E4CRangerStakingContractAdapter extends BaseStakingContractAdapter 
     const ids = await this.getStakedTokenIds(owner);
     return BigNumber.from(ids.length);
   }
+}
+
+@injectable(
+  {
+    scope: BindingScope.SINGLETON,
+  },
+  extensionFor(STAKING_ADAPTERS_EXTENSION_POINT),
+)
+export class E4CGoldStakingContractAdapter extends E4CStakingContractAdapter {
+  contractName = 'EC4Gold';
+  contractAddress = '0x9c18beA91AE053397918410311dbB89295baE18b';
+
+  supportedAssets: StakingAsset[] = [
+    {
+      asset: 'ERC721:0xbA265B93519E6473F34F46ee35F4B23970F41a3f',
+    },
+  ];
+}
+
+@injectable(
+  {
+    scope: BindingScope.SINGLETON,
+  },
+  extensionFor(STAKING_ADAPTERS_EXTENSION_POINT),
+)
+export class E4CRangerStakingContractAdapter extends E4CStakingContractAdapter {
+  contractName = 'EC4Ranger';
+  contractAddress = '0xadf4343f4e8eb6faf88c06a97ed6e0c229566e1d';
+
+  supportedAssets: StakingAsset[] = [
+    {
+      asset: 'ERC721:0xC17Aa29c43e4cE0c349749C8986a03B2734813fa',
+    },
+  ];
 }

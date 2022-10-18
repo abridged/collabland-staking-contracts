@@ -25,23 +25,33 @@ export class E4CRangerStakingContractAdapter extends BaseStakingContractAdapter 
     },
   ];
 
-  ecProvider = new Provider();
+  private ecProvider: Provider;
+  private contract: Contract;
 
-  constructor() {
-    super();
-    this.ecProvider.init(this.provider);
+  private async init() {
+    if (this.ecProvider == null) {
+      this.contract = new Contract(
+        this.contractAddress,
+        E4cRangerStaking__factory.abi,
+      );
+      this.ecProvider = new Provider();
+      await this.ecProvider.init(this.provider);
+    }
+    return this.ecProvider;
   }
 
   async getStakedTokenIds(owner: string): Promise<BigNumber[]> {
-    const contract = new Contract(this.contractAddress, E4cRangerStaking__factory.abi);
+    await this.init();
 
     const items = new Array(650);
     for (let i = 0; i < 650; i++) {
       items[i] = i + 1;
     }
-    const owners = await this.ecProvider.all(items.map(i => contract.originalOwner(i)));
+    const owners = await this.ecProvider.all(
+      items.map(i => this.contract.originalOwner(i)),
+    );
 
-    const tokens: BigNumber[] = []
+    const tokens: BigNumber[] = [];
     for (let i = 0; i < owners.length; i++) {
       if (owners[i] === owner) tokens.push(BigNumber.from(i + 1));
     }
@@ -49,7 +59,7 @@ export class E4CRangerStakingContractAdapter extends BaseStakingContractAdapter 
   }
 
   async getStakedTokenBalance(owner: string): Promise<BigNumber> {
-    const Ids = await this.getStakedTokenIds(owner);
-    return BigNumber.from(Ids.length);
+    const ids = await this.getStakedTokenIds(owner);
+    return BigNumber.from(ids.length);
   }
 }

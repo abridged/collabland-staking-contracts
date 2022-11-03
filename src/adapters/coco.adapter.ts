@@ -7,6 +7,7 @@ import {BindingScope, extensionFor, injectable} from '@loopback/core';
 import {BigNumber} from 'ethers';
 import {STAKING_ADAPTERS_EXTENSION_POINT} from '../keys';
 import {BaseStakingContractAdapter, StakingAsset} from '../staking';
+import type {Coco} from '../types/Coco';
 // Use the full path to import instead of `../types`
 import {Coco__factory} from '../types/factories/Coco__factory';
 
@@ -18,6 +19,7 @@ import {Coco__factory} from '../types/factories/Coco__factory';
   extensionFor(STAKING_ADAPTERS_EXTENSION_POINT),
 )
 export class CocoStakingContractAdapter extends BaseStakingContractAdapter {
+  private contract: Coco;
   /**
    * The contract address
    */
@@ -32,13 +34,17 @@ export class CocoStakingContractAdapter extends BaseStakingContractAdapter {
     },
   ];
 
+  constructor() {
+    super();
+    this.contract = Coco__factory.connect(this.contractAddress, this.provider);
+  }
+
   /**
    * Get staked token ids for the given owner
    * @param owner - Owner address
    * @returns
    */
   getStakedTokenIds(owner: string): Promise<BigNumber[]> {
-    const contract = Coco__factory.connect(this.contractAddress, this.provider);
-    return contract.getStakes(owner);
+    return this.contract.getStakes(owner);
   }
 }

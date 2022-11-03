@@ -37,6 +37,12 @@ export interface StackingContractAdapter {
   supportedAssets: StakingAsset[];
 
   /**
+   * Check if the given asset name is supported by this staking contract
+   * @param asset - Asset name such as `ERC721:0x...`
+   */
+  isAssetSupported(assetName: string): Promise<boolean>;
+
+  /**
    * Get asset type that can be staked to the contract
    * @param assetName - Name of the asset if the staking contract allows multiple
    * types of tokens to be staked
@@ -78,6 +84,8 @@ const defaultEthersProviderService = {
 export abstract class BaseStakingContractAdapter
   implements StackingContractAdapter
 {
+  contractName?: string | undefined;
+
   @inject(ETHERS_PROVIDER_SERVICE, {optional: true})
   providerService: EthersProviderService = defaultEthersProviderService;
 
@@ -94,14 +102,28 @@ export abstract class BaseStakingContractAdapter
     return this.provider;
   }
 
+  async isAssetSupported(assetName: string): Promise<boolean> {
+    return this.supportedAssets.some(
+      a => a.asset.toLowerCase() === assetName.toLowerCase(),
+    );
+  }
+
+  getStakingAsset(nameOrAssetType?: string) {
+    const assetType = nameOrAssetType?.toLowerCase();
+    let asset = this.supportedAssets.find(
+      a =>
+        a.name?.toLowerCase() === assetType ||
+        a.asset.toLowerCase() === assetType,
+    );
+    if (asset != null) return asset;
+    // Find the asset that doesn't have a name
+    asset = this.supportedAssets.find(a => a.name == null);
+    if (asset != null) return asset;
+    return this.supportedAssets[0];
+  }
+
   getStakingAssetType(name?: string) {
-    let asset = this.supportedAssets.find(a => a.name === name);
-    if (asset == null) {
-      asset = this.supportedAssets.find(a => a.name == null);
-      if (asset == null) {
-        asset = this.supportedAssets[0];
-      }
-    }
+    const asset = this.getStakingAsset(name);
     if (asset == null) return undefined;
     return new AssetType({
       chainId: {

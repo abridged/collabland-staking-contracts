@@ -40,12 +40,18 @@ export class RirisuStakingContractAdapter extends BaseStakingContractAdapter {
     },
   ];
 
-  getStakedTokenIds(owner: string, assetType = 'Ririsu'): Promise<BigNumber[]> {
+  async getStakedTokenIds(
+    owner: string,
+    assetType = 'Ririsu',
+  ): Promise<BigNumber[]> {
+    const asset = this.getStakingAsset(assetType);
+    if (asset == null) return [];
+
     const contract = RirisuStaking__factory.connect(
       this.contractAddress,
       this.provider,
     );
-    if (assetType.toLowerCase() === 'sanctum') {
+    if (asset.name?.toLowerCase() === 'sanctum') {
       return contract.stakedSanctums(owner);
     }
     return contract.stakedRiris(owner);

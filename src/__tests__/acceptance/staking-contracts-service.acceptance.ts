@@ -32,6 +32,18 @@ describe('Staking contracts service', () => {
     });
   });
 
+  it.skip('gets staked token ids by asset type', async () => {
+    const contracts = service.stakingContracts;
+    await pMap(contracts, async contract => {
+      const staked = await service.getStakedTokenIdsByAssetType(
+        '0x9abbf7218c65c4d22c8483b5d6be93075a3c159c',
+        1,
+        contract.supportedAssets[0].asset,
+      );
+      expect(staked).to.be.Array();
+    });
+  });
+
   it('gets staked token balances', async () => {
     const contracts = service.stakingContracts;
     await pMap(contracts, async contract => {

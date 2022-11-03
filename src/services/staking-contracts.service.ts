@@ -9,14 +9,14 @@ import {
   AssetType,
   AssetTypeParams,
 } from '@collabland/chain';
-import {debugFactory} from '@collabland/common';
+import {debugFactory, pMap} from '@collabland/common';
 import {
   BindingScope,
   ContextTags,
   extensions,
   injectable,
 } from '@loopback/core';
-import {utils} from 'ethers';
+import {BigNumber, utils} from 'ethers';
 import {
   STAKING_ADAPTERS_EXTENSION_POINT,
   STAKING_CONTRACTS_SERVICE,
@@ -105,6 +105,60 @@ export class StakingContractsService {
     );
     if (adapter == null) return adapter;
     return adapter;
+  }
+
+  private async getAdaptersByAssetType(chainId = 1, assetName: string) {
+    const adapters = this.adapters.filter(a => a.chainId ?? 1 === chainId);
+    const list: StackingContractAdapter[] = [];
+    for (const a of adapters) {
+      const supported = await a.isAssetSupported(assetName);
+      if (supported) {
+        list.push(a);
+      }
+    }
+    return list;
+  }
+
+  /**
+   * Get staked token ids for the given asset type
+   * @param owner - Owner address
+   * @param chainId - Chain id
+   * @param assetName - Asset name of the original token
+   * @returns
+   */
+  async getStakedTokenIdsByAssetType(
+    owner: string,
+    chainId = 1,
+    assetName: string,
+  ) {
+    const adapters = await this.getAdaptersByAssetType(chainId, assetName);
+    const ids = await pMap(adapters, a => {
+      return a.getStakedTokenIds(owner, assetName);
+    });
+    return ids.flat();
+  }
+
+  /**
+   * Get staked token balance for the given asset type
+   * @param owner - Owner address
+   * @param chainId - Chain id
+   * @param assetName - Asset name of the original token
+   * @returns
+   */
+  async getStakedBalanceByAssetType(
+    owner: string,
+    chainId = 1,
+    assetName: string,
+  ) {
+    const adapters = await this.getAdaptersByAssetType(chainId, assetName);
+    const balances = await pMap(adapters, a => {
+      return a.getStakedTokenBalance(owner, assetName);
+    });
+    let total = BigNumber.from(0);
+    for (const bal of balances) {
+      total = total.add(bal);
+    }
+    return total;
   }
 
   /**

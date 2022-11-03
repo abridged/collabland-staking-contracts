@@ -20,6 +20,7 @@ import {PerionCreditsStakingContractAdapter} from './adapters/erc20-staking.adap
 import {IdolMarketplaceContractAdapter} from './adapters/idol-marketplace.adapter';
 import {LifestoryPlanetStakingAdapter} from './adapters/lifestory-planet-staking.adapter';
 import {MtgStakingContractAdapter} from './adapters/mtg.adapter';
+import {RandomStakingContractAdapter} from './adapters/random-staking.adapter';
 import {RirisuStakingContractAdapter} from './adapters/ririsu.adapter';
 import {RoboStakingContractAdapter} from './adapters/robo.adapter';
 import {SkyFarmStakingContractAdapter} from './adapters/sky-farm.adapter';
@@ -33,6 +34,7 @@ import {StakingContractsService} from './services/staking-contracts.service';
 })
 export class StakingContractsComponent implements Component {
   services: ServiceOrProviderClass<unknown>[] = [
+    RandomStakingContractAdapter,
     E4CRangerStakingContractAdapter,
     E4CGoldStakingContractAdapter,
     StakingContractsService,

@@ -64,3 +64,5 @@ typings/
 *.tsbuildinfo
 
 src/types
+
+.idea/

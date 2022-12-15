@@ -30,4 +30,12 @@ export class DogfaceStakingContractAdapter extends BaseStakingContractAdapter {
     );
     return (await contract.getStakeData(owner)).stakedCounts;
   }
+
+  async getStakedTokenIds(owner: string): Promise<BigNumber[]> {
+    const contract = DogfaceStaking__factory.connect(
+      this.contractAddress,
+      this.provider,
+    );
+    return (await contract.getStakeData(owner)).stakedTokenIds;
+  }
 }

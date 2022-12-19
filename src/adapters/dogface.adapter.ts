@@ -7,7 +7,8 @@ import {BindingScope, extensionFor, injectable} from '@loopback/core';
 import {BigNumber} from 'ethers';
 import {STAKING_ADAPTERS_EXTENSION_POINT} from '../keys';
 import {BaseStakingContractAdapter, StakingAsset} from '../staking';
-import {DogfaceStaking__factory} from '../types';
+import type {DogfaceStaking} from '../types/DogfaceStaking';
+import {DogfaceStaking__factory} from '../types/factories/DogfaceStaking__factory';
 
 @injectable(
   {
@@ -23,19 +24,23 @@ export class DogfaceStakingContractAdapter extends BaseStakingContractAdapter {
     },
   ];
 
-  async getStakedTokenBalance(owner: string): Promise<BigNumber> {
-    const contract = DogfaceStaking__factory.connect(
+  private contract: DogfaceStaking;
+
+  constructor() {
+    super();
+    this.contract = DogfaceStaking__factory.connect(
       this.contractAddress,
       this.provider,
     );
-    return (await contract.getStakeData(owner)).stakedCounts;
+  }
+
+  async getStakedTokenBalance(owner: string): Promise<BigNumber> {
+    const data = await this.contract.getStakeData(owner);
+    return data.stakedCounts;
   }
 
   async getStakedTokenIds(owner: string): Promise<BigNumber[]> {
-    const contract = DogfaceStaking__factory.connect(
-      this.contractAddress,
-      this.provider,
-    );
-    return (await contract.getStakeData(owner)).stakedTokenIds;
+    const data = await this.contract.getStakeData(owner);
+    return data.stakedTokenIds;
   }
 }

@@ -11,6 +11,7 @@ import {
 } from '@loopback/core';
 import {ChillRxStakingContractAdapter} from './adapters/chillrx.adapter';
 import {CocoStakingContractAdapter} from './adapters/coco.adapter';
+import {DogfaceStakingContractAdapter} from './adapters/dogface.adapter';
 import {DogsUnchainedStakingContractAdapter} from './adapters/dogs-unchained.adapter';
 import {
   E4CGoldStakingContractAdapter,
@@ -51,6 +52,7 @@ export class StakingContractsComponent implements Component {
     // NFTWEscrowStakingContractAdapter,
     PerionCreditsStakingContractAdapter,
     // DigitzStakingContractAdapter,
+    DogfaceStakingContractAdapter,
   ];
   constructor() {}
 }

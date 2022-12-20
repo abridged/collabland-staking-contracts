@@ -22,6 +22,10 @@ import {IdolMarketplaceContractAdapter} from './adapters/idol-marketplace.adapte
 import {LifestoryPlanetStakingAdapter} from './adapters/lifestory-planet-staking.adapter';
 import {MtgStakingContractAdapter} from './adapters/mtg.adapter';
 import {RandomStakingContractAdapter} from './adapters/random-staking.adapter';
+import {
+  ReNFTEthereumSylvesterV0StakingContractAdapter,
+  ReNFTPolygonSylvesterV1StakingContractAdapter,
+} from './adapters/renft.adapter';
 import {RirisuStakingContractAdapter} from './adapters/ririsu.adapter';
 import {RoboStakingContractAdapter} from './adapters/robo.adapter';
 import {SkyFarmStakingContractAdapter} from './adapters/sky-farm.adapter';
@@ -53,6 +57,8 @@ export class StakingContractsComponent implements Component {
     PerionCreditsStakingContractAdapter,
     // DigitzStakingContractAdapter,
     DogfaceStakingContractAdapter,
+    ReNFTEthereumSylvesterV0StakingContractAdapter,
+    ReNFTPolygonSylvesterV1StakingContractAdapter,
   ];
   constructor() {}
 }

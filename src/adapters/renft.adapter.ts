@@ -3,8 +3,8 @@
 // This file is licensed under the MIT License.
 // License text available at https://opensource.org/licenses/MIT
 
-import {AssetType} from '@collabland/chain';
-import {getEnvVar} from '@collabland/common';
+import {AssetName, AssetType} from '@collabland/chain';
+import {getEnvVar, getFetch, handleFetchResponse} from '@collabland/common';
 import {BindingScope, extensionFor, injectable} from '@loopback/core';
 import {BigNumber} from 'ethers';
 import {STAKING_ADAPTERS_EXTENSION_POINT} from '../keys';
@@ -66,23 +66,23 @@ abstract class BaseReNFTSylvesterStakingContractAdapter extends BaseStakingContr
     assetName?: string,
   ): Promise<BigNumber[]> {
     // Assume assetName is the CAIP asset name
-    const splitAssetName = assetName?.split(':');
-    const nftAddress =
-      splitAssetName && splitAssetName.length == 2
-        ? splitAssetName[1]
-        : undefined;
+    let nftAddress = undefined;
+    if (assetName !== undefined) {
+      const name = new AssetName(assetName);
+      nftAddress = name.reference;
+    }
     const query = getSylvesterQuery(owner, nftAddress);
     if (this.queryUrl === undefined)
       throw new Error(
         `ReNFT subgraph URL undefined for ${this.constructor.name}.`,
       );
-    const body = await fetch(this.queryUrl, {
+    const fetch = getFetch();
+    const res = await fetch(this.queryUrl, {
       body: JSON.stringify({query: query}),
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
-    }).then(res => {
-      return res.json();
     });
+    const body = (await handleFetchResponse(res)) as Record<string, any>;
     return transformGraphResponseBody(body);
   }
 }
@@ -96,7 +96,10 @@ abstract class BaseReNFTSylvesterStakingContractAdapter extends BaseStakingContr
 export class ReNFTEthereumSylvesterV0StakingContractAdapter extends BaseReNFTSylvesterStakingContractAdapter {
   chainId = 1;
   contractAddress = '0xa8D3F65b6E2922fED1430b77aC2b557e1fa8DA4a';
-  queryUrl = getEnvVar('RENFT_ETHEREUM_SYLVESTER_V0_SUBGRAPH_URL');
+  queryUrl = getEnvVar(
+    'RENFT_ETHEREUM_SYLVESTER_V0_SUBGRAPH_URL',
+    'https://api.studio.thegraph.com/query/3020/sylvester/1.0.3',
+  );
 }
 
 @injectable(
@@ -108,5 +111,8 @@ export class ReNFTEthereumSylvesterV0StakingContractAdapter extends BaseReNFTSyl
 export class ReNFTPolygonSylvesterV1StakingContractAdapter extends BaseReNFTSylvesterStakingContractAdapter {
   chainId = 137;
   contractAddress = '0x4e52b73aa28b7ff84d88ea3a90c0668f46043450';
-  queryUrl = getEnvVar('RENFT_POLYGON_SYLVESTER_V1_SUBGRAPH_URL');
+  queryUrl = getEnvVar(
+    'RENFT_POLYGON_SYLVESTER_V1_SUBGRAPH_URL',
+    'https://api.thegraph.com/subgraphs/name/re-nft/sylvester-v1-polygon-main',
+  );
 }

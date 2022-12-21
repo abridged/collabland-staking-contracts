@@ -59,7 +59,9 @@ describe('Staking contracts service', () => {
     const contracts = service.stakingContracts;
     await pMap(contracts, async contract => {
       const assetType = service.getStakingAssetType(contract.contractAddress);
-      expect(assetType).to.be.instanceOf(AssetType);
+      if (assetType != null) {
+        expect(assetType).to.be.instanceOf(AssetType);
+      }
     });
   });
 });

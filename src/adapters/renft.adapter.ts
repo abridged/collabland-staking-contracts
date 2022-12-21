@@ -4,7 +4,12 @@
 // License text available at https://opensource.org/licenses/MIT
 
 import {AssetName, AssetType} from '@collabland/chain';
-import {getEnvVar, getFetch, handleFetchResponse} from '@collabland/common';
+import {
+  AnyType,
+  getEnvVar,
+  getFetch,
+  handleFetchResponse,
+} from '@collabland/common';
 import {BindingScope, extensionFor, injectable} from '@loopback/core';
 import {BigNumber} from 'ethers';
 import {STAKING_ADAPTERS_EXTENSION_POINT} from '../keys';
@@ -30,7 +35,9 @@ const getSylvesterQuery = (renterAddress: string, nftAddress?: string) => {
 }`;
 };
 
-const transformGraphResponseBody = (body: Record<string, any>): BigNumber[] => {
+const transformGraphResponseBody = (
+  body: Record<string, AnyType>,
+): BigNumber[] => {
   return body?.data?.rentings
     ?.map((r: PartialRenting) =>
       Array(Number(r.rentAmount)).fill(BigNumber.from(r.lending.tokenID)),
@@ -51,7 +58,7 @@ abstract class BaseReNFTSylvesterStakingContractAdapter extends BaseStakingContr
 
   getStakingAssetType(name?: string) {
     // Assume name is the CAIP asset name
-    if (name === undefined) return undefined;
+    if (name == null) return undefined;
     return new AssetType({
       chainId: {
         namespace: 'evm',
@@ -67,7 +74,7 @@ abstract class BaseReNFTSylvesterStakingContractAdapter extends BaseStakingContr
   ): Promise<BigNumber[]> {
     // Assume assetName is the CAIP asset name
     let nftAddress = undefined;
-    if (assetName !== undefined) {
+    if (assetName != null) {
       const name = new AssetName(assetName);
       nftAddress = name.reference;
     }
@@ -82,7 +89,7 @@ abstract class BaseReNFTSylvesterStakingContractAdapter extends BaseStakingContr
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
     });
-    const body = (await handleFetchResponse(res)) as Record<string, any>;
+    const body = await handleFetchResponse<Record<string, AnyType>>(res);
     return transformGraphResponseBody(body);
   }
 }

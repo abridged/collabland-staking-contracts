@@ -12,6 +12,7 @@ import {
 import {ChillRxStakingContractAdapter} from './adapters/chillrx.adapter';
 import {CocoStakingContractAdapter} from './adapters/coco.adapter';
 import {DogfaceStakingContractAdapter} from './adapters/dogface.adapter';
+import {Dogface2ndStakingContractAdapter} from './adapters/dogface2.adapter';
 import {DogsUnchainedStakingContractAdapter} from './adapters/dogs-unchained.adapter';
 import {
   E4CGoldStakingContractAdapter,
@@ -57,6 +58,7 @@ export class StakingContractsComponent implements Component {
     PerionCreditsStakingContractAdapter,
     // DigitzStakingContractAdapter,
     DogfaceStakingContractAdapter,
+    Dogface2ndStakingContractAdapter,
     ReNFTEthereumSylvesterV0StakingContractAdapter,
     ReNFTPolygonSylvesterV1StakingContractAdapter,
   ];

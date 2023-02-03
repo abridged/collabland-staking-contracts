@@ -49,7 +49,7 @@
     "!*/__examples__"
   ],
   "peerDependencies": {
-    "@collabland/common": "^0.41.0",
+    "@collabland/common": "^0.42.0",
     "@collabland/chain": "^0.32.0"
   },
   "dependencies": {

@@ -33,6 +33,7 @@ import {SkyFarmStakingContractAdapter} from './adapters/sky-farm.adapter';
 import {UwULendStakingContractAdapter} from './adapters/uwulend-staking.adapter';
 import {STAKING_CONTRACTS_COMPONENT} from './keys';
 import {StakingContractsService} from './services/staking-contracts.service';
+import {ReplicantXStakingContractAdapter} from './adapters/replicantx-staking.adapter';
 
 // Configure the binding for StakingContractsComponent
 @injectable({
@@ -61,6 +62,7 @@ export class StakingContractsComponent implements Component {
     Dogface2ndStakingContractAdapter,
     ReNFTEthereumSylvesterV0StakingContractAdapter,
     ReNFTPolygonSylvesterV1StakingContractAdapter,
+    ReplicantXStakingContractAdapter,
   ];
   constructor() {}
 }

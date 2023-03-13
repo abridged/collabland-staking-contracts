@@ -10,6 +10,7 @@ import {BaseStakingContractAdapter, StakingAsset} from '../staking';
 // Use the full path to import instead of `../types`
 import {SpitYard__factory} from '../types/factories/SpitYard__factory';
 
+
 @injectable(
   {
     scope: BindingScope.SINGLETON, // Mark the adapter as a singleton

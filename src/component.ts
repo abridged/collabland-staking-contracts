@@ -27,13 +27,14 @@ import {
   ReNFTEthereumSylvesterV0StakingContractAdapter,
   ReNFTPolygonSylvesterV1StakingContractAdapter,
 } from './adapters/renft.adapter';
+import {ReplicantXStakingContractAdapter} from './adapters/replicantx-staking.adapter';
 import {RirisuStakingContractAdapter} from './adapters/ririsu.adapter';
 import {RoboStakingContractAdapter} from './adapters/robo.adapter';
 import {SkyFarmStakingContractAdapter} from './adapters/sky-farm.adapter';
+import {SpitYardContractAdapter} from './adapters/spit-yard.adapter';
 import {UwULendStakingContractAdapter} from './adapters/uwulend-staking.adapter';
 import {STAKING_CONTRACTS_COMPONENT} from './keys';
 import {StakingContractsService} from './services/staking-contracts.service';
-import {ReplicantXStakingContractAdapter} from './adapters/replicantx-staking.adapter';
 
 // Configure the binding for StakingContractsComponent
 @injectable({
@@ -41,6 +42,7 @@ import {ReplicantXStakingContractAdapter} from './adapters/replicantx-staking.ad
 })
 export class StakingContractsComponent implements Component {
   services: ServiceOrProviderClass<unknown>[] = [
+    SpitYardContractAdapter,
     RandomStakingContractAdapter,
     E4CRangerStakingContractAdapter,
     E4CGoldStakingContractAdapter,

@@ -3,6 +3,7 @@
 // This file is licensed under the MIT License.
 // License text available at https://opensource.org/licenses/MIT
 
+import {JsonFragment} from '@ethersproject/abi';
 import {BindingScope, extensionFor, injectable} from '@loopback/core';
 import {Contract, Provider} from 'ethcall';
 import {BigNumber} from 'ethers';
@@ -18,17 +19,15 @@ abstract class E4CStakingContractAdapter extends BaseStakingContractAdapter {
     if (this.ecProvider == null) {
       this.contract = new Contract(
         this.contractAddress,
-        E4cRangerStaking__factory.abi,
+        E4cRangerStaking__factory.abi as unknown as JsonFragment[],
       );
       this.ecProvider = new Provider();
       await this.ecProvider.init(this.provider);
     }
-    return this.ecProvider;
   }
 
   async getStakedTokenIds(owner: string): Promise<BigNumber[]> {
     await this.init();
-
     const items = new Array(650);
     for (let i = 0; i < 650; i++) {
       items[i] = i + 1;

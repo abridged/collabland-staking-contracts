@@ -34,6 +34,7 @@ import {RoboStakingContractAdapter} from './adapters/robo.adapter';
 import {SkyFarmStakingContractAdapter} from './adapters/sky-farm.adapter';
 import {SpitYardContractAdapter} from './adapters/spit-yard.adapter';
 import {UwULendStakingContractAdapter} from './adapters/uwulend-staking.adapter';
+import {Meltdown03ContractAdapter} from './adapters/meltdown.adapter';
 import {STAKING_CONTRACTS_COMPONENT} from './keys';
 import {StakingContractsService} from './services/staking-contracts.service';
 
@@ -43,6 +44,7 @@ import {StakingContractsService} from './services/staking-contracts.service';
 })
 export class StakingContractsComponent implements Component {
   services: ServiceOrProviderClass<unknown>[] = [
+    Meltdown03ContractAdapter,
     RektDogsStakingContractAdapter,
     SpitYardContractAdapter,
     RandomStakingContractAdapter,

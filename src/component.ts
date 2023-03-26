@@ -23,6 +23,7 @@ import {IdolMarketplaceContractAdapter} from './adapters/idol-marketplace.adapte
 import {LifestoryPlanetStakingAdapter} from './adapters/lifestory-planet-staking.adapter';
 import {MtgStakingContractAdapter} from './adapters/mtg.adapter';
 import {RandomStakingContractAdapter} from './adapters/random-staking.adapter';
+import {RektDogsStakingContractAdapter} from './adapters/rekt-dogs-adapter';
 import {
   ReNFTEthereumSylvesterV0StakingContractAdapter,
   ReNFTPolygonSylvesterV1StakingContractAdapter,
@@ -42,6 +43,7 @@ import {StakingContractsService} from './services/staking-contracts.service';
 })
 export class StakingContractsComponent implements Component {
   services: ServiceOrProviderClass<unknown>[] = [
+    RektDogsStakingContractAdapter,
     SpitYardContractAdapter,
     RandomStakingContractAdapter,
     E4CRangerStakingContractAdapter,

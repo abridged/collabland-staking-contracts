@@ -17,7 +17,7 @@ import {RektDogsStaking__factory} from '../types/factories/RektDogsStaking__fact
 )
 export class RektDogsStakingContractAdapter extends BaseStakingContractAdapter {
   contractAddress = '0x52503e5aeD11299288C402422bf032D00E3141e0';
-  chainId: 137;
+  chainId = 137;
   supportedAssets: StakingAsset[] = [
     {
       asset: 'ERC721:0xace8187b113a38f83bd9c896c6878b175c234dcc',

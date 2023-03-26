@@ -189,7 +189,8 @@ export class StakingContractsService {
       return ids;
     } catch (err) {
       debug(
-        'Fail to get staked token ids from contract %s for account %s',
+        'Fail to get staked token ids from contract %s:%s for account %s',
+        adapter.chainId,
         contractAddress,
         owner,
         err,
@@ -226,7 +227,8 @@ export class StakingContractsService {
       return balance;
     } catch (err) {
       debug(
-        'Fail to get staked token balance from contract %s for account %s',
+        'Fail to get staked token balance from contract %s:%s for account %s',
+        adapter.chainId,
         contractAddress,
         owner,
         err,
@@ -256,7 +258,8 @@ export class StakingContractsService {
       return assetType;
     } catch (err) {
       debug(
-        'Fail to get staking asset types from contract %s',
+        'Fail to get staking asset types from contract %s:%s',
+        adapter.chainId,
         contractAddress,
         err,
       );

@@ -38,5 +38,6 @@ export class RektDogsStakingContractAdapter extends BaseStakingContractAdapter {
       this.provider,
     );
     return contract.balanceOf(owner);
+    //
   }
 }

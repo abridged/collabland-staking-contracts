@@ -24,7 +24,6 @@ import {LifestoryPlanetStakingAdapter} from './adapters/lifestory-planet-staking
 import {MtgStakingContractAdapter} from './adapters/mtg.adapter';
 import {RandomStakingContractAdapter} from './adapters/random-staking.adapter';
 import {RektDogsStakingContractAdapter} from './adapters/rekt-dogs-adapter';
-import {RektDogsStakingV2ContractAdapter} from './adapters/rekt-dogs-v2-adapter';
 import {
   ReNFTEthereumSylvesterV0StakingContractAdapter,
   ReNFTPolygonSylvesterV1StakingContractAdapter,
@@ -44,7 +43,6 @@ import {StakingContractsService} from './services/staking-contracts.service';
 })
 export class StakingContractsComponent implements Component {
   services: ServiceOrProviderClass<unknown>[] = [
-    RektDogsStakingV2ContractAdapter,
     RektDogsStakingContractAdapter,
     SpitYardContractAdapter,
     RandomStakingContractAdapter,

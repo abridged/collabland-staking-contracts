@@ -1,10 +1,5 @@
 [
   {
-    "inputs": [],
-    "stateMutability": "nonpayable",
-    "type": "constructor"
-  },
-  {
     "anonymous": false,
     "inputs": [
       {
@@ -107,6 +102,19 @@
   },
   {
     "inputs": [],
+    "name": "CONTINGENCY_WALLET",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
     "name": "DAILY_REWARDS",
     "outputs": [
       {
@@ -121,6 +129,32 @@
   {
     "inputs": [],
     "name": "MARKETING_ALLOCATION",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "MARKETING_WALLET",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "MAX_TOKEN_SUPPLY",
     "outputs": [
       {
         "internalType": "uint256",
@@ -177,7 +211,7 @@
         "type": "address"
       }
     ],
-    "name": "claimRewardsByAddress",
+    "name": "claimRewardsForAddress",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -196,19 +230,13 @@
     "type": "function"
   },
   {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_address",
-        "type": "address"
-      }
-    ],
-    "name": "getRewardsForAddress",
+    "inputs": [],
+    "name": "contingencyAllocationSent",
     "outputs": [
       {
-        "internalType": "uint256",
+        "internalType": "bool",
         "name": "",
-        "type": "uint256"
+        "type": "bool"
       }
     ],
     "stateMutability": "view",
@@ -217,12 +245,50 @@
   {
     "inputs": [
       {
-        "internalType": "uint256",
-        "name": "tokenId",
-        "type": "uint256"
+        "internalType": "address",
+        "name": "owner",
+        "type": "address"
       }
     ],
-    "name": "getRewardsForTokenId",
+    "name": "getRektDogsNFTsForAddress",
+    "outputs": [
+      {
+        "internalType": "uint256[]",
+        "name": "",
+        "type": "uint256[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "user",
+        "type": "address"
+      }
+    ],
+    "name": "getTokenIdsForAddress",
+    "outputs": [
+      {
+        "internalType": "uint256[]",
+        "name": "",
+        "type": "uint256[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_address",
+        "type": "address"
+      }
+    ],
+    "name": "getTotalRewardsForAddress",
     "outputs": [
       {
         "internalType": "uint256",
@@ -237,16 +303,61 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "user",
+        "name": "_address",
         "type": "address"
       }
     ],
-    "name": "getStakedTokenIds",
+    "name": "getUnclaimedRewardsForAddress",
     "outputs": [
       {
-        "internalType": "uint256[]",
+        "internalType": "uint256",
+        "name": "rewards",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      }
+    ],
+    "name": "getUnclaimedRewardsForTokenId",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "rewards",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "initiateHalving",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
         "name": "",
-        "type": "uint256[]"
+        "type": "uint256"
+      }
+    ],
+    "name": "isStakedToken",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
       }
     ],
     "stateMutability": "view",
@@ -273,6 +384,19 @@
   },
   {
     "inputs": [],
+    "name": "marketingAllocationSent",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
     "name": "nft",
     "outputs": [
       {
@@ -285,37 +409,16 @@
     "type": "function"
   },
   {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      },
-      {
-        "internalType": "bytes",
-        "name": "",
-        "type": "bytes"
-      }
-    ],
-    "name": "onERC721Received",
+    "inputs": [],
+    "name": "nftAddressSet",
     "outputs": [
       {
-        "internalType": "bytes4",
+        "internalType": "bool",
         "name": "",
-        "type": "bytes4"
+        "type": "bool"
       }
     ],
-    "stateMutability": "nonpayable",
+    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -369,19 +472,8 @@
     "type": "function"
   },
   {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "user",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "tokenId",
-        "type": "uint256"
-      }
-    ],
-    "name": "ownerUnstakeForUser",
+    "inputs": [],
+    "name": "releaseAllRewards",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -394,14 +486,15 @@
     "type": "function"
   },
   {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_contingencyWallet",
-        "type": "address"
-      }
-    ],
+    "inputs": [],
     "name": "sendContingencyAllocation",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "sendMarketingAllocation",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -410,11 +503,37 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "_marketingWallet",
+        "name": "_wallet",
         "type": "address"
       }
     ],
-    "name": "sendMarketingAllocation",
+    "name": "setContingencyWallet",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_newRewards",
+        "type": "uint256"
+      }
+    ],
+    "name": "setDailyRewards",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_wallet",
+        "type": "address"
+      }
+    ],
+    "name": "setMarketingWallet",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -428,6 +547,19 @@
       }
     ],
     "name": "setNftContract",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bool",
+        "name": "_enabled",
+        "type": "bool"
+      }
+    ],
+    "name": "setStakingEnabled",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -472,19 +604,13 @@
     "type": "function"
   },
   {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "name": "stakedTokens",
+    "inputs": [],
+    "name": "stakingEnabled",
     "outputs": [
       {
-        "internalType": "uint256",
+        "internalType": "bool",
         "name": "",
-        "type": "uint256"
+        "type": "bool"
       }
     ],
     "stateMutability": "view",
@@ -498,6 +624,19 @@
         "internalType": "address",
         "name": "",
         "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "tokenAddressSet",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
       }
     ],
     "stateMutability": "view",
@@ -614,12 +753,12 @@
   {
     "inputs": [
       {
-        "internalType": "uint256",
+        "internalType": "address",
         "name": "",
-        "type": "uint256"
+        "type": "address"
       }
     ],
-    "name": "userStakedTokensIndex",
+    "name": "userTotalRewards",
     "outputs": [
       {
         "internalType": "uint256",

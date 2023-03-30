@@ -7,7 +7,7 @@ import {BindingScope, extensionFor, injectable} from '@loopback/core';
 import {BigNumber} from 'ethers';
 import {STAKING_ADAPTERS_EXTENSION_POINT} from '../keys';
 import {BaseStakingContractAdapter, StakingAsset} from '../staking';
-import {RektDogsStaking__factory} from '../types/factories/RektDogsStaking__factory';
+import {RektDogsV2__factory} from '../types/factories/RektDogsV2__factory';
 
 @injectable(
   {
@@ -15,8 +15,8 @@ import {RektDogsStaking__factory} from '../types/factories/RektDogsStaking__fact
   },
   extensionFor(STAKING_ADAPTERS_EXTENSION_POINT),
 )
-export class RektDogsStakingContractAdapter extends BaseStakingContractAdapter {
-  contractAddress = '0x52503e5aeD11299288C402422bf032D00E3141e0';
+export class RektDogsStakingV2ContractAdapter extends BaseStakingContractAdapter {
+  contractAddress = '0xe5a77D9508b4BC25F3C346f8f005F2cF6Bf282b4';
   chainId = 137;
   supportedAssets: StakingAsset[] = [
     {
@@ -25,19 +25,18 @@ export class RektDogsStakingContractAdapter extends BaseStakingContractAdapter {
   ];
 
   async getStakedTokenIds(owner: string): Promise<BigNumber[]> {
-    const contract = RektDogsStaking__factory.connect(
+    const contract = RektDogsV2__factory.connect(
       this.contractAddress,
       this.provider,
     );
-    return contract.getStakedTokenIds(owner);
+    return contract.getTokenIdsForAddress(owner);
   }
 
   async getStakedTokenBalance(owner: string): Promise<BigNumber> {
-    const contract = RektDogsStaking__factory.connect(
+    const contract = RektDogsV2__factory.connect(
       this.contractAddress,
       this.provider,
     );
     return contract.balanceOf(owner);
-    //
   }
 }

@@ -1,7 +1,7 @@
 # Developer's Guide
 
-We use Visual Studio Code for developing `@collabland/staking-contracts` and recommend the same to our
-users.
+We use Visual Studio Code for developing `@collabland/staking-contracts` and
+recommend the same to our users.
 
 ## VSCode setup
 

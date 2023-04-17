@@ -36,6 +36,7 @@ import {RoboStakingContractAdapter} from './adapters/robo.adapter';
 import {SkyFarmStakingContractAdapter} from './adapters/sky-farm.adapter';
 import {SpitYardContractAdapter} from './adapters/spit-yard.adapter';
 import {UwULendStakingContractAdapter} from './adapters/uwulend-staking.adapter';
+import {CbzGrowStakingContractAdapter} from './adapters/cbzgrow.adapter';
 import {STAKING_CONTRACTS_COMPONENT} from './keys';
 import {StakingContractsService} from './services/staking-contracts.service';
 
@@ -71,6 +72,7 @@ export class StakingContractsComponent implements Component {
     ReNFTEthereumSylvesterV0StakingContractAdapter,
     ReNFTPolygonSylvesterV1StakingContractAdapter,
     ReplicantXStakingContractAdapter,
+    CbzGrowStakingContractAdapter,
   ];
   constructor() {}
 }

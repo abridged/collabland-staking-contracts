@@ -78,16 +78,13 @@ export class CbzGrowStakingContractAdapter extends BaseStakingContractAdapter {
       this.contractAddress,
       this.provider,
     );
-    async function run() {
-      const resp = await contract.stakers(owner);
-      if (assetName === 'CoenerBoyz') {
-        return resp.cbzStaked;
-      } else if (assetName === 'CBZ Seeds') {
-        return resp.seedStaked;
-      } else {
-        return Promise.resolve(BigNumber.from(0));
-      }
+    const resp = await contract.stakers(owner);
+    if (assetName === 'CoenerBoyz') {
+      return resp.cbzStaked;
+    } else if (assetName === 'CBZ Seeds') {
+      return resp.seedStaked;
+    } else {
+      return BigNumber.from(0);
     }
-    return run();
   }
 }

@@ -62,9 +62,7 @@ export class CbzGrowStakingContractAdapter extends BaseStakingContractAdapter {
     } else if (name === 'CBZ Seeds') {
       return contract.stakedSeeds(owner);
     } else {
-      const tmpval = [];
-      tmpval[0] = BigNumber.from(0);
-      return Promise.resolve(tmpval);
+      return [BigNumber.from(0)];
     }
   }
 

@@ -71,7 +71,10 @@ export class CbzGrowStakingContractAdapter extends BaseStakingContractAdapter {
    * @param owner - Owner address
    * @returns
    */
-  async getStakedTokenBalance(owner: string, assetName?: string): Promise<BigNumber> {
+  async getStakedTokenBalance(
+    owner: string,
+    assetName?: string,
+  ): Promise<BigNumber> {
     const contract = Cbzgrow__factory.connect(
       this.contractAddress,
       this.provider,

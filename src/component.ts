@@ -22,6 +22,8 @@ import {PerionCreditsStakingContractAdapter} from './adapters/erc20-staking.adap
 import {IdolMarketplaceContractAdapter} from './adapters/idol-marketplace.adapter';
 import {LifestoryPlanetStakingAdapter} from './adapters/lifestory-planet-staking.adapter';
 import {Meltdown03ContractAdapter} from './adapters/meltdown.adapter';
+import {MeltdownContractAdapter} from './adapters/meltdown-1.adapter';
+
 import {MtgStakingContractAdapter} from './adapters/mtg.adapter';
 import {RandomStakingContractAdapter} from './adapters/random-staking.adapter';
 import {RDStakingContractAdapter} from './adapters/rd-staking.adapter';
@@ -73,6 +75,7 @@ export class StakingContractsComponent implements Component {
     ReNFTPolygonSylvesterV1StakingContractAdapter,
     ReplicantXStakingContractAdapter,
     CbzGrowStakingContractAdapter,
+    MeltdownContractAdapter,
   ];
   constructor() {}
 }

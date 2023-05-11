@@ -16,7 +16,7 @@ export class MeltdownContractAdapter extends BaseStakingContractAdapter {
   /**
    * The contract address
    */
-  contractAddress = '0xC0c5670D9052D0ee524d7C932382805645Ab3479';
+  contractAddress = '0x78Edb971CdcAa7C262C58D526fc81Ee96809cF4f';
   chainId = 137;
   /**
    * Assets that can be staked to this contract

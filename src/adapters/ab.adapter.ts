@@ -3,11 +3,28 @@
 // This file is licensed under the MIT License.
 // License text available at https://opensource.org/licenses/MIT
 
+import {getEnvVar} from '@collabland/common';
 import {BindingScope, extensionFor, injectable} from '@loopback/core';
 import {BigNumber} from 'ethers';
 import {request, gql} from 'graphql-request';
 import {STAKING_ADAPTERS_EXTENSION_POINT} from '../keys';
 import {BaseStakingContractAdapter, StakingAsset} from '../staking';
+
+// interface for query return type
+interface Data {
+  staker?: {stakedNfts: Array<{id: string}>};
+}
+
+// graphql query
+const query = gql`
+  query fetchStakedNFTs($id: ID!) {
+    staker(id: $id) {
+      stakedNfts(first: 1000) {
+        id
+      }
+    }
+  }
+`;
 
 @injectable(
   {
@@ -38,26 +55,17 @@ export class AngelBlockStakingContractAdapter extends BaseStakingContractAdapter
    */
   async getStakedTokenIds(owner: string): Promise<BigNumber[]> {
     // subgraph query key
-    const apiKey = '0d7465b55a8e159d6887ff11521c3465';
+    const apiKey = getEnvVar('ANGEL_BLOCK_SUBGRAPH_API_KEY');
+    if (typeof apiKey !== 'string') {
+      throw new Error(`API key for AngelBlock subgraph is missing.`);
+    }
     // subgraph id
     const subgraphId = '6W9sMStDyuvTuHGhYNQFSvtca1GPnUmQXz5FtCvkmCyq';
-    // graphql query
-    const query = gql`
-      query fetchStakedNFTs($id: ID!) {
-        staker(id: $id) {
-          stakedNfts(first: 1000) {
-            id
-          }
-        }
-      }
-    `;
-    // interface for query return type
-    interface Data {
-      staker?: {stakedNfts: Array<{id: string}>};
-    }
     // fetching owner staked nfts
     const response = await request<Data>(
-      `https://gateway.thegraph.com/api/${apiKey}/subgraphs/id/${subgraphId}`,
+      `https://gateway.thegraph.com/api/${encodeURIComponent(
+        apiKey,
+      )}/subgraphs/id/${subgraphId}`,
       query,
       {id: owner},
     );

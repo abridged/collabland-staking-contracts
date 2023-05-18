@@ -33,7 +33,7 @@ describe('Staking contracts service', () => {
         );
         expect(staked).to.be.Array();
       } catch (err) {
-        debug('Fail to test %s: %s', contract.contractName, err);
+        console.error('Fail to test %s: %s', contract.contractName, err);
       }
     });
   });

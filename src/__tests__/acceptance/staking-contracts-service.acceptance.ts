@@ -9,22 +9,17 @@ import {Application} from '@loopback/core';
 import {expect} from '@loopback/testlab';
 import {StakingContractsComponent} from '../../component';
 import {STAKING_CONTRACTS_SERVICE} from '../../keys';
-import {StakingContractsService} from '../../services';
 const debug = debugFactory('collabland:staking-contracts');
 
-describe('Staking contracts service', () => {
-  let app: Application;
-  let service: StakingContractsService;
+// eslint-disable-next-line @typescript-eslint/no-misused-promises
+describe('Staking contracts service', async () => {
+  const app = new Application();
+  app.component(StakingContractsComponent);
+  const service = await app.get(STAKING_CONTRACTS_SERVICE);
+  const contracts = service.stakingContracts;
 
-  before(async () => {
-    app = new Application();
-    app.component(StakingContractsComponent);
-    service = await app.get(STAKING_CONTRACTS_SERVICE);
-  });
-
-  it('gets staked token ids', async () => {
-    const contracts = service.stakingContracts;
-    await pMap(contracts, async contract => {
+  contracts.forEach(contract => {
+    it('gets staked token ids for ' + contract.contractName, async () => {
       debug('Contract: %s', contract.contractName);
       try {
         const staked = await service.getStakedTokenIds(
@@ -39,7 +34,6 @@ describe('Staking contracts service', () => {
   });
 
   it.skip('gets staked token ids by asset type', async () => {
-    const contracts = service.stakingContracts;
     await pMap(contracts, async contract => {
       debug('Contract: %s', contract.contractName);
       const staked = await service.getStakedTokenIdsByAssetType(
@@ -51,9 +45,8 @@ describe('Staking contracts service', () => {
     });
   });
 
-  it('gets staked token balances', async () => {
-    const contracts = service.stakingContracts;
-    await pMap(contracts, async contract => {
+  contracts.forEach(contract => {
+    it('gets staked token balances for ' + contract.contractName, async () => {
       debug('Contract: %s', contract.contractName);
       const staked = await service.getStakedTokenBalance(
         '0x9abbf7218c65c4d22c8483b5d6be93075a3c159c',
@@ -63,9 +56,8 @@ describe('Staking contracts service', () => {
     });
   });
 
-  it('gets staking asset types', async () => {
-    const contracts = service.stakingContracts;
-    await pMap(contracts, async contract => {
+  contracts.forEach(contract => {
+    it('gets staking asset types for ' + contract.contractName, async () => {
       debug('Contract: %s', contract.contractName);
       const assetType = service.getStakingAssetType(contract.contractAddress);
       if (assetType != null) {

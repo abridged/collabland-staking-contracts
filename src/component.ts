@@ -25,6 +25,8 @@ import {Meltdown03ContractAdapter} from './adapters/meltdown.adapter';
 import {MeltdownContractAdapter} from './adapters/meltdown-1.adapter';
 
 import {MtgStakingContractAdapter} from './adapters/mtg.adapter';
+import {NeoTokyoS1ContractAdapter} from './adapters/neotokyoS1.adapter.ts';
+import {NeoTokyoS2ContractAdapter} from './adapters/neotokyoS2.adapter.ts';
 import {RandomStakingContractAdapter} from './adapters/random-staking.adapter';
 import {RDStakingContractAdapter} from './adapters/rd-staking.adapter';
 import {RektDogsStakingContractAdapter} from './adapters/rekt-dogs-adapter';
@@ -78,6 +80,8 @@ export class StakingContractsComponent implements Component {
     CbzGrowStakingContractAdapter,
     MeltdownContractAdapter,
     AngelBlockStakingContractAdapter,
+    NeoTokyoS1ContractAdapter,
+    NeoTokyoS2ContractAdapter
   ];
   constructor() {}
 }

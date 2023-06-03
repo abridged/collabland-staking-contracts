@@ -40,6 +40,7 @@ import {SpitYardContractAdapter} from './adapters/spit-yard.adapter';
 import {UwULendStakingContractAdapter} from './adapters/uwulend-staking.adapter';
 import {CbzGrowStakingContractAdapter} from './adapters/cbzgrow.adapter';
 import {AngelBlockStakingContractAdapter} from './adapters/ab.adapter';
+import {BapeliensStakingContractAdapter} from './adapters/bapeliens-staking.adapter';
 import {STAKING_CONTRACTS_COMPONENT} from './keys';
 import {StakingContractsService} from './services/staking-contracts.service';
 
@@ -78,6 +79,7 @@ export class StakingContractsComponent implements Component {
     CbzGrowStakingContractAdapter,
     MeltdownContractAdapter,
     AngelBlockStakingContractAdapter,
+    BapeliensStakingContractAdapter,
   ];
   constructor() {}
 }

@@ -4,7 +4,7 @@
 // License text available at https://opensource.org/licenses/MIT
 
 import {AssetType} from '@collabland/chain';
-import {BigNumber, debugFactory, pMap} from '@collabland/common';
+import {BigNumber, debugFactory, getEnvVar, pMap} from '@collabland/common';
 import {Application} from '@loopback/core';
 import {expect} from '@loopback/testlab';
 import {StakingContractsComponent} from '../../component';
@@ -16,7 +16,11 @@ describe('Staking contracts service', async () => {
   const app = new Application();
   app.component(StakingContractsComponent);
   const service = await app.get(STAKING_CONTRACTS_SERVICE);
-  const contracts = service.stakingContracts;
+
+  const angelBlockApiKey = getEnvVar('ANGEL_BLOCK_SUBGRAPH_API_KEY');
+  const contracts = service.stakingContracts.filter(
+    c => angelBlockApiKey != null || c.contractName !== 'AngelBlock',
+  );
 
   contracts.forEach(contract => {
     it('gets staked token ids for ' + contract.contractName, async () => {

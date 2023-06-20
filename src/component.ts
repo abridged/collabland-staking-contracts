@@ -21,10 +21,15 @@ import {
 import {PerionCreditsStakingContractAdapter} from './adapters/erc20-staking.adapter';
 import {IdolMarketplaceContractAdapter} from './adapters/idol-marketplace.adapter';
 import {LifestoryPlanetStakingAdapter} from './adapters/lifestory-planet-staking.adapter';
-import {Meltdown03ContractAdapter} from './adapters/meltdown.adapter';
 import {MeltdownContractAdapter} from './adapters/meltdown-1.adapter';
+import {Meltdown03ContractAdapter} from './adapters/meltdown.adapter';
 
+import {AngelBlockStakingContractAdapter} from './adapters/ab.adapter';
+import {BapeliensStakingContractAdapter} from './adapters/bapeliens-staking.adapter';
+import {CbzGrowStakingContractAdapter} from './adapters/cbzgrow.adapter';
+import {EternalsStakingContractAdapter} from './adapters/eternals.adapter';
 import {MtgStakingContractAdapter} from './adapters/mtg.adapter';
+import {OmniguardsStakingContractAdapter} from './adapters/omniguards.adapter';
 import {RandomStakingContractAdapter} from './adapters/random-staking.adapter';
 import {RDStakingContractAdapter} from './adapters/rd-staking.adapter';
 import {RektDogsStakingContractAdapter} from './adapters/rekt-dogs-adapter';
@@ -38,9 +43,6 @@ import {RoboStakingContractAdapter} from './adapters/robo.adapter';
 import {SkyFarmStakingContractAdapter} from './adapters/sky-farm.adapter';
 import {SpitYardContractAdapter} from './adapters/spit-yard.adapter';
 import {UwULendStakingContractAdapter} from './adapters/uwulend-staking.adapter';
-import {CbzGrowStakingContractAdapter} from './adapters/cbzgrow.adapter';
-import {AngelBlockStakingContractAdapter} from './adapters/ab.adapter';
-import {BapeliensStakingContractAdapter} from './adapters/bapeliens-staking.adapter';
 import {STAKING_CONTRACTS_COMPONENT} from './keys';
 import {StakingContractsService} from './services/staking-contracts.service';
 
@@ -80,6 +82,8 @@ export class StakingContractsComponent implements Component {
     MeltdownContractAdapter,
     AngelBlockStakingContractAdapter,
     BapeliensStakingContractAdapter,
+    EternalsStakingContractAdapter,
+    OmniguardsStakingContractAdapter,
   ];
   constructor() {}
 }

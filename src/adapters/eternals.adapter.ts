@@ -3,7 +3,7 @@ import {BigNumber} from 'ethers';
 import {STAKING_ADAPTERS_EXTENSION_POINT} from '../keys';
 import {BaseStakingContractAdapter, StakingAsset} from '../staking';
 // Use the full path to import instead of `../types`
-import {Eternals__factory} from '../types/factories/Eternals__factory';
+import {OmniguardEternals__factory} from '../types/factories/OmniguardEternals__factory';
 
 @injectable(
   {
@@ -32,8 +32,13 @@ export class EternalsStakingContractAdapter extends BaseStakingContractAdapter {
    * @param owner - Owner address
    * @returns
    */
-  getStakedTokenIds(owner: string): Promise<BigNumber[]> {
-    const contract = Eternals__factory.connect(this.contractAddress, this.provider);
-    return contract.getStakes(owner);
+  async getStakedTokenIds(owner: string): Promise<BigNumber[]> {
+    const contract = OmniguardEternals__factory.connect(
+      this.contractAddress,
+      this.provider,
+    );
+    // Pool id = 0 for `0xc26064Ac72101B555Ff2fCC1629a7A867B69c188`
+    const info = await contract.getStakerInfo(owner, 0);
+    return info[1];
   }
 }

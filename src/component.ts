@@ -27,9 +27,8 @@ import {Meltdown03ContractAdapter} from './adapters/meltdown.adapter';
 import {AngelBlockStakingContractAdapter} from './adapters/ab.adapter';
 import {BapeliensStakingContractAdapter} from './adapters/bapeliens-staking.adapter';
 import {CbzGrowStakingContractAdapter} from './adapters/cbzgrow.adapter';
-import {EternalsStakingContractAdapter} from './adapters/eternals.adapter';
+import {OmniguardEternalsStakingContractAdapter} from './adapters/omniguard-eternals.adapter';
 import {MtgStakingContractAdapter} from './adapters/mtg.adapter';
-import {OmniguardsStakingContractAdapter} from './adapters/omniguards.adapter';
 import {RandomStakingContractAdapter} from './adapters/random-staking.adapter';
 import {RDStakingContractAdapter} from './adapters/rd-staking.adapter';
 import {RektDogsStakingContractAdapter} from './adapters/rekt-dogs-adapter';
@@ -82,8 +81,7 @@ export class StakingContractsComponent implements Component {
     MeltdownContractAdapter,
     AngelBlockStakingContractAdapter,
     BapeliensStakingContractAdapter,
-    EternalsStakingContractAdapter,
-    OmniguardsStakingContractAdapter,
+    OmniguardEternalsStakingContractAdapter,
   ];
   constructor() {}
 }

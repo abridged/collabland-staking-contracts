@@ -53,14 +53,10 @@ export class CbzGrowStakingContractAdapter extends BaseStakingContractAdapter {
    * @returns
    */
   async getStakedTokenIds(owner: string, name?: string): Promise<BigNumber[]> {
-    const contract = Cbzgrow__factory.connect(
-      this.contractAddress,
-      this.provider,
-    );
     if (name === 'CoenerBoyz') {
-      return contract.stakedCBZs(owner);
+      return this.contract.stakedCBZs(owner);
     } else if (name === 'CBZ Seeds') {
-      return contract.stakedSeeds(owner);
+      return this.contract.stakedSeeds(owner);
     } else {
       return [];
     }
@@ -75,11 +71,7 @@ export class CbzGrowStakingContractAdapter extends BaseStakingContractAdapter {
     owner: string,
     assetName?: string,
   ): Promise<BigNumber> {
-    const contract = Cbzgrow__factory.connect(
-      this.contractAddress,
-      this.provider,
-    );
-    const resp = await contract.stakers(owner);
+    const resp = await this.contract.stakers(owner);
     if (assetName === 'CoenerBoyz') {
       return resp.cbzStaked;
     } else if (assetName === 'CBZ Seeds') {

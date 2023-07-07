@@ -53,8 +53,8 @@
     "tslib": "^2.0.0"
   },
   "devDependencies": {
-    "@collabland/chain": "^0.33.2",
-    "@collabland/common": "^0.45.0",
+    "@collabland/chain": "^0.34.0",
+    "@collabland/common": "^0.46.0",
     "@loopback/build": "^10.0.0",
     "@loopback/core": "^5.0.0",
     "@loopback/eslint-config": "^14.0.0",

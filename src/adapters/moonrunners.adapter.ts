@@ -36,7 +36,7 @@ export class MoonrunnersStakingContractAdapter extends BaseStakingContractAdapte
    * Get staked token ids for the given owner
    * @param owner - Owner address
    * @param name - Name of the asset
-   * @returns
+   * @returns all the token ids staked by the user for that asset
    */
   async getStakedTokenIds(owner: string, name?: string): Promise<BigNumber[]> {
     const contract = MoonrunnersStaking__factory.connect(
@@ -51,6 +51,27 @@ export class MoonrunnersStakingContractAdapter extends BaseStakingContractAdapte
         .map(tokenId => tokenId.sub(dragonIdsBuffer));
     } else {
       return allStakedTokens.filter(tokenId => tokenId.lt(dragonIdsBuffer));
+    }
+  }
+
+  async getStakedTokenBalance(
+    owner: string,
+    name?: string,
+  ): Promise<BigNumber> {
+    const contract = MoonrunnersStaking__factory.connect(
+      this.contractAddress,
+      this.provider,
+    );
+    const dragonIdsBuffer = BigNumber.from('20000');
+    const allStakedTokens = (await contract.getStake(owner)).tokenIds;
+    if (name === 'Dragonhorde') {
+      return BigNumber.from(
+        allStakedTokens.filter(tokenId => tokenId.gte(dragonIdsBuffer)).length,
+      );
+    } else {
+      return BigNumber.from(
+        allStakedTokens.filter(tokenId => tokenId.lt(dragonIdsBuffer)).length,
+      );
     }
   }
 }

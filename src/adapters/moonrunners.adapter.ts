@@ -16,7 +16,7 @@ export class MoonrunnersStakingContractAdapter extends BaseStakingContractAdapte
   /**
    * The contract address
    */
-  contractAddress = '0x5aA6dD29ee52b700308f2C73C2B72BB656018609';
+  contractAddress = '0x717C6dD66Be92E979001aee2eE169aAA8D6D4361';
 
   /**
    * Assets that can be staked to this contract
@@ -26,22 +26,31 @@ export class MoonrunnersStakingContractAdapter extends BaseStakingContractAdapte
       asset: 'ERC721:0x1485297e942ce64e0870ece60179dfda34b4c625',
       name: 'Moonrunners',
     },
+    {
+      asset: 'ERC721:0x6b5483b55b362697000d8774d8ea9c4429B261BB',
+      name: 'Dragonhorde',
+    },
   ];
 
   /**
    * Get staked token ids for the given owner
    * @param owner - Owner address
+   * @param name - Name of the asset
    * @returns
    */
-  async getStakedTokenIds(owner: string): Promise<BigNumber[]> {
+  async getStakedTokenIds(owner: string, name?: string): Promise<BigNumber[]> {
     const contract = MoonrunnersStaking__factory.connect(
       this.contractAddress,
       this.provider,
     );
+    const dragonIdsBuffer = BigNumber.from('20000');
     const allStakedTokens = (await contract.getStake(owner)).tokenIds;
-    // filter only moonrunners since dragon token ids have num 20_000 added to them
-    return allStakedTokens.filter(tokenId =>
-      tokenId.lt(BigNumber.from('20000')),
-    );
+    if (name === 'Dragonhorde') {
+      return allStakedTokens
+        .filter(tokenId => tokenId.gte(dragonIdsBuffer))
+        .map(tokenId => tokenId.sub(dragonIdsBuffer));
+    } else {
+      return allStakedTokens.filter(tokenId => tokenId.lt(dragonIdsBuffer));
+    }
   }
 }

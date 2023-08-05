@@ -54,6 +54,12 @@ export class MoonrunnersStakingContractAdapter extends BaseStakingContractAdapte
     }
   }
 
+  /**
+   * Get staked token ids for the given owner
+   * @param owner - Owner address
+   * @param name - Name of the asset
+   * @returns the balance of that asset staked by the user
+   */
   async getStakedTokenBalance(
     owner: string,
     name?: string,

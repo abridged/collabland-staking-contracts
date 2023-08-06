@@ -45,6 +45,7 @@ import {SpitYardContractAdapter} from './adapters/spit-yard.adapter';
 import {UwULendStakingContractAdapter} from './adapters/uwulend-staking.adapter';
 import {STAKING_CONTRACTS_COMPONENT} from './keys';
 import {StakingContractsService} from './services/staking-contracts.service';
+import {XenoStakingContractAdapter} from './adapters/xeno-mining.adapter';
 
 // Configure the binding for StakingContractsComponent
 @injectable({
@@ -84,6 +85,7 @@ export class StakingContractsComponent implements Component {
     BapeliensStakingContractAdapter,
     OmniguardEternalsStakingContractAdapter,
     MoonrunnersStakingContractAdapter,
+    XenoStakingContractAdapter
   ];
   constructor() {}
 }

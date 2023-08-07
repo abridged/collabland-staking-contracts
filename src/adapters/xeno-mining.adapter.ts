@@ -20,11 +20,11 @@ export class XenoStakingContractAdapter extends BaseStakingContractAdapter {
   contractAddress = '0x8621359B9F5D03F694E709a9F31305BEece31d44';
   supportedAssets: StakingAsset[] = [
     {
-      asset: 'ERC721:0x79e77FEF841C2ACdF506980144D07157B20EFfD1'
+      asset: 'ERC721:0x79e77FEF841C2ACdF506980144D07157B20EFfD1',
     },
   ];
 
-  private contract: XenoStaking
+  private contract: XenoStaking;
 
   constructor() {
     super();
@@ -36,6 +36,6 @@ export class XenoStakingContractAdapter extends BaseStakingContractAdapter {
 
   async getStakedTokenIds(owner: string): Promise<BigNumber[]> {
     const data = await this.contract.stakedByOwner(owner);
-    return data.map((id) => BigNumber.from(id));
+    return data.map(id => BigNumber.from(id));
   }
 }

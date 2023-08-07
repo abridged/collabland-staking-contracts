@@ -85,7 +85,7 @@ export class StakingContractsComponent implements Component {
     BapeliensStakingContractAdapter,
     OmniguardEternalsStakingContractAdapter,
     MoonrunnersStakingContractAdapter,
-    XenoStakingContractAdapter
+    XenoStakingContractAdapter,
   ];
   constructor() {}
 }

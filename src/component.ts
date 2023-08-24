@@ -27,6 +27,7 @@ import {Meltdown03ContractAdapter} from './adapters/meltdown.adapter';
 import {AngelBlockStakingContractAdapter} from './adapters/ab.adapter';
 import {BapeliensStakingContractAdapter} from './adapters/bapeliens-staking.adapter';
 import {CbzGrowStakingContractAdapter} from './adapters/cbzgrow.adapter';
+import {GenKStakingContractAdapter} from './adapters/genk-staking.adapter';
 import {MoonrunnersStakingContractAdapter} from './adapters/moonrunners.adapter';
 import {MtgStakingContractAdapter} from './adapters/mtg.adapter';
 import {OmniguardEternalsStakingContractAdapter} from './adapters/omniguard-eternals.adapter';
@@ -80,6 +81,7 @@ export class StakingContractsComponent implements Component {
     ReNFTPolygonSylvesterV1StakingContractAdapter,
     ReplicantXStakingContractAdapter,
     CbzGrowStakingContractAdapter,
+    GenKStakingContractAdapter,
     MeltdownContractAdapter,
     AngelBlockStakingContractAdapter,
     BapeliensStakingContractAdapter,

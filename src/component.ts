@@ -30,6 +30,7 @@ import {CbzGrowStakingContractAdapter} from './adapters/cbzgrow.adapter';
 import {MoonrunnersStakingContractAdapter} from './adapters/moonrunners.adapter';
 import {MtgStakingContractAdapter} from './adapters/mtg.adapter';
 import {OmniguardEternalsStakingContractAdapter} from './adapters/omniguard-eternals.adapter';
+import {PlutoallianceStakingAdapter} from './adapters/plutoalliance.adapter';
 import {RandomStakingContractAdapter} from './adapters/random-staking.adapter';
 import {RDStakingContractAdapter} from './adapters/rd-staking.adapter';
 import {RektDogsStakingContractAdapter} from './adapters/rekt-dogs-adapter';
@@ -43,9 +44,9 @@ import {RoboStakingContractAdapter} from './adapters/robo.adapter';
 import {SkyFarmStakingContractAdapter} from './adapters/sky-farm.adapter';
 import {SpitYardContractAdapter} from './adapters/spit-yard.adapter';
 import {UwULendStakingContractAdapter} from './adapters/uwulend-staking.adapter';
+import {XenoStakingContractAdapter} from './adapters/xeno-mining.adapter';
 import {STAKING_CONTRACTS_COMPONENT} from './keys';
 import {StakingContractsService} from './services/staking-contracts.service';
-import {XenoStakingContractAdapter} from './adapters/xeno-mining.adapter';
 
 // Configure the binding for StakingContractsComponent
 @injectable({
@@ -86,6 +87,7 @@ export class StakingContractsComponent implements Component {
     OmniguardEternalsStakingContractAdapter,
     MoonrunnersStakingContractAdapter,
     XenoStakingContractAdapter,
+    PlutoallianceStakingAdapter,
   ];
   constructor() {}
 }

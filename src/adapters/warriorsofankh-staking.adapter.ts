@@ -3,7 +3,7 @@ import {BigNumber} from 'ethers';
 import {STAKING_ADAPTERS_EXTENSION_POINT} from '../keys';
 import {BaseStakingContractAdapter, StakingAsset} from '../staking';
 // Use the full path to import instead of `../types`
-import {WarriorsOfankhStaking__factory} from '../types/factories/WarriorsofankhStaking__factory';
+import {WarriorsofankhStaking__factory} from '../types/factories/WarriorsofankhStaking__factory';
 
 @injectable(
   {
@@ -33,7 +33,7 @@ export class WarriorsofankhStakingContractAdapter extends BaseStakingContractAda
    * @returns
    */
   getStakedTokenIds(owner: string): Promise<BigNumber[]> {
-    const contract = WarriorsOfankhStaking__factory.connect(
+    const contract = WarriorsofankhStaking__factory.connect(
       this.contractAddress,
       this.provider,
     );

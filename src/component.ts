@@ -47,6 +47,7 @@ import {SpitYardContractAdapter} from './adapters/spit-yard.adapter';
 import {UwULendStakingContractAdapter} from './adapters/uwulend-staking.adapter';
 import {WarriorsofankhStakingContractAdapter} from './adapters/warriorsofankh-staking.adapter';
 import {XenoStakingContractAdapter} from './adapters/xeno-mining.adapter';
+import {TtooStakingContractAdapter} from './adapters/ttoo-staking.adapter';
 import {STAKING_CONTRACTS_COMPONENT} from './keys';
 import {StakingContractsService} from './services/staking-contracts.service';
 
@@ -92,6 +93,7 @@ export class StakingContractsComponent implements Component {
     WarriorsofankhStakingContractAdapter,
     XenoStakingContractAdapter,
     PlutoallianceStakingAdapter,
+    TtooStakingContractAdapter,
   ];
   constructor() {}
 }

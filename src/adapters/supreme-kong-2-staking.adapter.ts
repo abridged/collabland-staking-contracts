@@ -14,7 +14,7 @@ import {SupremeKong2Staking__factory} from '../types/factories/SupremeKong2Staki
   // Mark it as an extension to staking contracts service
   extensionFor(STAKING_ADAPTERS_EXTENSION_POINT),
 )
-export class SupremeKongStakingContractAdapter extends BaseStakingContractAdapter {
+export class SupremeKong2StakingContractAdapter extends BaseStakingContractAdapter {
   /**
    * The contract address
    */
@@ -25,13 +25,13 @@ export class SupremeKongStakingContractAdapter extends BaseStakingContractAdapte
    */
   supportedAssets: StakingAsset[] = [
     {
-      name: 'supremeKonggen2',
+      name: 'supremeKong2',
       asset: 'ERC721:0x54Fec6309b53A31e65593f196b4c58f7A704A361',
     },
   ];
 
   poolIds: Record<string, number> = {
-    supremeKonggen2: 0,
+    supremeKong2: 0,
   };
 
   private contract: SupremeKong2Staking;
@@ -50,7 +50,7 @@ export class SupremeKongStakingContractAdapter extends BaseStakingContractAdapte
       return false;
     }
 
-    if (name.reference === 'supremeKonggen2') {
+    if (name.reference === 'supremeKong2') {
       return true;
     }
 
@@ -63,7 +63,7 @@ export class SupremeKongStakingContractAdapter extends BaseStakingContractAdapte
    * @returns
    */
   async getStakedTokenIds(owner: string, name?: string): Promise<BigNumber[]> {
-    name = name?.toLowerCase() ?? 'supremeKonggen2';
+    name = name?.toLowerCase() ?? 'supremeKong2';
     const info = await this.contract.stakedNfts(owner);
     return info;
   }
@@ -72,7 +72,7 @@ export class SupremeKongStakingContractAdapter extends BaseStakingContractAdapte
     owner: string,
     name?: string,
   ): Promise<BigNumber> {
-    name = name?.toLowerCase() ?? 'supremeKong';
+    name = name?.toLowerCase() ?? 'supremeKong2';
     const info = await this.contract.stakedNfts(owner);
     return info.length;
   }

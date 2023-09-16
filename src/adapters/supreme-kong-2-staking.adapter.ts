@@ -4,7 +4,8 @@ import {STAKING_ADAPTERS_EXTENSION_POINT} from '../keys';
 import {BaseStakingContractAdapter, StakingAsset} from '../staking';
 // Use the full path to import instead of `../types`
 import {AssetName} from '@collabland/chain';
-import {SupremeKong2Staking, SupremeKong2Staking__factory} from '../types';
+import {SupremeKong2Staking} from '../types/SupremeKong2Staking';
+import {SupremeKong2Staking__factory} from '../types/factories/SupremeKong2Staking__factory';
 
 @injectable(
   {

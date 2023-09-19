@@ -28,6 +28,7 @@ import {AngelBlockStakingContractAdapter} from './adapters/ab.adapter';
 import {BapeliensStakingContractAdapter} from './adapters/bapeliens-staking.adapter';
 import {CbzGrowStakingContractAdapter} from './adapters/cbzgrow.adapter';
 import {GenKStakingContractAdapter} from './adapters/genk-staking.adapter';
+import {JnglStakingContractAdapter} from './adapters/Jngl-staking.adapter';
 import {MoonrunnersStakingContractAdapter} from './adapters/moonrunners.adapter';
 import {MtgStakingContractAdapter} from './adapters/mtg.adapter';
 import {OmniguardEternalsStakingContractAdapter} from './adapters/omniguard-eternals.adapter';
@@ -45,10 +46,12 @@ import {RirisuStakingContractAdapter} from './adapters/ririsu.adapter';
 import {RoboStakingContractAdapter} from './adapters/robo.adapter';
 import {SkyFarmStakingContractAdapter} from './adapters/sky-farm.adapter';
 import {SpitYardContractAdapter} from './adapters/spit-yard.adapter';
+import {SupremeKong2StakingContractAdapter} from './adapters/supreme-kong-2-staking.adapter';
+import {SupremeKongStakingContractAdapter} from './adapters/supreme-kong-staking.adapter';
+import {TtooStakingContractAdapter} from './adapters/ttoo-staking.adapter';
 import {UwULendStakingContractAdapter} from './adapters/uwulend-staking.adapter';
 import {WarriorsofankhStakingContractAdapter} from './adapters/warriorsofankh-staking.adapter';
 import {XenoStakingContractAdapter} from './adapters/xeno-mining.adapter';
-import {TtooStakingContractAdapter} from './adapters/ttoo-staking.adapter';
 import {STAKING_CONTRACTS_COMPONENT} from './keys';
 import {StakingContractsService} from './services/staking-contracts.service';
 
@@ -96,6 +99,9 @@ export class StakingContractsComponent implements Component {
     PlutoallianceStakingAdapter,
     TtooStakingContractAdapter,
     PrimordiaStakingContractAdapter,
+    JnglStakingContractAdapter,
+    SupremeKongStakingContractAdapter,
+    SupremeKong2StakingContractAdapter,
   ];
   constructor() {}
 }

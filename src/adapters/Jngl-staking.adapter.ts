@@ -15,7 +15,7 @@ import {JnglStaking__factory} from '../types/factories/JnglStaking__factory';
   },
   extensionFor(STAKING_ADAPTERS_EXTENSION_POINT),
 )
-export class UwULendStakingContractAdapter extends BaseStakingContractAdapter {
+export class JnglStakingContractAdapter extends BaseStakingContractAdapter {
   contractAddress = '0x579D27a47A270601b041F8B36e7F5CBC37508B40';
 
   supportedAssets: StakingAsset[] = [

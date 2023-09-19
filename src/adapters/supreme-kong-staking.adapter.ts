@@ -94,6 +94,6 @@ export class SupremeKongStakingContractAdapter extends BaseStakingContractAdapte
     name = name?.toLowerCase() ?? 'supremeKong';
     const poolId = this.poolIds[name] ?? 0;
     const info = await this.contract.stakedNfts(owner, poolId);
-    return info.length;
+    return BigNumber.from(info.length);
   }
 }

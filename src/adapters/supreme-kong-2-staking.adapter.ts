@@ -74,6 +74,6 @@ export class SupremeKong2StakingContractAdapter extends BaseStakingContractAdapt
   ): Promise<BigNumber> {
     name = name?.toLowerCase() ?? 'supremeKong2';
     const info = await this.contract.stakedNfts(owner);
-    return info.length;
+    return BigNumber.from(info.length);
   }
 }

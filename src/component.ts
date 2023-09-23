@@ -32,6 +32,7 @@ import {MoonrunnersStakingContractAdapter} from './adapters/moonrunners.adapter'
 import {MtgStakingContractAdapter} from './adapters/mtg.adapter';
 import {OmniguardEternalsStakingContractAdapter} from './adapters/omniguard-eternals.adapter';
 import {PlutoallianceStakingAdapter} from './adapters/plutoalliance.adapter';
+import {PrimordiaStakingContractAdapter} from './adapters/primordia.adapter';
 import {RandomStakingContractAdapter} from './adapters/random-staking.adapter';
 import {RDStakingContractAdapter} from './adapters/rd-staking.adapter';
 import {RektDogsStakingContractAdapter} from './adapters/rekt-dogs-adapter';
@@ -94,6 +95,7 @@ export class StakingContractsComponent implements Component {
     XenoStakingContractAdapter,
     PlutoallianceStakingAdapter,
     TtooStakingContractAdapter,
+    PrimordiaStakingContractAdapter,
   ];
   constructor() {}
 }

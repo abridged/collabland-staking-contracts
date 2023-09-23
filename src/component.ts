@@ -41,14 +41,13 @@ import {
 } from './adapters/renft.adapter';
 import {ReplicantXStakingContractAdapter} from './adapters/replicantx-staking.adapter';
 import {RirisuStakingContractAdapter} from './adapters/ririsu.adapter';
-import {RivalBearsStakingContractAdapter} from './adapters/rival-bears-staking.adapter';
 import {RoboStakingContractAdapter} from './adapters/robo.adapter';
 import {SkyFarmStakingContractAdapter} from './adapters/sky-farm.adapter';
 import {SpitYardContractAdapter} from './adapters/spit-yard.adapter';
-import {TtooStakingContractAdapter} from './adapters/ttoo-staking.adapter';
 import {UwULendStakingContractAdapter} from './adapters/uwulend-staking.adapter';
 import {WarriorsofankhStakingContractAdapter} from './adapters/warriorsofankh-staking.adapter';
 import {XenoStakingContractAdapter} from './adapters/xeno-mining.adapter';
+import {TtooStakingContractAdapter} from './adapters/ttoo-staking.adapter';
 import {STAKING_CONTRACTS_COMPONENT} from './keys';
 import {StakingContractsService} from './services/staking-contracts.service';
 
@@ -58,7 +57,6 @@ import {StakingContractsService} from './services/staking-contracts.service';
 })
 export class StakingContractsComponent implements Component {
   services: ServiceOrProviderClass<unknown>[] = [
-    RivalBearsStakingContractAdapter,
     RDStakingContractAdapter,
     Meltdown03ContractAdapter,
     RektDogsStakingContractAdapter,
@@ -97,5 +95,5 @@ export class StakingContractsComponent implements Component {
     PlutoallianceStakingAdapter,
     TtooStakingContractAdapter,
   ];
-  constructor() { }
+  constructor() {}
 }

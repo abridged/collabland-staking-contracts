@@ -3,7 +3,7 @@ import {BigNumber} from 'ethers';
 import {STAKING_ADAPTERS_EXTENSION_POINT} from '../keys';
 import {BaseStakingContractAdapter, StakingAsset} from '../staking';
 // Use the full path to import instead of `../types`
-import { PrimordiaStaking__factory } from '../types/factories/PrimordiaStaking__factory';
+import {PrimordiaStaking__factory} from '../types/factories/PrimordiaStaking__factory';
 
 @injectable(
   {
@@ -45,16 +45,12 @@ export class PrimordiaStakingContractAdapter extends BaseStakingContractAdapter 
    * @param owner - Owner address
    * @returns the balance of that asset staked by the user
    */
-  async getStakedTokenBalance(
-    owner: string,
-  ): Promise<BigNumber> {
+  async getStakedTokenBalance(owner: string): Promise<BigNumber> {
     const contract = PrimordiaStaking__factory.connect(
       this.contractAddress,
       this.provider,
     );
     const allStakedTokens = await contract.tokensOfOwner(owner);
-    return BigNumber.from(
-      allStakedTokens.length,
-    );
+    return BigNumber.from(allStakedTokens.length);
   }
 }

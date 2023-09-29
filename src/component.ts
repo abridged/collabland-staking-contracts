@@ -46,6 +46,7 @@ import {RirisuStakingContractAdapter} from './adapters/ririsu.adapter';
 import {RoboStakingContractAdapter} from './adapters/robo.adapter';
 import {SkyFarmStakingContractAdapter} from './adapters/sky-farm.adapter';
 import {SpitYardContractAdapter} from './adapters/spit-yard.adapter';
+import {SugartownStakingContractAdapter} from './adapters/sugartown.adapter';
 import {SupremeKong2StakingContractAdapter} from './adapters/supreme-kong-2-staking.adapter';
 import {SupremeKongStakingContractAdapter} from './adapters/supreme-kong-staking.adapter';
 import {TtooStakingContractAdapter} from './adapters/ttoo-staking.adapter';
@@ -102,6 +103,7 @@ export class StakingContractsComponent implements Component {
     JnglStakingContractAdapter,
     SupremeKongStakingContractAdapter,
     SupremeKong2StakingContractAdapter,
+    SugartownStakingContractAdapter,
   ];
-  constructor() {}
+  constructor() { }
 }

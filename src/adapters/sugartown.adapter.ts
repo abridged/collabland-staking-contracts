@@ -39,4 +39,13 @@ export class SugartownStakingContractAdapter extends BaseStakingContractAdapter 
     );
     return contract.getUserStakedTokenCount(owner);
   }
+
+  async getStakedTokenIds(
+    owner: string,
+    assetName?: string,
+  ): Promise<BigNumber[]> {
+    const balance = await this.getStakedTokenBalance(owner);
+    // We don't know the token ids from the staking contract
+    return new Array<BigNumber>(balance.toNumber()).fill(BigNumber.from(-1));
+  }
 }

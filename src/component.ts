@@ -105,5 +105,5 @@ export class StakingContractsComponent implements Component {
     SupremeKong2StakingContractAdapter,
     SugartownStakingContractAdapter,
   ];
-  constructor() { }
+  constructor() {}
 }

@@ -33,7 +33,10 @@ export class SugartownStakingContractAdapter extends BaseStakingContractAdapter 
    * @returns
    */
   getStakedTokenBalance(owner: string): Promise<BigNumber> {
-    const contract = SugartownStaking__factory.connect(this.contractAddress, this.provider);
+    const contract = SugartownStaking__factory.connect(
+      this.contractAddress,
+      this.provider,
+    );
     return contract.getUserStakedTokenCount(owner);
   }
 }

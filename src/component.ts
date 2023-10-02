@@ -25,6 +25,7 @@ import {MeltdownContractAdapter} from './adapters/meltdown-1.adapter';
 import {Meltdown03ContractAdapter} from './adapters/meltdown.adapter';
 
 import {AngelBlockStakingContractAdapter} from './adapters/ab.adapter';
+import {BansheesStakingContractAdapter} from './adapters/banshees-staking.adapter';
 import {BapeliensStakingContractAdapter} from './adapters/bapeliens-staking.adapter';
 import {CbzGrowStakingContractAdapter} from './adapters/cbzgrow.adapter';
 import {GenKStakingContractAdapter} from './adapters/genk-staking.adapter';
@@ -104,6 +105,7 @@ export class StakingContractsComponent implements Component {
     SupremeKongStakingContractAdapter,
     SupremeKong2StakingContractAdapter,
     SugartownStakingContractAdapter,
+    BansheesStakingContractAdapter,
   ];
   constructor() {}
 }

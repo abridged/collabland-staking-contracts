@@ -63,7 +63,7 @@ export class SupremeKong2StakingContractAdapter extends BaseStakingContractAdapt
    * @returns
    */
   async getStakedTokenIds(owner: string, name?: string): Promise<BigNumber[]> {
-    name = name?.toLowerCase() ?? 'supremeKong2';
+    name = name ?? 'supremeKong2';
     const info = await this.contract.stakedNfts(owner);
     return info;
   }
@@ -72,7 +72,7 @@ export class SupremeKong2StakingContractAdapter extends BaseStakingContractAdapt
     owner: string,
     name?: string,
   ): Promise<BigNumber> {
-    name = name?.toLowerCase() ?? 'supremeKong2';
+    name = name ?? 'supremeKong2';
     const info = await this.contract.stakedNfts(owner);
     return BigNumber.from(info.length);
   }

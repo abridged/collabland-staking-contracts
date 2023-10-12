@@ -25,13 +25,16 @@ import {MeltdownContractAdapter} from './adapters/meltdown-1.adapter';
 import {Meltdown03ContractAdapter} from './adapters/meltdown.adapter';
 
 import {AngelBlockStakingContractAdapter} from './adapters/ab.adapter';
+import {BansheesStakingContractAdapter} from './adapters/banshees-staking.adapter';
 import {BapeliensStakingContractAdapter} from './adapters/bapeliens-staking.adapter';
 import {CbzGrowStakingContractAdapter} from './adapters/cbzgrow.adapter';
 import {GenKStakingContractAdapter} from './adapters/genk-staking.adapter';
+import {JnglStakingContractAdapter} from './adapters/Jngl-staking.adapter';
 import {MoonrunnersStakingContractAdapter} from './adapters/moonrunners.adapter';
 import {MtgStakingContractAdapter} from './adapters/mtg.adapter';
 import {OmniguardEternalsStakingContractAdapter} from './adapters/omniguard-eternals.adapter';
 import {PlutoallianceStakingAdapter} from './adapters/plutoalliance.adapter';
+import {PrimordiaStakingContractAdapter} from './adapters/primordia.adapter';
 import {RandomStakingContractAdapter} from './adapters/random-staking.adapter';
 import {RDStakingContractAdapter} from './adapters/rd-staking.adapter';
 import {RektDogsStakingContractAdapter} from './adapters/rekt-dogs-adapter';
@@ -45,6 +48,9 @@ import {RivalBearsStakingContractAdapter} from './adapters/rival-bears-staking.a
 import {RoboStakingContractAdapter} from './adapters/robo.adapter';
 import {SkyFarmStakingContractAdapter} from './adapters/sky-farm.adapter';
 import {SpitYardContractAdapter} from './adapters/spit-yard.adapter';
+import {SugartownStakingContractAdapter} from './adapters/sugartown.adapter';
+import {SupremeKong2StakingContractAdapter} from './adapters/supreme-kong-2-staking.adapter';
+import {SupremeKongStakingContractAdapter} from './adapters/supreme-kong-staking.adapter';
 import {TtooStakingContractAdapter} from './adapters/ttoo-staking.adapter';
 import {UwULendStakingContractAdapter} from './adapters/uwulend-staking.adapter';
 import {WarriorsofankhStakingContractAdapter} from './adapters/warriorsofankh-staking.adapter';
@@ -96,6 +102,12 @@ export class StakingContractsComponent implements Component {
     XenoStakingContractAdapter,
     PlutoallianceStakingAdapter,
     TtooStakingContractAdapter,
+    PrimordiaStakingContractAdapter,
+    JnglStakingContractAdapter,
+    SupremeKongStakingContractAdapter,
+    SupremeKong2StakingContractAdapter,
+    SugartownStakingContractAdapter,
+    BansheesStakingContractAdapter,
   ];
   constructor() { }
 }

@@ -23,7 +23,7 @@ export class RivalBearsStakingContractAdapter extends BaseStakingContractAdapter
   /**
    * The contract address
    */
-  contractAddress = '0xd1A53bFbFF6E36b1E1436b2029582e6Bc86E2816';
+  contractAddress = '0x4Ec902d04F4F1c840B28CffeE2E52d807af4710E';
   /**
    * The chain the assets exist on
    */

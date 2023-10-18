@@ -44,6 +44,7 @@ import {
 } from './adapters/renft.adapter';
 import {ReplicantXStakingContractAdapter} from './adapters/replicantx-staking.adapter';
 import {RirisuStakingContractAdapter} from './adapters/ririsu.adapter';
+import {RivalBearsStakingContractAdapter} from './adapters/rival-bears-staking.adapter';
 import {RoboStakingContractAdapter} from './adapters/robo.adapter';
 import {SkyFarmStakingContractAdapter} from './adapters/sky-farm.adapter';
 import {SpitYardContractAdapter} from './adapters/spit-yard.adapter';
@@ -63,6 +64,7 @@ import {StakingContractsService} from './services/staking-contracts.service';
 })
 export class StakingContractsComponent implements Component {
   services: ServiceOrProviderClass<unknown>[] = [
+    RivalBearsStakingContractAdapter,
     RDStakingContractAdapter,
     Meltdown03ContractAdapter,
     RektDogsStakingContractAdapter,
@@ -107,5 +109,5 @@ export class StakingContractsComponent implements Component {
     SugartownStakingContractAdapter,
     BansheesStakingContractAdapter,
   ];
-  constructor() {}
+  constructor() { }
 }

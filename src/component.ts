@@ -109,5 +109,5 @@ export class StakingContractsComponent implements Component {
     SugartownStakingContractAdapter,
     BansheesStakingContractAdapter,
   ];
-  constructor() { }
+  constructor() {}
 }

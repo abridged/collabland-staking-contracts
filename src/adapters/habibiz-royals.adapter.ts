@@ -3,7 +3,7 @@ import {BigNumber} from 'ethers';
 import {STAKING_ADAPTERS_EXTENSION_POINT} from '../keys';
 import {BaseStakingContractAdapter, StakingAsset} from '../staking';
 // Use the full path to import instead of `../types`
-import {HabibizStaking} from '../types';
+import {HabibizStaking} from '../types/HabibizStaking';
 import {HabibizStaking__factory} from '../types/factories/HabibizStaking__factory';
 
 @injectable(

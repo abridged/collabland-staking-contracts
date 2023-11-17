@@ -28,7 +28,9 @@ import {AngelBlockStakingContractAdapter} from './adapters/ab.adapter';
 import {BansheesStakingContractAdapter} from './adapters/banshees-staking.adapter';
 import {BapeliensStakingContractAdapter} from './adapters/bapeliens-staking.adapter';
 import {CbzGrowStakingContractAdapter} from './adapters/cbzgrow.adapter';
+import {FlooringProtocolStakingContractAdapter} from './adapters/flooring-protocol-staking.adapter';
 import {GenKStakingContractAdapter} from './adapters/genk-staking.adapter';
+import {HabibizRoyalsStakingContractAdapter} from './adapters/habibiz-royals.adapter';
 import {JnglStakingContractAdapter} from './adapters/Jngl-staking.adapter';
 import {MoonrunnersStakingContractAdapter} from './adapters/moonrunners.adapter';
 import {MtgStakingContractAdapter} from './adapters/mtg.adapter';
@@ -108,6 +110,8 @@ export class StakingContractsComponent implements Component {
     SupremeKong2StakingContractAdapter,
     SugartownStakingContractAdapter,
     BansheesStakingContractAdapter,
+    FlooringProtocolStakingContractAdapter,
+    HabibizRoyalsStakingContractAdapter,
   ];
   constructor() { }
 }

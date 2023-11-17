@@ -113,5 +113,5 @@ export class StakingContractsComponent implements Component {
     FlooringProtocolStakingContractAdapter,
     HabibizRoyalsStakingContractAdapter,
   ];
-  constructor() {}
+  constructor() { }
 }

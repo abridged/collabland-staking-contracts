@@ -41,6 +41,10 @@ export class RivalBearsStakingContractAdapter extends BaseStakingContractAdapter
       name: 'Rival Bears',
       asset: 'ERC721:0xa25541164ae9d59322b59fe94a73869b494c3691',
     },
+    {
+      name: 'Lost Tribes',
+      asset: 'ERC721:0xb04637C27D13052C69824157b9F13AF12c4CC825',
+    },
   ];
 
   constructor() {
@@ -65,6 +69,8 @@ export class RivalBearsStakingContractAdapter extends BaseStakingContractAdapter
       nftAddress = '0xa25541164ae9d59322b59fe94a73869b494c3691';
     } else if (name === 'Mad Honey') {
       nftAddress = '0x86c18085b8949ff3dc53ec5c3a3a143ccfbc960a';
+    } else if (name === 'Lost Tribes') {
+      nftAddress = '0xb04637C27D13052C69824157b9F13AF12c4CC825';
     } else {
       return tokenIds;
     }
@@ -92,6 +98,8 @@ export class RivalBearsStakingContractAdapter extends BaseStakingContractAdapter
       nftAddress = '0xa25541164ae9d59322b59fe94a73869b494c3691';
     } else if (assetName === 'Mad Honey') {
       nftAddress = '0x86c18085b8949ff3dc53ec5c3a3a143ccfbc960a';
+    } else if (assetName === 'Lost Tribes') {
+      nftAddress = '0xb04637C27D13052C69824157b9F13AF12c4CC825';
     } else {
       return BigNumber.from(0);
     }

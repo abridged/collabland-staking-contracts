@@ -5,11 +5,11 @@
 
 import {BindingScope, extensionFor, injectable} from '@loopback/core';
 import {BigNumber} from 'ethers';
-import {STAKING_ADAPTERS_EXTENSION_POINT} from '../keys';
-import {BaseStakingContractAdapter, StakingAsset} from '../staking';
-import type {RivalBearsStaking} from '../types/RivalBearsStaking';
+import {STAKING_ADAPTERS_EXTENSION_POINT} from '../keys.js';
+import {BaseStakingContractAdapter, StakingAsset} from '../staking.js';
+import type {RivalBearsStaking} from '../types/RivalBearsStaking.js';
 // Use the full path to import instead of `../types`
-import {RivalBearsStaking__factory} from '../types/factories/RivalBearsStaking__factory';
+import {RivalBearsStaking__factory} from '../types/factories/RivalBearsStaking__factory.js';
 
 @injectable(
   {

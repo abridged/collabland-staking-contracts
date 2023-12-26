@@ -6,10 +6,10 @@
 import {AssetName} from '@collabland/chain';
 import {BindingScope, extensionFor, injectable} from '@loopback/core';
 import {BigNumber} from 'ethers';
-import {STAKING_ADAPTERS_EXTENSION_POINT} from '../keys';
-import {BaseStakingContractAdapter, StakingAsset} from '../staking';
-import {DuStaking} from '../types/DuStaking';
-import {DuStaking__factory} from '../types/factories/DuStaking__factory';
+import {STAKING_ADAPTERS_EXTENSION_POINT} from '../keys.js';
+import {BaseStakingContractAdapter, StakingAsset} from '../staking.js';
+import {DuStaking} from '../types/DuStaking.js';
+import {DuStaking__factory} from '../types/factories/DuStaking__factory.js';
 
 @injectable(
   {

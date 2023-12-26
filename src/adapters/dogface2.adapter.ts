@@ -5,10 +5,10 @@
 
 import {BindingScope, extensionFor, injectable} from '@loopback/core';
 import {BigNumber} from 'ethers';
-import {STAKING_ADAPTERS_EXTENSION_POINT} from '../keys';
-import {BaseStakingContractAdapter, StakingAsset} from '../staking';
-import type {Dogface2ndStaking} from '../types/Dogface2ndStaking';
-import {Dogface2ndStaking__factory} from '../types/factories/Dogface2ndStaking__factory';
+import {STAKING_ADAPTERS_EXTENSION_POINT} from '../keys.js';
+import {BaseStakingContractAdapter, StakingAsset} from '../staking.js';
+import type {Dogface2ndStaking} from '../types/Dogface2ndStaking.js';
+import {Dogface2ndStaking__factory} from '../types/factories/Dogface2ndStaking__factory.js';
 
 @injectable(
   {

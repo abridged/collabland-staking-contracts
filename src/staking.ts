@@ -7,10 +7,10 @@ import {AssetType} from '@collabland/chain';
 import {getEnvVar} from '@collabland/common';
 import {inject} from '@loopback/core';
 import {BigNumber, providers} from 'ethers';
-import {ETHERS_PROVIDER_SERVICE} from './keys';
-import {StakingAsset} from './models/staking.model';
+import {ETHERS_PROVIDER_SERVICE} from './keys.js';
+import {StakingAsset} from './models/staking.model.js';
 
-export {StakingAsset, StakingContractMetadata} from './models/staking.model';
+export {StakingAsset, StakingContractMetadata} from './models/staking.model.js';
 
 export interface EthersProviderService {
   getProvider(chainIdOrNetwork: string | number): providers.Provider;
@@ -68,7 +68,8 @@ export interface StackingContractAdapter {
 
 const defaultEthersProviderService = {
   getProvider(chainId: string | number) {
-    const projectId = getEnvVar('INFURA_PROJECT_ID');
+    const projectId =
+      getEnvVar('INFURA_PROJECT_ID') ?? getEnvVar('STAKING_INFURA_PROJECT_ID');
     const projectSecret = getEnvVar('INFURA_PROJECT_SECRET');
     if (projectId == null) {
       return providers.getDefaultProvider(chainId);

@@ -5,7 +5,7 @@
 
 require('@nomiclabs/hardhat-ethers');
 require('@nomiclabs/hardhat-solhint');
-require('@typechain/hardhat');
+require('@collabland/typechain-hardhat');
 const path = require('path');
 
 const DEPLOYER_PRIVATE_KEY =
@@ -60,6 +60,7 @@ const config = {
     target: 'ethers-v5',
     externalArtifacts: [path.join(__dirname, 'src/contracts/**/*.json')],
     dontOverrideCompile: false,
+    node16Modules: true,
   },
 };
 

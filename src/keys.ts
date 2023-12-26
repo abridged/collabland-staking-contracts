@@ -4,9 +4,9 @@
 // License text available at https://opensource.org/licenses/MIT
 
 import {BindingKey, CoreBindings} from '@loopback/core';
-import type {StakingContractsComponent} from './component';
-import type {StakingContractsService} from './services/staking-contracts.service';
-import type {EthersProviderService} from './staking';
+import type {StakingContractsComponent} from './component.js';
+import type {StakingContractsService} from './services/staking-contracts.service.js';
+import type {EthersProviderService} from './staking.js';
 
 export const STAKING_CONTRACTS_COMPONENT =
   BindingKey.create<StakingContractsComponent>(

@@ -63,7 +63,7 @@
     "@nomiclabs/hardhat-ethers": "^2.2.3",
     "@nomiclabs/hardhat-solhint": "^3.0.1",
     "@typechain/ethers-v5": "^11.1.2",
-    "@typechain/hardhat": "^7.0.0",
+    "@typechain/hardhat": "^9.0.0",
     "@types/chai": "^4.3.11",
     "@types/mocha": "^10.0.6",
     "@types/node": "^16.18.40",

@@ -4,8 +4,9 @@
 // License text available at https://opensource.org/licenses/MIT
 
 import {Application} from '@loopback/core';
-import {StakingContractsComponent} from '../component';
-import {STAKING_CONTRACTS_SERVICE} from '../keys';
+import {StakingContractsComponent} from '../component.js';
+import {STAKING_CONTRACTS_SERVICE} from '../keys.js';
+import {isMain} from '@collabland/common';
 
 async function main() {
   const app = new Application();
@@ -23,9 +24,6 @@ async function main() {
   process.exit(0);
 }
 
-if (require.main === module) {
-  main().catch(err => {
-    console.error(err);
-    process.exit(1);
-  });
+if (isMain(import.meta.url)) {
+  await main();
 }

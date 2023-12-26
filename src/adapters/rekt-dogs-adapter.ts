@@ -5,9 +5,9 @@
 
 import {BindingScope, extensionFor, injectable} from '@loopback/core';
 import {BigNumber} from 'ethers';
-import {STAKING_ADAPTERS_EXTENSION_POINT} from '../keys';
-import {BaseStakingContractAdapter, StakingAsset} from '../staking';
-import {RektDogsStaking__factory} from '../types/factories/RektDogsStaking__factory';
+import {STAKING_ADAPTERS_EXTENSION_POINT} from '../keys.js';
+import {BaseStakingContractAdapter, StakingAsset} from '../staking.js';
+import {RektDogsStaking__factory} from '../types/factories/RektDogsStaking__factory.js';
 
 @injectable(
   {

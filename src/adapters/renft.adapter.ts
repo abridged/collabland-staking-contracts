@@ -12,8 +12,8 @@ import {
 } from '@collabland/common';
 import {BindingScope, extensionFor, injectable} from '@loopback/core';
 import {BigNumber} from 'ethers';
-import {STAKING_ADAPTERS_EXTENSION_POINT} from '../keys';
-import {BaseStakingContractAdapter} from '../staking';
+import {STAKING_ADAPTERS_EXTENSION_POINT} from '../keys.js';
+import {BaseStakingContractAdapter} from '../staking.js';
 
 type PartialRenting = {
   rentAmount: string;

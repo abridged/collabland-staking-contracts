@@ -5,11 +5,11 @@
 
 import {BindingScope, extensionFor, injectable} from '@loopback/core';
 import {BigNumber} from 'ethers';
-import {STAKING_ADAPTERS_EXTENSION_POINT} from '../keys';
-import {BaseStakingContractAdapter, StakingAsset} from '../staking';
-import type {Cbzgrow} from '../types/Cbzgrow';
+import {STAKING_ADAPTERS_EXTENSION_POINT} from '../keys.js';
+import {BaseStakingContractAdapter, StakingAsset} from '../staking.js';
+import type {Cbzgrow} from '../types/Cbzgrow.js';
 // Use the full path to import instead of `../types`
-import {Cbzgrow__factory} from '../types/factories/Cbzgrow__factory';
+import {Cbzgrow__factory} from '../types/factories/Cbzgrow__factory.js';
 
 @injectable(
   {

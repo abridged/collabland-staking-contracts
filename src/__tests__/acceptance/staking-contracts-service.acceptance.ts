@@ -7,8 +7,8 @@ import {AssetType} from '@collabland/chain';
 import {BigNumber, debugFactory, getEnvVar, pMap} from '@collabland/common';
 import {Application} from '@loopback/core';
 import {expect} from '@loopback/testlab';
-import {StakingContractsComponent} from '../../component';
-import {STAKING_CONTRACTS_SERVICE} from '../../keys';
+import {StakingContractsComponent} from '../../component.js';
+import {STAKING_CONTRACTS_SERVICE} from '../../keys.js';
 const debug = debugFactory('collabland:staking-contracts');
 
 // eslint-disable-next-line @typescript-eslint/no-misused-promises

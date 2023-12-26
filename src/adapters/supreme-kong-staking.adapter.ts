@@ -1,11 +1,11 @@
 import {BindingScope, extensionFor, injectable} from '@loopback/core';
 import {BigNumber} from 'ethers';
-import {STAKING_ADAPTERS_EXTENSION_POINT} from '../keys';
-import {BaseStakingContractAdapter, StakingAsset} from '../staking';
+import {STAKING_ADAPTERS_EXTENSION_POINT} from '../keys.js';
+import {BaseStakingContractAdapter, StakingAsset} from '../staking.js';
 // Use the full path to import instead of `../types`
 import {AssetName} from '@collabland/chain';
-import {SupremeKongStaking} from '../types/SupremeKongStaking';
-import {SupremeKongStaking__factory} from '../types/factories/SupremeKongStaking__factory';
+import {SupremeKongStaking} from '../types/SupremeKongStaking.js';
+import {SupremeKongStaking__factory} from '../types/factories/SupremeKongStaking__factory.js';
 
 @injectable(
   {

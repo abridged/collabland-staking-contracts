@@ -1,9 +1,9 @@
 import {BindingScope, extensionFor, injectable} from '@loopback/core';
 import {BigNumber} from 'ethers';
-import {STAKING_ADAPTERS_EXTENSION_POINT} from '../keys';
-import {BaseStakingContractAdapter} from '../staking';
+import {STAKING_ADAPTERS_EXTENSION_POINT} from '../keys.js';
+import {BaseStakingContractAdapter} from '../staking.js';
 // Use the full path to import instead of `../types`
-import {DwebStaking__factory} from '../types/factories/DwebStaking__factory';
+import {DwebStaking__factory} from '../types/factories/DwebStaking__factory.js';
 
 abstract class BaseDwebStakingContractAdapter extends BaseStakingContractAdapter {
   // Any assets is supported

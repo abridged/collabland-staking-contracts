@@ -31,7 +31,7 @@ import {CbzGrowStakingContractAdapter} from './adapters/cbzgrow.adapter.js';
 import {
   DwebEthereumStakingContractAdapter,
   DwebPolygonStakingContractAdapter,
-} from './adapters/dweb-staking.adapter';
+} from './adapters/dweb-staking.adapter.js';
 import {FlooringProtocolStakingContractAdapter} from './adapters/flooring-protocol-staking.adapter.js';
 import {GenKStakingContractAdapter} from './adapters/genk-staking.adapter.js';
 import {HabibizRoyalsStakingContractAdapter} from './adapters/habibiz-royals.adapter.js';

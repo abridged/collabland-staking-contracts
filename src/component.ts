@@ -9,60 +9,60 @@ import {
   injectable,
   ServiceOrProviderClass,
 } from '@loopback/core';
-import {ChillRxStakingContractAdapter} from './adapters/chillrx.adapter';
-import {CocoStakingContractAdapter} from './adapters/coco.adapter';
-import {DogfaceStakingContractAdapter} from './adapters/dogface.adapter';
-import {Dogface2ndStakingContractAdapter} from './adapters/dogface2.adapter';
-import {DogsUnchainedStakingContractAdapter} from './adapters/dogs-unchained.adapter';
+import {ChillRxStakingContractAdapter} from './adapters/chillrx.adapter.js';
+import {CocoStakingContractAdapter} from './adapters/coco.adapter.js';
+import {DogfaceStakingContractAdapter} from './adapters/dogface.adapter.js';
+import {Dogface2ndStakingContractAdapter} from './adapters/dogface2.adapter.js';
+import {DogsUnchainedStakingContractAdapter} from './adapters/dogs-unchained.adapter.js';
 import {
   E4CGoldStakingContractAdapter,
   E4CRangerStakingContractAdapter,
-} from './adapters/e4c-ranger-staking.adapter';
-import {PerionCreditsStakingContractAdapter} from './adapters/erc20-staking.adapter';
-import {IdolMarketplaceContractAdapter} from './adapters/idol-marketplace.adapter';
-import {LifestoryPlanetStakingAdapter} from './adapters/lifestory-planet-staking.adapter';
-import {MeltdownContractAdapter} from './adapters/meltdown-1.adapter';
-import {Meltdown03ContractAdapter} from './adapters/meltdown.adapter';
+} from './adapters/e4c-ranger-staking.adapter.js';
+import {PerionCreditsStakingContractAdapter} from './adapters/erc20-staking.adapter.js';
+import {IdolMarketplaceContractAdapter} from './adapters/idol-marketplace.adapter.js';
+import {LifestoryPlanetStakingAdapter} from './adapters/lifestory-planet-staking.adapter.js';
+import {MeltdownContractAdapter} from './adapters/meltdown-1.adapter.js';
+import {Meltdown03ContractAdapter} from './adapters/meltdown.adapter.js';
 
-import {AngelBlockStakingContractAdapter} from './adapters/ab.adapter';
-import {BansheesStakingContractAdapter} from './adapters/banshees-staking.adapter';
-import {BapeliensStakingContractAdapter} from './adapters/bapeliens-staking.adapter';
-import {CbzGrowStakingContractAdapter} from './adapters/cbzgrow.adapter';
+import {AngelBlockStakingContractAdapter} from './adapters/ab.adapter.js';
+import {BansheesStakingContractAdapter} from './adapters/banshees-staking.adapter.js';
+import {BapeliensStakingContractAdapter} from './adapters/bapeliens-staking.adapter.js';
+import {CbzGrowStakingContractAdapter} from './adapters/cbzgrow.adapter.js';
 import {
   DwebEthereumStakingContractAdapter,
   DwebPolygonStakingContractAdapter,
 } from './adapters/dweb-staking.adapter';
-import {FlooringProtocolStakingContractAdapter} from './adapters/flooring-protocol-staking.adapter';
-import {GenKStakingContractAdapter} from './adapters/genk-staking.adapter';
-import {HabibizRoyalsStakingContractAdapter} from './adapters/habibiz-royals.adapter';
-import {JnglStakingContractAdapter} from './adapters/Jngl-staking.adapter';
-import {MoonrunnersStakingContractAdapter} from './adapters/moonrunners.adapter';
-import {MtgStakingContractAdapter} from './adapters/mtg.adapter';
-import {OmniguardEternalsStakingContractAdapter} from './adapters/omniguard-eternals.adapter';
-import {PlutoallianceStakingAdapter} from './adapters/plutoalliance.adapter';
-import {PrimordiaStakingContractAdapter} from './adapters/primordia.adapter';
-import {RandomStakingContractAdapter} from './adapters/random-staking.adapter';
-import {RDStakingContractAdapter} from './adapters/rd-staking.adapter';
-import {RektDogsStakingContractAdapter} from './adapters/rekt-dogs-adapter';
+import {FlooringProtocolStakingContractAdapter} from './adapters/flooring-protocol-staking.adapter.js';
+import {GenKStakingContractAdapter} from './adapters/genk-staking.adapter.js';
+import {HabibizRoyalsStakingContractAdapter} from './adapters/habibiz-royals.adapter.js';
+import {JnglStakingContractAdapter} from './adapters/Jngl-staking.adapter.js';
+import {MoonrunnersStakingContractAdapter} from './adapters/moonrunners.adapter.js';
+import {MtgStakingContractAdapter} from './adapters/mtg.adapter.js';
+import {OmniguardEternalsStakingContractAdapter} from './adapters/omniguard-eternals.adapter.js';
+import {PlutoallianceStakingAdapter} from './adapters/plutoalliance.adapter.js';
+import {PrimordiaStakingContractAdapter} from './adapters/primordia.adapter.js';
+import {RandomStakingContractAdapter} from './adapters/random-staking.adapter.js';
+import {RDStakingContractAdapter} from './adapters/rd-staking.adapter.js';
+import {RektDogsStakingContractAdapter} from './adapters/rekt-dogs-adapter.js';
 import {
   ReNFTEthereumSylvesterV0StakingContractAdapter,
   ReNFTPolygonSylvesterV1StakingContractAdapter,
-} from './adapters/renft.adapter';
-import {ReplicantXStakingContractAdapter} from './adapters/replicantx-staking.adapter';
-import {RirisuStakingContractAdapter} from './adapters/ririsu.adapter';
-import {RivalBearsStakingContractAdapter} from './adapters/rival-bears-staking.adapter';
-import {RoboStakingContractAdapter} from './adapters/robo.adapter';
-import {SkyFarmStakingContractAdapter} from './adapters/sky-farm.adapter';
-import {SpitYardContractAdapter} from './adapters/spit-yard.adapter';
-import {SugartownStakingContractAdapter} from './adapters/sugartown.adapter';
-import {SupremeKong2StakingContractAdapter} from './adapters/supreme-kong-2-staking.adapter';
-import {SupremeKongStakingContractAdapter} from './adapters/supreme-kong-staking.adapter';
-import {TtooStakingContractAdapter} from './adapters/ttoo-staking.adapter';
-import {UwULendStakingContractAdapter} from './adapters/uwulend-staking.adapter';
-import {WarriorsofankhStakingContractAdapter} from './adapters/warriorsofankh-staking.adapter';
-import {XenoStakingContractAdapter} from './adapters/xeno-mining.adapter';
-import {STAKING_CONTRACTS_COMPONENT} from './keys';
-import {StakingContractsService} from './services/staking-contracts.service';
+} from './adapters/renft.adapter.js';
+import {ReplicantXStakingContractAdapter} from './adapters/replicantx-staking.adapter.js';
+import {RirisuStakingContractAdapter} from './adapters/ririsu.adapter.js';
+import {RivalBearsStakingContractAdapter} from './adapters/rival-bears-staking.adapter.js';
+import {RoboStakingContractAdapter} from './adapters/robo.adapter.js';
+import {SkyFarmStakingContractAdapter} from './adapters/sky-farm.adapter.js';
+import {SpitYardContractAdapter} from './adapters/spit-yard.adapter.js';
+import {SugartownStakingContractAdapter} from './adapters/sugartown.adapter.js';
+import {SupremeKong2StakingContractAdapter} from './adapters/supreme-kong-2-staking.adapter.js';
+import {SupremeKongStakingContractAdapter} from './adapters/supreme-kong-staking.adapter.js';
+import {TtooStakingContractAdapter} from './adapters/ttoo-staking.adapter.js';
+import {UwULendStakingContractAdapter} from './adapters/uwulend-staking.adapter.js';
+import {WarriorsofankhStakingContractAdapter} from './adapters/warriorsofankh-staking.adapter.js';
+import {XenoStakingContractAdapter} from './adapters/xeno-mining.adapter.js';
+import {STAKING_CONTRACTS_COMPONENT} from './keys.js';
+import {StakingContractsService} from './services/staking-contracts.service.js';
 
 // Configure the binding for StakingContractsComponent
 @injectable({

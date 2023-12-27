@@ -7,9 +7,9 @@ import {JsonFragment} from '@ethersproject/abi';
 import {BindingScope, extensionFor, injectable} from '@loopback/core';
 import {Contract, Provider} from 'ethcall';
 import {BigNumber} from 'ethers';
-import {STAKING_ADAPTERS_EXTENSION_POINT} from '../keys';
-import {BaseStakingContractAdapter, StakingAsset} from '../staking';
-import {E4cRangerStaking__factory} from '../types/factories/E4cRangerStaking__factory';
+import {STAKING_ADAPTERS_EXTENSION_POINT} from '../keys.js';
+import {BaseStakingContractAdapter, StakingAsset} from '../staking.js';
+import {E4cRangerStaking__factory} from '../types/factories/E4cRangerStaking__factory.js';
 
 abstract class E4CStakingContractAdapter extends BaseStakingContractAdapter {
   private ecProvider: Provider;

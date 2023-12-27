@@ -6,10 +6,10 @@
 import {AssetName} from '@collabland/chain';
 import {BindingScope, extensionFor, injectable} from '@loopback/core';
 import {BigNumber} from 'ethers';
-import {STAKING_ADAPTERS_EXTENSION_POINT} from '../keys';
-import {BaseStakingContractAdapter, StakingAsset} from '../staking';
-import {RandomStaking__factory} from '../types/factories/RandomStaking__factory';
-import type {RandomStaking} from '../types/RandomStaking';
+import {STAKING_ADAPTERS_EXTENSION_POINT} from '../keys.js';
+import {BaseStakingContractAdapter, StakingAsset} from '../staking.js';
+import type {RandomStaking} from '../types/RandomStaking.js';
+import {RandomStaking__factory} from '../types/factories/RandomStaking__factory.js';
 
 /**
  * The nft contract address

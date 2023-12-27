@@ -6,11 +6,11 @@
 import {pMap} from '@collabland/common';
 import {BindingScope, extensionFor, injectable} from '@loopback/core';
 import {BigNumber} from 'ethers';
-import {STAKING_ADAPTERS_EXTENSION_POINT} from '../keys';
-import {BaseStakingContractAdapter, StakingAsset} from '../staking';
-import {MtgStaking__factory} from '../types/factories/MtgStaking__factory';
-import {NftwEscrow__factory} from '../types/factories/NftwEscrow__factory';
-import {NftwEscrow} from '../types/NftwEscrow';
+import {STAKING_ADAPTERS_EXTENSION_POINT} from '../keys.js';
+import {BaseStakingContractAdapter, StakingAsset} from '../staking.js';
+import {NftwEscrow} from '../types/NftwEscrow.js';
+import {MtgStaking__factory} from '../types/factories/MtgStaking__factory.js';
+import {NftwEscrow__factory} from '../types/factories/NftwEscrow__factory.js';
 
 @injectable(
   {

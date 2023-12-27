@@ -1,11 +1,11 @@
 import {BindingScope, extensionFor, injectable} from '@loopback/core';
 import {BigNumber} from 'ethers';
-import {STAKING_ADAPTERS_EXTENSION_POINT} from '../keys';
-import {BaseStakingContractAdapter, StakingAsset} from '../staking';
+import {STAKING_ADAPTERS_EXTENSION_POINT} from '../keys.js';
+import {BaseStakingContractAdapter, StakingAsset} from '../staking.js';
 // Use the full path to import instead of `../types`
 import {AssetName} from '@collabland/chain';
-import {OmniguardEternals} from '../types';
-import {OmniguardEternals__factory} from '../types/factories/OmniguardEternals__factory';
+import {OmniguardEternals__factory} from '../types/factories/OmniguardEternals__factory.js';
+import {OmniguardEternals} from '../types/index.js';
 
 @injectable(
   {

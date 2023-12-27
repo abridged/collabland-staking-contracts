@@ -6,9 +6,9 @@
 import {getEnvVar} from '@collabland/common';
 import {BindingScope, extensionFor, injectable} from '@loopback/core';
 import {BigNumber} from 'ethers';
-import {request, gql} from 'graphql-request';
-import {STAKING_ADAPTERS_EXTENSION_POINT} from '../keys';
-import {BaseStakingContractAdapter, StakingAsset} from '../staking';
+import {gql, request} from 'graphql-request';
+import {STAKING_ADAPTERS_EXTENSION_POINT} from '../keys.js';
+import {BaseStakingContractAdapter, StakingAsset} from '../staking.js';
 
 // interface for query return type
 interface Data {

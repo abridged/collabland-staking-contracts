@@ -3,8 +3,8 @@
 // This file is licensed under the MIT License.
 // License text available at https://opensource.org/licenses/MIT
 
-export * from './component';
-export * from './keys';
-export * from './models';
-export * from './services';
-export * from './types';
+export * from './component.js';
+export * from './keys.js';
+export * from './models/index.js';
+export * from './services/index.js';
+export * from './types/index.js';

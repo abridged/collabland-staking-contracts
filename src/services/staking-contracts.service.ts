@@ -20,8 +20,8 @@ import {BigNumber, utils} from 'ethers';
 import {
   STAKING_ADAPTERS_EXTENSION_POINT,
   STAKING_CONTRACTS_SERVICE,
-} from '../keys';
-import {StackingContractAdapter, StakingContractMetadata} from '../staking';
+} from '../keys.js';
+import {StackingContractAdapter, StakingContractMetadata} from '../staking.js';
 
 const debug = debugFactory('collabland:staking-contracts');
 

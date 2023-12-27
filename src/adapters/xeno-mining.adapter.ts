@@ -5,10 +5,10 @@
 
 import {BindingScope, extensionFor, injectable} from '@loopback/core';
 import {BigNumber} from 'ethers';
-import {STAKING_ADAPTERS_EXTENSION_POINT} from '../keys';
-import {BaseStakingContractAdapter, StakingAsset} from '../staking';
-import type {XenoStaking} from '../types/XenoStaking';
-import {XenoStaking__factory} from '../types/factories/XenoStaking__factory';
+import {STAKING_ADAPTERS_EXTENSION_POINT} from '../keys.js';
+import {BaseStakingContractAdapter, StakingAsset} from '../staking.js';
+import type {XenoStaking} from '../types/XenoStaking.js';
+import {XenoStaking__factory} from '../types/factories/XenoStaking__factory.js';
 
 @injectable(
   {

@@ -28,6 +28,10 @@ import {AngelBlockStakingContractAdapter} from './adapters/ab.adapter.js';
 import {BansheesStakingContractAdapter} from './adapters/banshees-staking.adapter.js';
 import {BapeliensStakingContractAdapter} from './adapters/bapeliens-staking.adapter.js';
 import {CbzGrowStakingContractAdapter} from './adapters/cbzgrow.adapter.js';
+import {
+  DwebEthereumStakingContractAdapter,
+  DwebPolygonStakingContractAdapter,
+} from './adapters/dweb-staking.adapter.js';
 import {FlooringProtocolStakingContractAdapter} from './adapters/flooring-protocol-staking.adapter.js';
 import {GenKStakingContractAdapter} from './adapters/genk-staking.adapter.js';
 import {HabibizRoyalsStakingContractAdapter} from './adapters/habibiz-royals.adapter.js';
@@ -112,6 +116,8 @@ export class StakingContractsComponent implements Component {
     BansheesStakingContractAdapter,
     FlooringProtocolStakingContractAdapter,
     HabibizRoyalsStakingContractAdapter,
+    DwebEthereumStakingContractAdapter,
+    DwebPolygonStakingContractAdapter,
   ];
   constructor() {}
 }

@@ -11,6 +11,7 @@ import {
 } from '@loopback/core';
 import {ChillRxStakingContractAdapter} from './adapters/chillrx.adapter.js';
 import {CocoStakingContractAdapter} from './adapters/coco.adapter.js';
+import {LuckyNFTStakingContractAdapter} from './adapters/luckynft.adapter.js';
 import {DogfaceStakingContractAdapter} from './adapters/dogface.adapter.js';
 import {Dogface2ndStakingContractAdapter} from './adapters/dogface2.adapter.js';
 import {DogsUnchainedStakingContractAdapter} from './adapters/dogs-unchained.adapter.js';
@@ -83,6 +84,7 @@ export class StakingContractsComponent implements Component {
     IdolMarketplaceContractAdapter,
     ChillRxStakingContractAdapter,
     CocoStakingContractAdapter,
+    LuckyNFTStakingContractAdapter,
     MtgStakingContractAdapter,
     RirisuStakingContractAdapter,
     RoboStakingContractAdapter,

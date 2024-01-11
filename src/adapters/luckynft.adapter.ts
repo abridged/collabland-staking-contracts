@@ -53,7 +53,7 @@ export class LuckyNFTStakingContractAdapter extends BaseStakingContractAdapter {
    * @returns
    */
   async getStakedTokenIds(owner: string): Promise<BigNumber[]> {
-      const data = await this.contract.getStakingData(owner);
-      return data.map(d => d.tokenId);
-    }
+    const data = await this.contract.getStakingData(owner);
+    return data.map(d => d.tokenId);
+  }
 }

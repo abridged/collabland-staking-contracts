@@ -17,7 +17,7 @@ export class HabibizRoyalsStakingContractAdapter extends BaseStakingContractAdap
   /**
    * The contract address
    */
-  contractAddress = '0x7510D6407f469b05C8627160c04fb428ADD389ae';
+  contractAddress = '0x5Fe8C486B5f216B9AD83C12958d8A03eb3fD5060';
 
   /**
    * Assets that can be staked to this contract

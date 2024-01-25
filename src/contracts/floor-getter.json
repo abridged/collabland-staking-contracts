@@ -1,0 +1,421 @@
+[
+  {
+    "inputs": [
+      {"internalType": "address", "name": "flooring", "type": "address"}
+    ],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {"inputs": [], "name": "FailedMulticall", "type": "error"},
+  {
+    "inputs": [],
+    "name": "_flooring",
+    "outputs": [
+      {"internalType": "contract IFlooring", "name": "", "type": "address"}
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "address", "name": "collection", "type": "address"},
+      {"internalType": "address", "name": "token", "type": "address"}
+    ],
+    "name": "collectionFee",
+    "outputs": [
+      {
+        "components": [
+          {
+            "components": [
+              {"internalType": "address", "name": "receipt", "type": "address"},
+              {
+                "internalType": "uint16",
+                "name": "marketlist",
+                "type": "uint16"
+              },
+              {"internalType": "uint16", "name": "vault", "type": "uint16"},
+              {"internalType": "uint16", "name": "raffle", "type": "uint16"}
+            ],
+            "internalType": "struct RoyaltyFeeRate",
+            "name": "royalty",
+            "type": "tuple"
+          },
+          {
+            "components": [
+              {"internalType": "address", "name": "receipt", "type": "address"},
+              {
+                "internalType": "uint16",
+                "name": "auctionOwned",
+                "type": "uint16"
+              },
+              {
+                "internalType": "uint16",
+                "name": "auctionExpired",
+                "type": "uint16"
+              },
+              {"internalType": "uint16", "name": "raffle", "type": "uint16"},
+              {"internalType": "uint16", "name": "marketlist", "type": "uint16"}
+            ],
+            "internalType": "struct SafeboxFeeRate",
+            "name": "safeboxFee",
+            "type": "tuple"
+          },
+          {
+            "components": [
+              {"internalType": "address", "name": "receipt", "type": "address"},
+              {
+                "internalType": "uint16",
+                "name": "vaultAuction",
+                "type": "uint16"
+              },
+              {
+                "internalType": "uint16",
+                "name": "redemptionBase",
+                "type": "uint16"
+              }
+            ],
+            "internalType": "struct VaultFeeRate",
+            "name": "vaultFee",
+            "type": "tuple"
+          }
+        ],
+        "internalType": "struct FeeConfig",
+        "name": "fee",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "address", "name": "collection", "type": "address"}
+    ],
+    "name": "collectionInfo",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "address",
+            "name": "fragmentToken",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "freeNftLength",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint64",
+            "name": "lastUpdatedBucket",
+            "type": "uint64"
+          },
+          {"internalType": "uint64", "name": "nextKeyId", "type": "uint64"},
+          {
+            "internalType": "uint64",
+            "name": "activeSafeBoxCnt",
+            "type": "uint64"
+          },
+          {"internalType": "uint64", "name": "infiniteCnt", "type": "uint64"},
+          {
+            "internalType": "uint64",
+            "name": "nextActivityId",
+            "type": "uint64"
+          },
+          {
+            "internalType": "uint32",
+            "name": "lastVaultAuctionPeriodTs",
+            "type": "uint32"
+          },
+          {
+            "internalType": "address",
+            "name": "_contractAddr",
+            "type": "address"
+          }
+        ],
+        "internalType": "struct FloorGetter.CollectionInfo",
+        "name": "info",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{"internalType": "address", "name": "proxy", "type": "address"}],
+    "name": "collectionProxy",
+    "outputs": [{"internalType": "address", "name": "", "type": "address"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "address", "name": "collection", "type": "address"}
+    ],
+    "name": "fragmentTokenOf",
+    "outputs": [
+      {"internalType": "address", "name": "token", "type": "address"}
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "address", "name": "collection", "type": "address"},
+      {"internalType": "uint256", "name": "nftId", "type": "uint256"}
+    ],
+    "name": "getAuction",
+    "outputs": [
+      {"internalType": "uint96", "name": "endTime", "type": "uint96"},
+      {"internalType": "address", "name": "bidToken", "type": "address"},
+      {"internalType": "uint128", "name": "minimumBid", "type": "uint128"},
+      {"internalType": "uint128", "name": "lastBidAmount", "type": "uint128"},
+      {"internalType": "address", "name": "lastBidder", "type": "address"},
+      {"internalType": "address", "name": "triggerAddress", "type": "address"},
+      {"internalType": "uint64", "name": "activityId", "type": "uint64"},
+      {"internalType": "enum AuctionType", "name": "typ", "type": "uint8"},
+      {
+        "components": [
+          {
+            "components": [
+              {"internalType": "address", "name": "receipt", "type": "address"},
+              {"internalType": "uint16", "name": "rateBips", "type": "uint16"}
+            ],
+            "internalType": "struct FeeRate",
+            "name": "royalty",
+            "type": "tuple"
+          },
+          {
+            "components": [
+              {"internalType": "address", "name": "receipt", "type": "address"},
+              {"internalType": "uint16", "name": "rateBips", "type": "uint16"}
+            ],
+            "internalType": "struct FeeRate",
+            "name": "protocol",
+            "type": "tuple"
+          }
+        ],
+        "internalType": "struct Fees",
+        "name": "fees",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "address", "name": "collection", "type": "address"},
+      {"internalType": "uint256", "name": "startIdx", "type": "uint256"},
+      {"internalType": "uint256", "name": "size", "type": "uint256"}
+    ],
+    "name": "getFreeNftIds",
+    "outputs": [
+      {"internalType": "uint256[]", "name": "nftIds", "type": "uint256[]"}
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "address", "name": "collection", "type": "address"},
+      {"internalType": "uint256", "name": "nftId", "type": "uint256"}
+    ],
+    "name": "getPrivateOffer",
+    "outputs": [
+      {"internalType": "uint96", "name": "endTime", "type": "uint96"},
+      {"internalType": "address", "name": "token", "type": "address"},
+      {"internalType": "uint96", "name": "price", "type": "uint96"},
+      {"internalType": "address", "name": "owner", "type": "address"},
+      {"internalType": "address", "name": "buyer", "type": "address"},
+      {"internalType": "uint64", "name": "activityId", "type": "uint64"},
+      {
+        "components": [
+          {
+            "components": [
+              {"internalType": "address", "name": "receipt", "type": "address"},
+              {"internalType": "uint16", "name": "rateBips", "type": "uint16"}
+            ],
+            "internalType": "struct FeeRate",
+            "name": "royalty",
+            "type": "tuple"
+          },
+          {
+            "components": [
+              {"internalType": "address", "name": "receipt", "type": "address"},
+              {"internalType": "uint16", "name": "rateBips", "type": "uint16"}
+            ],
+            "internalType": "struct FeeRate",
+            "name": "protocol",
+            "type": "tuple"
+          }
+        ],
+        "internalType": "struct Fees",
+        "name": "fees",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "address", "name": "collection", "type": "address"},
+      {"internalType": "uint256", "name": "nftId", "type": "uint256"}
+    ],
+    "name": "getRaffle",
+    "outputs": [
+      {"internalType": "uint48", "name": "endTime", "type": "uint48"},
+      {"internalType": "uint48", "name": "maxTickets", "type": "uint48"},
+      {"internalType": "address", "name": "token", "type": "address"},
+      {"internalType": "uint96", "name": "ticketPrice", "type": "uint96"},
+      {"internalType": "uint96", "name": "collectedFund", "type": "uint96"},
+      {"internalType": "uint64", "name": "activityId", "type": "uint64"},
+      {"internalType": "address", "name": "owner", "type": "address"},
+      {"internalType": "uint48", "name": "ticketSold", "type": "uint48"},
+      {"internalType": "bool", "name": "isSettling", "type": "bool"},
+      {"internalType": "uint256", "name": "ticketsArrLen", "type": "uint256"},
+      {
+        "components": [
+          {
+            "components": [
+              {"internalType": "address", "name": "receipt", "type": "address"},
+              {"internalType": "uint16", "name": "rateBips", "type": "uint16"}
+            ],
+            "internalType": "struct FeeRate",
+            "name": "royalty",
+            "type": "tuple"
+          },
+          {
+            "components": [
+              {"internalType": "address", "name": "receipt", "type": "address"},
+              {"internalType": "uint16", "name": "rateBips", "type": "uint16"}
+            ],
+            "internalType": "struct FeeRate",
+            "name": "protocol",
+            "type": "tuple"
+          }
+        ],
+        "internalType": "struct Fees",
+        "name": "fees",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "address", "name": "collection", "type": "address"},
+      {"internalType": "uint256", "name": "nftId", "type": "uint256"},
+      {"internalType": "uint256", "name": "startIdx", "type": "uint256"},
+      {"internalType": "uint256", "name": "size", "type": "uint256"}
+    ],
+    "name": "getRaffleTicketRecords",
+    "outputs": [
+      {
+        "components": [
+          {"internalType": "address", "name": "buyer", "type": "address"},
+          {"internalType": "uint48", "name": "startIdx", "type": "uint48"},
+          {"internalType": "uint48", "name": "endIdx", "type": "uint48"}
+        ],
+        "internalType": "struct TicketRecord[]",
+        "name": "tickets",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "address", "name": "collection", "type": "address"},
+      {"internalType": "uint256", "name": "nftId", "type": "uint256"}
+    ],
+    "name": "getSafeBox",
+    "outputs": [
+      {
+        "components": [
+          {"internalType": "uint64", "name": "keyId", "type": "uint64"},
+          {"internalType": "uint32", "name": "expiryTs", "type": "uint32"},
+          {"internalType": "address", "name": "owner", "type": "address"}
+        ],
+        "internalType": "struct SafeBox",
+        "name": "safeBox",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{"internalType": "bytes[]", "name": "data", "type": "bytes[]"}],
+    "name": "multicall",
+    "outputs": [{"internalType": "bytes[]", "name": "", "type": "bytes[]"}],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [{"internalType": "address", "name": "token", "type": "address"}],
+    "name": "supportedToken",
+    "outputs": [{"internalType": "bool", "name": "", "type": "bool"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "address", "name": "user", "type": "address"},
+      {"internalType": "address", "name": "token", "type": "address"}
+    ],
+    "name": "tokenBalance",
+    "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{"internalType": "address", "name": "user", "type": "address"}],
+    "name": "userAccount",
+    "outputs": [
+      {"internalType": "uint256", "name": "minMaintCredit", "type": "uint256"},
+      {"internalType": "address", "name": "firstCollection", "type": "address"},
+      {"internalType": "uint8", "name": "minMaintVipLevel", "type": "uint8"},
+      {"internalType": "uint256[]", "name": "vipKeyCnts", "type": "uint256[]"},
+      {"internalType": "uint256", "name": "lockedCredit", "type": "uint256"},
+      {"internalType": "uint32", "name": "lastQuotaPeriodTs", "type": "uint32"},
+      {"internalType": "uint16", "name": "safeboxQuotaUsed", "type": "uint16"}
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "address", "name": "user", "type": "address"},
+      {"internalType": "address", "name": "collection", "type": "address"},
+      {"internalType": "uint256", "name": "nftId", "type": "uint256"}
+    ],
+    "name": "userCollection",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "totalLockingCredit",
+        "type": "uint256"
+      },
+      {"internalType": "address", "name": "next", "type": "address"},
+      {"internalType": "uint32", "name": "keyCnt", "type": "uint32"},
+      {"internalType": "uint32", "name": "vaultContQuota", "type": "uint32"},
+      {"internalType": "uint32", "name": "lastVaultActiveTs", "type": "uint32"},
+      {
+        "components": [
+          {"internalType": "uint96", "name": "lockingCredit", "type": "uint96"},
+          {"internalType": "uint64", "name": "keyId", "type": "uint64"},
+          {"internalType": "uint8", "name": "vipLevel", "type": "uint8"}
+        ],
+        "internalType": "struct SafeBoxKey",
+        "name": "key",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  }
+]

@@ -3,6 +3,7 @@ import {BigNumber} from 'ethers';
 import {STAKING_ADAPTERS_EXTENSION_POINT} from '../keys.js';
 import {BaseStakingContractAdapter, StakingAsset} from '../staking.js';
 // Use the full path to import instead of `../types`
+import {FloorGetter__factory} from '../index.js';
 import {FlooringProtocolStaking__factory} from '../types/factories/FlooringProtocolStaking__factory.js';
 
 @injectable(
@@ -37,11 +38,16 @@ export class FlooringProtocolStakingContractAdapter extends BaseStakingContractA
     },
   ];
 
-  getStakedTokenBalance(owner: string): Promise<BigNumber> {
+  async getStakedTokenBalance(owner: string): Promise<BigNumber> {
     const contract = FlooringProtocolStaking__factory.connect(
       this.peripheryContractAddress,
       this.provider,
     );
-    return contract.tokenBalance(owner, this.flcAddress);
+    const floorGetter = await contract.floorGetter();
+    const floorContract = FloorGetter__factory.connect(
+      floorGetter,
+      this.provider,
+    );
+    return floorContract.tokenBalance(owner, this.flcAddress);
   }
 }

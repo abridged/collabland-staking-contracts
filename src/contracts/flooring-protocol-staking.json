@@ -1,118 +1,49 @@
 [
   {
     "inputs": [
+      {"internalType": "address", "name": "_floor", "type": "address"},
+      {"internalType": "address", "name": "_floorGetter", "type": "address"},
       {
         "internalType": "address",
-        "name": "flooring",
+        "name": "_universalRouter",
         "type": "address"
       },
-      {
-        "internalType": "address",
-        "name": "uniswapV3Router",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "_WETH9",
-        "type": "address"
-      }
+      {"internalType": "address", "name": "permit2", "type": "address"}
     ],
-    "stateMutability": "nonpayable",
+    "stateMutability": "payable",
     "type": "constructor"
   },
   {
     "inputs": [
-      {
-        "internalType": "address",
-        "name": "target",
-        "type": "address"
-      }
+      {"internalType": "address", "name": "target", "type": "address"}
     ],
     "name": "AddressEmptyCode",
     "type": "error"
   },
   {
     "inputs": [
-      {
-        "internalType": "address",
-        "name": "implementation",
-        "type": "address"
-      }
+      {"internalType": "address", "name": "implementation", "type": "address"}
     ],
     "name": "ERC1967InvalidImplementation",
     "type": "error"
   },
+  {"inputs": [], "name": "ERC1967NonPayable", "type": "error"},
+  {"inputs": [], "name": "ERC721TransferFailed", "type": "error"},
+  {"inputs": [], "name": "FailedInnerCall", "type": "error"},
+  {"inputs": [], "name": "InsufficientWETH9", "type": "error"},
+  {"inputs": [], "name": "InvalidClaimFee", "type": "error"},
+  {"inputs": [], "name": "InvalidInitialization", "type": "error"},
+  {"inputs": [], "name": "InvalidParameter", "type": "error"},
+  {"inputs": [], "name": "InvalidPermitOwner", "type": "error"},
+  {"inputs": [], "name": "NotInitializing", "type": "error"},
+  {"inputs": [], "name": "UUPSUnauthorizedCallContext", "type": "error"},
   {
-    "inputs": [],
-    "name": "ERC1967NonPayable",
-    "type": "error"
-  },
-  {
-    "inputs": [],
-    "name": "ERC20TransferFailed",
-    "type": "error"
-  },
-  {
-    "inputs": [],
-    "name": "ERC721TransferFailed",
-    "type": "error"
-  },
-  {
-    "inputs": [],
-    "name": "FailedInnerCall",
-    "type": "error"
-  },
-  {
-    "inputs": [],
-    "name": "FailedMulticall",
-    "type": "error"
-  },
-  {
-    "inputs": [],
-    "name": "InsufficientWETH9",
-    "type": "error"
-  },
-  {
-    "inputs": [],
-    "name": "InvalidInitialization",
-    "type": "error"
-  },
-  {
-    "inputs": [],
-    "name": "NativeTransferFailed",
-    "type": "error"
-  },
-  {
-    "inputs": [],
-    "name": "NotInitializing",
-    "type": "error"
-  },
-  {
-    "inputs": [],
-    "name": "NotRouterOrWETH9",
-    "type": "error"
-  },
-  {
-    "inputs": [],
-    "name": "UUPSUnauthorizedCallContext",
-    "type": "error"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "bytes32",
-        "name": "slot",
-        "type": "bytes32"
-      }
-    ],
+    "inputs": [{"internalType": "bytes32", "name": "slot", "type": "bytes32"}],
     "name": "UUPSUnsupportedProxiableUUID",
     "type": "error"
   },
-  {
-    "inputs": [],
-    "name": "Unauthorized",
-    "type": "error"
-  },
+  {"inputs": [], "name": "Unauthorized", "type": "error"},
+  {"inputs": [], "name": "WrongEthSender", "type": "error"},
   {
     "anonymous": false,
     "inputs": [
@@ -160,660 +91,301 @@
   },
   {
     "inputs": [],
+    "name": "PERMIT2",
+    "outputs": [
+      {"internalType": "contract IPermit2", "name": "", "type": "address"}
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "UNIVERSAL_ROUTER",
+    "outputs": [
+      {
+        "internalType": "contract IUniversalRouter",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
     "name": "UPGRADE_INTERFACE_VERSION",
-    "outputs": [
-      {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "WETH9",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "_flooring",
-    "outputs": [
-      {
-        "internalType": "contract IFlooring",
-        "name": "",
-        "type": "address"
-      }
-    ],
+    "outputs": [{"internalType": "string", "name": "", "type": "string"}],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [
       {
-        "internalType": "address",
-        "name": "collection",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256[]",
-        "name": "tokenIds",
-        "type": "uint256[]"
-      },
-      {
-        "internalType": "uint256",
-        "name": "claimCnt",
-        "type": "uint256"
-      },
-      {
-        "internalType": "address",
-        "name": "swapTokenIn",
-        "type": "address"
-      },
-      {
         "components": [
           {
-            "internalType": "bytes",
-            "name": "path",
-            "type": "bytes"
-          },
-          {
             "internalType": "address",
-            "name": "recipient",
+            "name": "collectionId",
             "type": "address"
           },
           {
-            "internalType": "uint256",
-            "name": "deadline",
-            "type": "uint256"
+            "internalType": "uint256[]",
+            "name": "tokenIds",
+            "type": "uint256[]"
           },
-          {
-            "internalType": "uint256",
-            "name": "amountOut",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "amountInMaximum",
-            "type": "uint256"
-          }
+          {"internalType": "uint256", "name": "maxClaimFee", "type": "uint256"},
+          {"internalType": "uint256", "name": "claimCnt", "type": "uint256"}
         ],
-        "internalType": "struct ISwapRouter.ExactOutputParams",
+        "internalType": "struct FloorPeriphery.FloorClaim[]",
+        "name": "claimParams",
+        "type": "tuple[]"
+      },
+      {
+        "components": [
+          {"internalType": "bytes", "name": "commands", "type": "bytes"},
+          {"internalType": "bytes[]", "name": "inputs", "type": "bytes[]"},
+          {"internalType": "uint256", "name": "deadline", "type": "uint256"}
+        ],
+        "internalType": "struct FloorPeriphery.UniversalRouterExecute",
         "name": "swapParam",
         "type": "tuple"
-      }
+      },
+      {
+        "internalType": "enum FloorPeriphery.TransferWay",
+        "name": "transferWay",
+        "type": "uint8"
+      },
+      {"internalType": "bytes", "name": "transferParam", "type": "bytes"}
     ],
     "name": "buyAndClaimExpired",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "tokenCost",
-        "type": "uint256"
-      }
-    ],
+    "outputs": [],
     "stateMutability": "payable",
     "type": "function"
   },
   {
     "inputs": [
       {
-        "internalType": "address",
-        "name": "collection",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "claimCnt",
-        "type": "uint256"
-      },
-      {
-        "internalType": "address",
-        "name": "swapTokenIn",
-        "type": "address"
-      },
-      {
         "components": [
           {
-            "internalType": "bytes",
-            "name": "path",
-            "type": "bytes"
-          },
-          {
             "internalType": "address",
-            "name": "recipient",
+            "name": "collectionId",
             "type": "address"
           },
           {
-            "internalType": "uint256",
-            "name": "deadline",
-            "type": "uint256"
+            "internalType": "uint256[]",
+            "name": "tokenIds",
+            "type": "uint256[]"
           },
-          {
-            "internalType": "uint256",
-            "name": "amountOut",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "amountInMaximum",
-            "type": "uint256"
-          }
+          {"internalType": "uint256", "name": "maxClaimFee", "type": "uint256"},
+          {"internalType": "uint256", "name": "claimCnt", "type": "uint256"}
         ],
-        "internalType": "struct ISwapRouter.ExactOutputParams",
+        "internalType": "struct FloorPeriphery.FloorClaim",
+        "name": "claimParams",
+        "type": "tuple"
+      },
+      {
+        "components": [
+          {"internalType": "bytes", "name": "commands", "type": "bytes"},
+          {"internalType": "bytes[]", "name": "inputs", "type": "bytes[]"},
+          {"internalType": "uint256", "name": "deadline", "type": "uint256"}
+        ],
+        "internalType": "struct FloorPeriphery.UniversalRouterExecute",
         "name": "swapParam",
         "type": "tuple"
-      }
+      },
+      {
+        "internalType": "enum FloorPeriphery.TransferWay",
+        "name": "transferWay",
+        "type": "uint8"
+      },
+      {"internalType": "bytes", "name": "transferParam", "type": "bytes"}
+    ],
+    "name": "buyAndClaimExpired",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "address",
+            "name": "collectionId",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256[]",
+            "name": "tokenIds",
+            "type": "uint256[]"
+          },
+          {"internalType": "uint256", "name": "maxClaimFee", "type": "uint256"},
+          {"internalType": "uint256", "name": "claimCnt", "type": "uint256"}
+        ],
+        "internalType": "struct FloorPeriphery.FloorClaim[]",
+        "name": "claimParams",
+        "type": "tuple[]"
+      },
+      {
+        "components": [
+          {"internalType": "bytes", "name": "commands", "type": "bytes"},
+          {"internalType": "bytes[]", "name": "inputs", "type": "bytes[]"},
+          {"internalType": "uint256", "name": "deadline", "type": "uint256"}
+        ],
+        "internalType": "struct FloorPeriphery.UniversalRouterExecute",
+        "name": "swapParam",
+        "type": "tuple"
+      },
+      {
+        "internalType": "enum FloorPeriphery.TransferWay",
+        "name": "transferWay",
+        "type": "uint8"
+      },
+      {"internalType": "bytes", "name": "transferParam", "type": "bytes"}
     ],
     "name": "buyAndClaimVault",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "tokenCost",
-        "type": "uint256"
-      }
-    ],
+    "outputs": [],
     "stateMutability": "payable",
     "type": "function"
   },
   {
     "inputs": [
       {
-        "internalType": "address",
-        "name": "collection",
-        "type": "address"
-      }
-    ],
-    "name": "collectionInfo",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "fragmentToken",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "freeNftLength",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint64",
-        "name": "lastUpdatedBucket",
-        "type": "uint64"
-      },
-      {
-        "internalType": "uint64",
-        "name": "nextKeyId",
-        "type": "uint64"
-      },
-      {
-        "internalType": "uint64",
-        "name": "activeSafeBoxCnt",
-        "type": "uint64"
-      },
-      {
-        "internalType": "uint64",
-        "name": "infiniteCnt",
-        "type": "uint64"
-      },
-      {
-        "internalType": "uint64",
-        "name": "nextActivityId",
-        "type": "uint64"
-      },
-      {
-        "internalType": "uint32",
-        "name": "lastVaultAuctionPeriodTs",
-        "type": "uint32"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "proxy",
-        "type": "address"
-      }
-    ],
-    "name": "collectionProxy",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
         "components": [
           {
             "internalType": "address",
-            "name": "target",
+            "name": "collectionId",
             "type": "address"
           },
           {
-            "internalType": "bytes",
-            "name": "callData",
-            "type": "bytes"
-          }
+            "internalType": "uint256[]",
+            "name": "tokenIds",
+            "type": "uint256[]"
+          },
+          {"internalType": "uint256", "name": "maxClaimFee", "type": "uint256"},
+          {"internalType": "uint256", "name": "claimCnt", "type": "uint256"}
         ],
-        "internalType": "struct IMulticall.CallData[]",
-        "name": "calls",
-        "type": "tuple[]"
-      }
-    ],
-    "name": "extMulticall",
-    "outputs": [
-      {
-        "internalType": "bytes[]",
-        "name": "",
-        "type": "bytes[]"
-      }
-    ],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "collection",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256[]",
-        "name": "tokenIds",
-        "type": "uint256[]"
-      },
-      {
-        "internalType": "bool",
-        "name": "unwrapWETH",
-        "type": "bool"
+        "internalType": "struct FloorPeriphery.FloorClaim",
+        "name": "claimParams",
+        "type": "tuple"
       },
       {
         "components": [
-          {
-            "internalType": "bytes",
-            "name": "path",
-            "type": "bytes"
-          },
-          {
-            "internalType": "address",
-            "name": "recipient",
-            "type": "address"
-          },
-          {
-            "internalType": "uint256",
-            "name": "deadline",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "amountIn",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "amountOutMinimum",
-            "type": "uint256"
-          }
+          {"internalType": "bytes", "name": "commands", "type": "bytes"},
+          {"internalType": "bytes[]", "name": "inputs", "type": "bytes[]"},
+          {"internalType": "uint256", "name": "deadline", "type": "uint256"}
         ],
-        "internalType": "struct ISwapRouter.ExactInputParams",
+        "internalType": "struct FloorPeriphery.UniversalRouterExecute",
         "name": "swapParam",
         "type": "tuple"
-      }
+      },
+      {
+        "internalType": "enum FloorPeriphery.TransferWay",
+        "name": "transferWay",
+        "type": "uint8"
+      },
+      {"internalType": "bytes", "name": "transferParam", "type": "bytes"}
+    ],
+    "name": "buyAndClaimVault",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "floor",
+    "outputs": [{"internalType": "address", "name": "", "type": "address"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "floorGetter",
+    "outputs": [{"internalType": "address", "name": "", "type": "address"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "address",
+            "name": "collectionId",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "collectionContract",
+            "type": "address"
+          },
+          {"internalType": "uint256[]", "name": "tokenIds", "type": "uint256[]"}
+        ],
+        "internalType": "struct FloorPeriphery.FloorFragment[]",
+        "name": "fragmentParams",
+        "type": "tuple[]"
+      },
+      {
+        "components": [
+          {"internalType": "bytes", "name": "commands", "type": "bytes"},
+          {"internalType": "bytes[]", "name": "inputs", "type": "bytes[]"},
+          {"internalType": "uint256", "name": "deadline", "type": "uint256"}
+        ],
+        "internalType": "struct FloorPeriphery.UniversalRouterExecute",
+        "name": "swapParam",
+        "type": "tuple"
+      },
+      {
+        "internalType": "enum FloorPeriphery.TransferWay",
+        "name": "transferWay",
+        "type": "uint8"
+      },
+      {"internalType": "bytes", "name": "transferParam", "type": "bytes"}
     ],
     "name": "fragmentAndSell",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "swapOut",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "nonpayable",
+    "outputs": [],
+    "stateMutability": "payable",
     "type": "function"
   },
   {
     "inputs": [
-      {
-        "internalType": "address",
-        "name": "collection",
-        "type": "address"
-      }
-    ],
-    "name": "fragmentTokenOf",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "token",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "collection",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "nftId",
-        "type": "uint256"
-      }
-    ],
-    "name": "getAuction",
-    "outputs": [
-      {
-        "internalType": "uint96",
-        "name": "endTime",
-        "type": "uint96"
-      },
-      {
-        "internalType": "address",
-        "name": "bidTokenAddress",
-        "type": "address"
-      },
-      {
-        "internalType": "uint128",
-        "name": "minimumBid",
-        "type": "uint128"
-      },
-      {
-        "internalType": "uint128",
-        "name": "lastBidAmount",
-        "type": "uint128"
-      },
-      {
-        "internalType": "address",
-        "name": "lastBidder",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "triggerAddress",
-        "type": "address"
-      },
-      {
-        "internalType": "bool",
-        "name": "isSelfTriggered",
-        "type": "bool"
-      },
-      {
-        "internalType": "uint64",
-        "name": "activityId",
-        "type": "uint64"
-      },
-      {
-        "internalType": "uint32",
-        "name": "feeRateBips",
-        "type": "uint32"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "collection",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "startIdx",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "size",
-        "type": "uint256"
-      }
-    ],
-    "name": "getFreeNftIds",
-    "outputs": [
-      {
-        "internalType": "uint256[]",
-        "name": "nftIds",
-        "type": "uint256[]"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "collection",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "nftId",
-        "type": "uint256"
-      }
-    ],
-    "name": "getPrivateOffer",
-    "outputs": [
-      {
-        "internalType": "uint96",
-        "name": "endTime",
-        "type": "uint96"
-      },
-      {
-        "internalType": "address",
-        "name": "token",
-        "type": "address"
-      },
-      {
-        "internalType": "uint96",
-        "name": "price",
-        "type": "uint96"
-      },
-      {
-        "internalType": "address",
-        "name": "owner",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "buyer",
-        "type": "address"
-      },
-      {
-        "internalType": "uint64",
-        "name": "activityId",
-        "type": "uint64"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "collection",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "nftId",
-        "type": "uint256"
-      }
-    ],
-    "name": "getRaffle",
-    "outputs": [
-      {
-        "internalType": "uint48",
-        "name": "endTime",
-        "type": "uint48"
-      },
-      {
-        "internalType": "uint48",
-        "name": "maxTickets",
-        "type": "uint48"
-      },
-      {
-        "internalType": "address",
-        "name": "token",
-        "type": "address"
-      },
-      {
-        "internalType": "uint96",
-        "name": "ticketPrice",
-        "type": "uint96"
-      },
-      {
-        "internalType": "uint96",
-        "name": "collectedFund",
-        "type": "uint96"
-      },
-      {
-        "internalType": "uint64",
-        "name": "activityId",
-        "type": "uint64"
-      },
-      {
-        "internalType": "address",
-        "name": "owner",
-        "type": "address"
-      },
-      {
-        "internalType": "uint48",
-        "name": "ticketSold",
-        "type": "uint48"
-      },
-      {
-        "internalType": "uint32",
-        "name": "feeRateBips",
-        "type": "uint32"
-      },
-      {
-        "internalType": "bool",
-        "name": "isSettling",
-        "type": "bool"
-      },
-      {
-        "internalType": "uint256",
-        "name": "ticketsArrLen",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "collection",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "nftId",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "startIdx",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "size",
-        "type": "uint256"
-      }
-    ],
-    "name": "getRaffleTicketRecords",
-    "outputs": [
       {
         "components": [
           {
             "internalType": "address",
-            "name": "buyer",
+            "name": "collectionId",
             "type": "address"
-          },
-          {
-            "internalType": "uint48",
-            "name": "startIdx",
-            "type": "uint48"
-          },
-          {
-            "internalType": "uint48",
-            "name": "endIdx",
-            "type": "uint48"
-          }
-        ],
-        "internalType": "struct TicketRecord[]",
-        "name": "tickets",
-        "type": "tuple[]"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "collection",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "nftId",
-        "type": "uint256"
-      }
-    ],
-    "name": "getSafeBox",
-    "outputs": [
-      {
-        "components": [
-          {
-            "internalType": "uint64",
-            "name": "keyId",
-            "type": "uint64"
-          },
-          {
-            "internalType": "uint32",
-            "name": "expiryTs",
-            "type": "uint32"
           },
           {
             "internalType": "address",
-            "name": "owner",
+            "name": "collectionContract",
             "type": "address"
-          }
+          },
+          {"internalType": "uint256[]", "name": "tokenIds", "type": "uint256[]"}
         ],
-        "internalType": "struct SafeBox",
-        "name": "safeBox",
+        "internalType": "struct FloorPeriphery.FloorFragment",
+        "name": "fragmentParam",
         "type": "tuple"
-      }
+      },
+      {
+        "components": [
+          {"internalType": "bytes", "name": "commands", "type": "bytes"},
+          {"internalType": "bytes[]", "name": "inputs", "type": "bytes[]"},
+          {"internalType": "uint256", "name": "deadline", "type": "uint256"}
+        ],
+        "internalType": "struct FloorPeriphery.UniversalRouterExecute",
+        "name": "swapParam",
+        "type": "tuple"
+      },
+      {
+        "internalType": "enum FloorPeriphery.TransferWay",
+        "name": "transferWay",
+        "type": "uint8"
+      },
+      {"internalType": "bytes", "name": "transferParam", "type": "bytes"}
     ],
-    "stateMutability": "view",
+    "name": "fragmentAndSell",
+    "outputs": [],
+    "stateMutability": "payable",
     "type": "function"
   },
   {
@@ -825,90 +397,33 @@
   },
   {
     "inputs": [
-      {
-        "internalType": "bytes[]",
-        "name": "data",
-        "type": "bytes[]"
-      }
-    ],
-    "name": "multicall",
-    "outputs": [
-      {
-        "internalType": "bytes[]",
-        "name": "",
-        "type": "bytes[]"
-      }
-    ],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      },
-      {
-        "internalType": "bytes",
-        "name": "",
-        "type": "bytes"
-      }
+      {"internalType": "address", "name": "", "type": "address"},
+      {"internalType": "address", "name": "", "type": "address"},
+      {"internalType": "uint256", "name": "", "type": "uint256"},
+      {"internalType": "bytes", "name": "", "type": "bytes"}
     ],
     "name": "onERC721Received",
-    "outputs": [
-      {
-        "internalType": "bytes4",
-        "name": "",
-        "type": "bytes4"
-      }
-    ],
+    "outputs": [{"internalType": "bytes4", "name": "", "type": "bytes4"}],
     "stateMutability": "pure",
     "type": "function"
   },
   {
     "inputs": [],
     "name": "owner",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
+    "outputs": [{"internalType": "address", "name": "", "type": "address"}],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [],
     "name": "proxiableUUID",
-    "outputs": [
-      {
-        "internalType": "bytes32",
-        "name": "",
-        "type": "bytes32"
-      }
-    ],
+    "outputs": [{"internalType": "bytes32", "name": "", "type": "bytes32"}],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [
-      {
-        "internalType": "address",
-        "name": "newOwner",
-        "type": "address"
-      }
+      {"internalType": "address", "name": "newOwner", "type": "address"}
     ],
     "name": "setOwner",
     "outputs": [],
@@ -919,211 +434,15 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "token",
-        "type": "address"
-      }
-    ],
-    "name": "supportedToken",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "user",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "token",
-        "type": "address"
-      }
-    ],
-    "name": "tokenBalance",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "uniswapRouter",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "amountMinimum",
-        "type": "uint256"
-      },
-      {
-        "internalType": "address",
-        "name": "recipient",
-        "type": "address"
-      }
-    ],
-    "name": "unwrapWETH9",
-    "outputs": [],
-    "stateMutability": "payable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
         "name": "newImplementation",
         "type": "address"
       },
-      {
-        "internalType": "bytes",
-        "name": "data",
-        "type": "bytes"
-      }
+      {"internalType": "bytes", "name": "data", "type": "bytes"}
     ],
     "name": "upgradeToAndCall",
     "outputs": [],
     "stateMutability": "payable",
     "type": "function"
   },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "user",
-        "type": "address"
-      }
-    ],
-    "name": "userAccount",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "minMaintCredit",
-        "type": "uint256"
-      },
-      {
-        "internalType": "address",
-        "name": "firstCollection",
-        "type": "address"
-      },
-      {
-        "internalType": "uint8",
-        "name": "minMaintVipLevel",
-        "type": "uint8"
-      },
-      {
-        "internalType": "uint256[]",
-        "name": "vipKeyCnts",
-        "type": "uint256[]"
-      },
-      {
-        "internalType": "uint256",
-        "name": "lockedCredit",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint32",
-        "name": "lastQuotaPeriodTs",
-        "type": "uint32"
-      },
-      {
-        "internalType": "uint16",
-        "name": "safeboxQuotaUsed",
-        "type": "uint16"
-      },
-      {
-        "internalType": "uint32",
-        "name": "lastWaiverPeriodTs",
-        "type": "uint32"
-      },
-      {
-        "internalType": "uint96",
-        "name": "creditWaiverUsed",
-        "type": "uint96"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "user",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "collection",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "nftId",
-        "type": "uint256"
-      }
-    ],
-    "name": "userCollection",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "totalLockingCredit",
-        "type": "uint256"
-      },
-      {
-        "internalType": "address",
-        "name": "next",
-        "type": "address"
-      },
-      {
-        "components": [
-          {
-            "internalType": "uint96",
-            "name": "lockingCredit",
-            "type": "uint96"
-          },
-          {
-            "internalType": "uint64",
-            "name": "keyId",
-            "type": "uint64"
-          },
-          {
-            "internalType": "uint8",
-            "name": "vipLevel",
-            "type": "uint8"
-          }
-        ],
-        "internalType": "struct SafeBoxKey",
-        "name": "key",
-        "type": "tuple"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "stateMutability": "payable",
-    "type": "receive"
-  }
+  {"stateMutability": "payable", "type": "receive"}
 ]

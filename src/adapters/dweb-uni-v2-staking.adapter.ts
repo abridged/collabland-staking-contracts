@@ -3,16 +3,18 @@ import {BigNumber} from 'ethers';
 import {STAKING_ADAPTERS_EXTENSION_POINT} from '../keys.js';
 import {BaseStakingContractAdapter, StakingAsset} from '../staking.js';
 // Use the full path to import instead of `../types`
-import {DwebStaking__factory} from '../types/factories/DwebStaking__factory.js';
+import {DwebUniV2Staking__factory} from '../types/factories/DwebUniV2Staking__factory.js';
 
-abstract class BaseDwebStakingContractAdapter extends BaseStakingContractAdapter {
+abstract class BaseDwebUniV2StakingContractAdapter extends BaseStakingContractAdapter {
+  supportedAssets: StakingAsset[] = [];
+
   /**
    * Get staked token balance for the given owner
    * @param owner - Owner address
    * @returns
    */
   async getStakedTokenBalance(owner: string): Promise<BigNumber> {
-    const contract = DwebStaking__factory.connect(
+    const contract = DwebUniV2Staking__factory.connect(
       this.contractAddress,
       this.provider,
     );
@@ -30,18 +32,9 @@ abstract class BaseDwebStakingContractAdapter extends BaseStakingContractAdapter
   },
   extensionFor(STAKING_ADAPTERS_EXTENSION_POINT),
 )
-export class DwebEthereumStakingContractAdapter extends BaseDwebStakingContractAdapter {
-  contractAddress = '0x7aA1f1A3c2BBfB7802313b6f18a2fc408A030564';
+export class DwebUniV2EthereumStakingContractAdapter extends BaseDwebUniV2StakingContractAdapter {
+  contractAddress = '0x594E33aC3B56E9c0109deeBe03EEA2e39fE1A852';
   chainId = 1;
-
-  /**
-   * Assets that can be staked to this contract
-   */
-  supportedAssets: StakingAsset[] = [
-    {
-      asset: 'ERC20:0xE7f58A92476056627f9FdB92286778aBd83b285F',
-    },
-  ];
 }
 
 @injectable(
@@ -50,16 +43,7 @@ export class DwebEthereumStakingContractAdapter extends BaseDwebStakingContractA
   },
   extensionFor(STAKING_ADAPTERS_EXTENSION_POINT),
 )
-export class DwebPolygonStakingContractAdapter extends BaseDwebStakingContractAdapter {
+export class DwebUniV2PolygonStakingContractAdapter extends BaseDwebUniV2StakingContractAdapter {
   contractAddress = '0x5DB2dE06eD6797E180cD432Ff0BeC6332a34C18E';
   chainId = 137;
-
-  /**
-   * Assets that can be staked to this contract
-   */
-  supportedAssets: StakingAsset[] = [
-    {
-      asset: 'ERC20:0x8839e639F210B80ffea73AedF51baed8DAc04499',
-    },
-  ];
 }

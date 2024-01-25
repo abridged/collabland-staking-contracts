@@ -11,7 +11,6 @@ import {
 } from '@loopback/core';
 import {ChillRxStakingContractAdapter} from './adapters/chillrx.adapter.js';
 import {CocoStakingContractAdapter} from './adapters/coco.adapter.js';
-import {LuckyNFTStakingContractAdapter} from './adapters/luckynft.adapter.js';
 import {DogfaceStakingContractAdapter} from './adapters/dogface.adapter.js';
 import {Dogface2ndStakingContractAdapter} from './adapters/dogface2.adapter.js';
 import {DogsUnchainedStakingContractAdapter} from './adapters/dogs-unchained.adapter.js';
@@ -22,6 +21,7 @@ import {
 import {PerionCreditsStakingContractAdapter} from './adapters/erc20-staking.adapter.js';
 import {IdolMarketplaceContractAdapter} from './adapters/idol-marketplace.adapter.js';
 import {LifestoryPlanetStakingAdapter} from './adapters/lifestory-planet-staking.adapter.js';
+import {LuckyNFTStakingContractAdapter} from './adapters/luckynft.adapter.js';
 import {MeltdownContractAdapter} from './adapters/meltdown-1.adapter.js';
 import {Meltdown03ContractAdapter} from './adapters/meltdown.adapter.js';
 
@@ -33,6 +33,10 @@ import {
   DwebEthereumStakingContractAdapter,
   DwebPolygonStakingContractAdapter,
 } from './adapters/dweb-staking.adapter.js';
+import {
+  DwebUniV2EthereumStakingContractAdapter,
+  DwebUniV2PolygonStakingContractAdapter,
+} from './adapters/dweb-uni-v2-staking.adapter.js';
 import {FlooringProtocolStakingContractAdapter} from './adapters/flooring-protocol-staking.adapter.js';
 import {GenKStakingContractAdapter} from './adapters/genk-staking.adapter.js';
 import {HabibizRoyalsStakingContractAdapter} from './adapters/habibiz-royals.adapter.js';
@@ -120,6 +124,8 @@ export class StakingContractsComponent implements Component {
     HabibizRoyalsStakingContractAdapter,
     DwebEthereumStakingContractAdapter,
     DwebPolygonStakingContractAdapter,
+    DwebUniV2EthereumStakingContractAdapter,
+    DwebUniV2PolygonStakingContractAdapter,
   ];
   constructor() {}
 }

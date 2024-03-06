@@ -127,5 +127,5 @@ export class StakingContractsComponent implements Component {
     DwebUniV2EthereumStakingContractAdapter,
     DwebUniV2PolygonStakingContractAdapter,
   ];
-  constructor() {}
+  constructor() { }
 }

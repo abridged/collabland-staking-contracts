@@ -39,15 +39,4 @@ export class BibizStakingContractAdapter extends BaseStakingContractAdapter {
     );
     return contract.tokensOf(owner);
   }
-
-  /**
-   * Gets number/balance of staked bibiz
-   * @param owner The owner address
-   * @returns
-   */
-  async getStakedTokenBalance(owner: string): Promise<BigNumber> {
-    const number = (await this.getStakedTokenIds(owner)).length;
-
-    return Promise.resolve(BigNumber.from(number));
-  }
 }

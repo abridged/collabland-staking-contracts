@@ -1,10 +1,9 @@
 import {BindingScope, extensionFor, injectable} from '@loopback/core';
 import {BigNumber} from 'ethers';
 import {STAKING_ADAPTERS_EXTENSION_POINT} from '../keys.js';
-import {BaseStakingContractAdapter, StakingAsset} from '../staking.js'
+import {BaseStakingContractAdapter, StakingAsset} from '../staking.js';
 
 import {SuperverseStaking__factory} from '../types/factories/SuperverseStaking__factory.js';
-
 
 @injectable(
   {
@@ -33,13 +32,16 @@ export class SuperverseStakingContractAdapter extends BaseStakingContractAdapter
    * @param owner - Owner address
    * @returns
    */
-  getStakedTokenIds(owner: string): Promise<BigNumber[]> {
-    const contract = SuperverseStaking__factory.connect(this.contractAddress, this.provider);
-    return contract.stakerInfo(owner).then((stakerInfo)=> {
-      return [stakerInfo.stakedTokens];
-    }).catch(() => {
-      console.log("failed")
-      return [BigNumber.from(0)];
-    });
+  async getStakedTokenBalance(owner: string): Promise<BigNumber> {
+    const contract = SuperverseStaking__factory.connect(
+      this.contractAddress,
+      this.provider,
+    );
+    try {
+      const stakerInfo = await contract.stakerInfo(owner);
+      return stakerInfo.stakedTokens;
+    } catch (e) {
+      return BigNumber.from(0);
+    }
   }
 }

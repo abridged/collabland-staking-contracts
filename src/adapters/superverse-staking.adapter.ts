@@ -19,7 +19,7 @@ export class SuperverseStakingContractAdapter extends BaseStakingContractAdapter
   contractAddress = '0x8C96EdC82d111E3c5686F5ABE738A82d54d0b887';
 
   /**
-   * Assets that can be staked to this contract
+   * Assets that can be staked to this contract: SuperVerse ERC20
    */
   supportedAssets: StakingAsset[] = [
     {

@@ -37,11 +37,8 @@ export class SuperverseStakingContractAdapter extends BaseStakingContractAdapter
       this.contractAddress,
       this.provider,
     );
-    try {
-      const stakerInfo = await contract.stakerInfo(owner);
-      return stakerInfo.stakedTokens;
-    } catch (e) {
-      return BigNumber.from(0);
-    }
+
+    const stakerInfo = await contract.stakerInfo(owner);
+    return stakerInfo.stakedTokens;
   }
 }

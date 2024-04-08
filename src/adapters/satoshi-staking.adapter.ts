@@ -2,8 +2,6 @@ import {BindingScope, extensionFor, injectable} from '@loopback/core';
 import {BigNumber} from 'ethers';
 import {STAKING_ADAPTERS_EXTENSION_POINT} from '../keys.js';
 import {BaseStakingContractAdapter, StakingAsset} from '../staking.js';
-// Use the full path to import instead of `../types`
-import {Coco__factory} from '../types/factories/Coco__factory.js';
 
 @injectable(
   {
@@ -32,8 +30,23 @@ export class SatoshiStakingContractAdapter extends BaseStakingContractAdapter {
    * @param owner - Owner address
    * @returns
    */
-  getStakedTokenIds(owner: string): Promise<BigNumber[]> {
-    const contract = Coco__factory.connect(this.contractAddress, this.provider);
-    return contract.getStakes(owner);
+  async getStakedTokenIds(owner: string): Promise<BigNumber[]> {
+    const url = `https://api.ethernity.io/api/v2/satoshi-staking/${owner}/staked`;
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const res = await response.json();
+      // Assuming the API returns an array of token IDs
+      // You might need to adjust the path to data depending on the actual response structure
+      const tokenIds = res.data.items.map((item: {tokenId: string}) =>
+        BigNumber.from(item.tokenId),
+      );
+      return tokenIds;
+    } catch (error) {
+      console.error('Error fetching staked token IDs:', error);
+      throw error;
+    }
   }
 }

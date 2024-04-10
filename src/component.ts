@@ -28,6 +28,7 @@ import {Meltdown03ContractAdapter} from './adapters/meltdown.adapter.js';
 import {AngelBlockStakingContractAdapter} from './adapters/ab.adapter.js';
 import {BansheesStakingContractAdapter} from './adapters/banshees-staking.adapter.js';
 import {BapeliensStakingContractAdapter} from './adapters/bapeliens-staking.adapter.js';
+import {BlastopiansStakingContractAdapter} from './adapters/blastopians.adapter.js';
 import {BibizStakingContractAdapter} from './adapters/bibiz.adapter.js';
 import {CbzGrowStakingContractAdapter} from './adapters/cbzgrow.adapter.js';
 import {
@@ -122,6 +123,7 @@ export class StakingContractsComponent implements Component {
     SupremeKong2StakingContractAdapter,
     SugartownStakingContractAdapter,
     BansheesStakingContractAdapter,
+    BlastopiansStakingContractAdapter,
     FlooringProtocolStakingContractAdapter,
     BibizStakingContractAdapter,
     HabibizRoyalsStakingContractAdapter,

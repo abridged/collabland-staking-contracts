@@ -12,7 +12,7 @@ import {SuperverseStaking__factory} from '../types/factories/SuperverseStaking__
   // Mark it as an extension to staking contracts service
   extensionFor(STAKING_ADAPTERS_EXTENSION_POINT),
 )
-export class SuperverseStakingContractAdapter extends BaseStakingContractAdapter {
+export class SuperverseStakingPowerContractAdapter extends BaseStakingContractAdapter {
   /**
    * The contract address
    */
@@ -39,6 +39,6 @@ export class SuperverseStakingContractAdapter extends BaseStakingContractAdapter
     );
 
     const stakerInfo = await contract.stakerInfo(owner);
-    return stakerInfo.stakedTokens;
+    return stakerInfo.stakerPower;
   }
 }

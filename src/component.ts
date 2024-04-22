@@ -28,8 +28,9 @@ import {Meltdown03ContractAdapter} from './adapters/meltdown.adapter.js';
 import {AngelBlockStakingContractAdapter} from './adapters/ab.adapter.js';
 import {BansheesStakingContractAdapter} from './adapters/banshees-staking.adapter.js';
 import {BapeliensStakingContractAdapter} from './adapters/bapeliens-staking.adapter.js';
-import {BlastopiansStakingContractAdapter} from './adapters/blastopians.adapter.js';
 import {BibizStakingContractAdapter} from './adapters/bibiz.adapter.js';
+import {BlastminersStakingContractAdapter} from './adapters/blastminers.adapter.js';
+import {BlastopiansStakingContractAdapter} from './adapters/blastopians.adapter.js';
 import {CbzGrowStakingContractAdapter} from './adapters/cbzgrow.adapter.js';
 import {
   DwebEthereumStakingContractAdapter,
@@ -48,6 +49,11 @@ import {MtgStakingContractAdapter} from './adapters/mtg.adapter.js';
 import {OmniguardEternalsStakingContractAdapter} from './adapters/omniguard-eternals.adapter.js';
 import {PlutoallianceStakingAdapter} from './adapters/plutoalliance.adapter.js';
 import {PrimordiaStakingContractAdapter} from './adapters/primordia.adapter.js';
+import {
+  RailgunBinanceGovernanceAdapter,
+  RailgunEthereumGovernanceAdapter,
+  RailgunPolygonGovernanceAdapter,
+} from './adapters/railgun-governance.adapter.js';
 import {RandomStakingContractAdapter} from './adapters/random-staking.adapter.js';
 import {RDStakingContractAdapter} from './adapters/rd-staking.adapter.js';
 import {RektDogsStakingContractAdapter} from './adapters/rekt-dogs-adapter.js';
@@ -62,6 +68,7 @@ import {RoboStakingContractAdapter} from './adapters/robo.adapter.js';
 import {SkyFarmStakingContractAdapter} from './adapters/sky-farm.adapter.js';
 import {SpitYardContractAdapter} from './adapters/spit-yard.adapter.js';
 import {SugartownStakingContractAdapter} from './adapters/sugartown.adapter.js';
+import {SuperverseStakingContractAdapter} from './adapters/superverse-staking.adapter.js';
 import {SupremeKong2StakingContractAdapter} from './adapters/supreme-kong-2-staking.adapter.js';
 import {SupremeKongStakingContractAdapter} from './adapters/supreme-kong-staking.adapter.js';
 import {TtooStakingContractAdapter} from './adapters/ttoo-staking.adapter.js';
@@ -71,7 +78,7 @@ import {XenoStakingContractAdapter} from './adapters/xeno-mining.adapter.js';
 import {STAKING_CONTRACTS_COMPONENT} from './keys.js';
 import {StakingContractsService} from './services/staking-contracts.service.js';
 import {SuperverseStakingContractAdapter} from './adapters/superverse-staking.adapter.js';
-import {startAdapter} from './adapters/start.adapter.js'
+import {startAdapter} from './adapters/start.adapter.js';
 
 // Configure the binding for StakingContractsComponent
 @injectable({
@@ -134,6 +141,10 @@ export class StakingContractsComponent implements Component {
     DwebUniV2PolygonStakingContractAdapter,
     SuperverseStakingContractAdapter,
     StartStakingContractAdapter,
+    BlastminersStakingContractAdapter,
+    RailgunBinanceGovernanceAdapter,
+    RailgunEthereumGovernanceAdapter,
+    RailgunPolygonGovernanceAdapter,
   ];
   constructor() {}
 }

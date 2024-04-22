@@ -78,7 +78,7 @@ import {XenoStakingContractAdapter} from './adapters/xeno-mining.adapter.js';
 import {STAKING_CONTRACTS_COMPONENT} from './keys.js';
 import {StakingContractsService} from './services/staking-contracts.service.js';
 import {SuperverseStakingContractAdapter} from './adapters/superverse-staking.adapter.js';
-import {startAdapter} from './adapters/start.adapter.js';
+import {StartAdapter} from './adapters/start.adapter.js';
 
 // Configure the binding for StakingContractsComponent
 @injectable({

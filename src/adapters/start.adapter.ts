@@ -3,7 +3,7 @@ import {BigNumber} from 'ethers';
 import {STAKING_ADAPTERS_EXTENSION_POINT} from '../keys.js';
 import {BaseStakingContractAdapter, StakingAsset} from '../staking.js';
 // Use the full path to import instead of `../types`
-import {Coco__factory} from '../types/factories/Coco__factory.js';
+import {Start__factory} from '../types/factories/Start__factory.js';
 
 @injectable(
   {
@@ -23,17 +23,30 @@ export class StartStakingContractAdapter extends BaseStakingContractAdapter {
    */
   supportedAssets: StakingAsset[] = [
     {
+      name: 'Saison 1',
       asset: 'ERC721:0x31b4C124E8e021402A2b89F8EC1AF54F68Fd256D',
     },
   ];
 
-  /**
-   * Get staked token ids for the given owner
+   /**
+   * Get staked token balance for the given owner
    * @param owner - Owner address
    * @returns
    */
-  getStakedTokenIds(owner: string): Promise<BigNumber[]> {
-    const contract = Coco__factory.connect(this.contractAddress, this.provider);
-    return contract.getStakes(owner);
+   getStakedTokenBalance(owner: string): Promise<BigNumber> {
+    const contract = Start__factory.connect(
+      this.contractAddress,
+      this.provider,
+    );
+    return contract.getUserStakedTokenCount(owner);
+  }
+
+  async getStakedTokenIds(
+    owner: string,
+    assetName?: string,
+  ): Promise<BigNumber[]> {
+    const balance = await this.getStakedTokenBalance(owner);
+    // We don't know the token ids from the staking contract
+    return new Array<BigNumber>(balance.toNumber()).fill(BigNumber.from(-1));
   }
 }

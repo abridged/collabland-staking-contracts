@@ -51,30 +51,6 @@ export class RailgunEthereumGovernanceAdapter extends BaseRailgunContractAdapter
   // Mark it as an extension to staking contracts service
   extensionFor(STAKING_ADAPTERS_EXTENSION_POINT),
 )
-export class RailgunBinanceGovernanceAdapter extends BaseRailgunContractAdapter {
-  /**
-   * The contract address
-   */
-  contractAddress = '0x753f0F9BA003DDA95eb9284533Cf5B0F19e441dc';
-  chainId: number = 56;
-  /**
-   * Assets that can be staked to this contract
-   */
-  supportedAssets: StakingAsset[] = [
-    {
-      name: 'RAILBSC',
-      asset: 'ERC20:0x3F847b01d4d498a293e3197B186356039eCd737F',
-    },
-  ];
-}
-
-@injectable(
-  {
-    scope: BindingScope.SINGLETON, // Mark the adapter as a singleton
-  },
-  // Mark it as an extension to staking contracts service
-  extensionFor(STAKING_ADAPTERS_EXTENSION_POINT),
-)
 export class RailgunPolygonGovernanceAdapter extends BaseRailgunContractAdapter {
   /**
    * The contract address

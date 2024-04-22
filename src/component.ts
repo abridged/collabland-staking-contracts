@@ -49,7 +49,6 @@ import {OmniguardEternalsStakingContractAdapter} from './adapters/omniguard-eter
 import {PlutoallianceStakingAdapter} from './adapters/plutoalliance.adapter.js';
 import {PrimordiaStakingContractAdapter} from './adapters/primordia.adapter.js';
 import {
-  RailgunBinanceGovernanceAdapter,
   RailgunEthereumGovernanceAdapter,
   RailgunPolygonGovernanceAdapter,
 } from './adapters/railgun-governance.adapter.js';
@@ -137,7 +136,6 @@ export class StakingContractsComponent implements Component {
     DwebUniV2EthereumStakingContractAdapter,
     DwebUniV2PolygonStakingContractAdapter,
     SuperverseStakingContractAdapter,
-    RailgunBinanceGovernanceAdapter,
     RailgunEthereumGovernanceAdapter,
     RailgunPolygonGovernanceAdapter,
   ];

@@ -75,8 +75,9 @@ import {TtooStakingContractAdapter} from './adapters/ttoo-staking.adapter.js';
 import {UwULendStakingContractAdapter} from './adapters/uwulend-staking.adapter.js';
 import {WarriorsofankhStakingContractAdapter} from './adapters/warriorsofankh-staking.adapter.js';
 import {XenoStakingContractAdapter} from './adapters/xeno-mining.adapter.js';
-import {STAKING_CONTRACTS_COMPONENT} from './keys.js';
 import {StakingContractsService} from './services/staking-contracts.service.js';
+import {SuperverseStakingContractAdapter, SuperverseStakingPowerContractAdapter} from './adapters/superverse-staking.adapter.js';
+import {STAKING_CONTRACTS_COMPONENT} from './keys.js';
 import {SuperverseStakingContractAdapter} from './adapters/superverse-staking.adapter.js';
 import {startAdapter} from './adapters/start.adapter.js';
 
@@ -140,6 +141,7 @@ export class StakingContractsComponent implements Component {
     DwebUniV2EthereumStakingContractAdapter,
     DwebUniV2PolygonStakingContractAdapter,
     SuperverseStakingContractAdapter,
+    SuperverseStakingPowerContractAdapter,
     StartStakingContractAdapter,
     BlastminersStakingContractAdapter,
     RailgunBinanceGovernanceAdapter,

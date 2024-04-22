@@ -12,8 +12,6 @@ import {SuperverseStaking__factory} from '../types/factories/SuperverseStaking__
   // Mark it as an extension to staking contracts service
   extensionFor(STAKING_ADAPTERS_EXTENSION_POINT),
 )
-
-
 export class SuperverseStakingContractAdapter extends BaseStakingContractAdapter {
   /**
    * The contract address
@@ -67,8 +65,8 @@ export class SuperverseStakingPowerContractAdapter extends BaseStakingContractAd
    */
   async getStakedTokenBalance(owner: string): Promise<BigNumber> {
     const contract = SuperverseStaking__factory.connect(
-        this.contractAddress,
-        this.provider,
+      this.contractAddress,
+      this.provider,
     );
 
     const stakerInfo = await contract.stakerInfo(owner);

@@ -29,6 +29,7 @@ import {AngelBlockStakingContractAdapter} from './adapters/ab.adapter.js';
 import {BansheesStakingContractAdapter} from './adapters/banshees-staking.adapter.js';
 import {BapeliensStakingContractAdapter} from './adapters/bapeliens-staking.adapter.js';
 import {BibizStakingContractAdapter} from './adapters/bibiz.adapter.js';
+import {BlastminersStakingContractAdapter} from './adapters/blastminers.adapter.js';
 import {BlastopiansStakingContractAdapter} from './adapters/blastopians.adapter.js';
 import {CbzGrowStakingContractAdapter} from './adapters/cbzgrow.adapter.js';
 import {
@@ -77,6 +78,8 @@ import {XenoStakingContractAdapter} from './adapters/xeno-mining.adapter.js';
 import {StakingContractsService} from './services/staking-contracts.service.js';
 import {SuperverseStakingContractAdapter, SuperverseStakingPowerContractAdapter} from './adapters/superverse-staking.adapter.js';
 import {STAKING_CONTRACTS_COMPONENT} from './keys.js';
+import {SuperverseStakingContractAdapter} from './adapters/superverse-staking.adapter.js';
+import {startAdapter} from './adapters/start.adapter.js';
 
 // Configure the binding for StakingContractsComponent
 @injectable({
@@ -139,6 +142,8 @@ export class StakingContractsComponent implements Component {
     DwebUniV2PolygonStakingContractAdapter,
     SuperverseStakingContractAdapter,
     SuperverseStakingPowerContractAdapter,
+    StartStakingContractAdapter,
+    BlastminersStakingContractAdapter,
     RailgunBinanceGovernanceAdapter,
     RailgunEthereumGovernanceAdapter,
     RailgunPolygonGovernanceAdapter,

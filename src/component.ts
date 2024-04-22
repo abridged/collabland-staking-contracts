@@ -29,6 +29,7 @@ import {AngelBlockStakingContractAdapter} from './adapters/ab.adapter.js';
 import {BansheesStakingContractAdapter} from './adapters/banshees-staking.adapter.js';
 import {BapeliensStakingContractAdapter} from './adapters/bapeliens-staking.adapter.js';
 import {BibizStakingContractAdapter} from './adapters/bibiz.adapter.js';
+import {BlastminersStakingContractAdapter} from './adapters/blastminers.adapter.js';
 import {BlastopiansStakingContractAdapter} from './adapters/blastopians.adapter.js';
 import {CbzGrowStakingContractAdapter} from './adapters/cbzgrow.adapter.js';
 import {
@@ -137,6 +138,7 @@ export class StakingContractsComponent implements Component {
     DwebUniV2EthereumStakingContractAdapter,
     DwebUniV2PolygonStakingContractAdapter,
     SuperverseStakingContractAdapter,
+    BlastminersStakingContractAdapter,
     RailgunBinanceGovernanceAdapter,
     RailgunEthereumGovernanceAdapter,
     RailgunPolygonGovernanceAdapter,

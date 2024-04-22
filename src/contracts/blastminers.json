@@ -1,0 +1,1091 @@
+[
+  {
+    "inputs": [
+      {"internalType": "address", "name": "blastGas", "type": "address"},
+      {"internalType": "address", "name": "blastPoints", "type": "address"},
+      {
+        "components": [
+          {"internalType": "bool", "name": "saleActive", "type": "bool"},
+          {"internalType": "bool", "name": "whitelistActive", "type": "bool"},
+          {
+            "internalType": "uint256",
+            "name": "maxPerWallet",
+            "type": "uint256"
+          },
+          {"internalType": "bytes32", "name": "root", "type": "bytes32"},
+          {"internalType": "uint256", "name": "price", "type": "uint256"}
+        ],
+        "internalType": "struct BlastMiners.PhaseProps",
+        "name": "ogData",
+        "type": "tuple"
+      },
+      {
+        "components": [
+          {"internalType": "bool", "name": "saleActive", "type": "bool"},
+          {"internalType": "bool", "name": "whitelistActive", "type": "bool"},
+          {
+            "internalType": "uint256",
+            "name": "maxPerWallet",
+            "type": "uint256"
+          },
+          {"internalType": "bytes32", "name": "root", "type": "bytes32"},
+          {"internalType": "uint256", "name": "price", "type": "uint256"}
+        ],
+        "internalType": "struct BlastMiners.PhaseProps",
+        "name": "alData",
+        "type": "tuple"
+      },
+      {
+        "components": [
+          {"internalType": "bool", "name": "saleActive", "type": "bool"},
+          {"internalType": "bool", "name": "whitelistActive", "type": "bool"},
+          {
+            "internalType": "uint256",
+            "name": "maxPerWallet",
+            "type": "uint256"
+          },
+          {"internalType": "bytes32", "name": "root", "type": "bytes32"},
+          {"internalType": "uint256", "name": "price", "type": "uint256"}
+        ],
+        "internalType": "struct BlastMiners.PhaseProps",
+        "name": "fcfsData",
+        "type": "tuple"
+      },
+      {
+        "components": [
+          {"internalType": "bool", "name": "saleActive", "type": "bool"},
+          {"internalType": "bool", "name": "whitelistActive", "type": "bool"},
+          {
+            "internalType": "uint256",
+            "name": "maxPerWallet",
+            "type": "uint256"
+          },
+          {"internalType": "bytes32", "name": "root", "type": "bytes32"},
+          {"internalType": "uint256", "name": "price", "type": "uint256"}
+        ],
+        "internalType": "struct BlastMiners.PhaseProps",
+        "name": "publicData",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {"inputs": [], "name": "AlreadyStaked", "type": "error"},
+  {
+    "inputs": [],
+    "name": "ApprovalCallerNotOwnerNorApproved",
+    "type": "error"
+  },
+  {"inputs": [], "name": "ApprovalQueryForNonexistentToken", "type": "error"},
+  {"inputs": [], "name": "BalanceQueryForZeroAddress", "type": "error"},
+  {"inputs": [], "name": "CollectionFull", "type": "error"},
+  {"inputs": [], "name": "InsufficientFunds", "type": "error"},
+  {"inputs": [], "name": "InvalidTimestamp", "type": "error"},
+  {"inputs": [], "name": "MaxBoostReached", "type": "error"},
+  {"inputs": [], "name": "MintERC2309QuantityExceedsLimit", "type": "error"},
+  {"inputs": [], "name": "MintLimitReached", "type": "error"},
+  {"inputs": [], "name": "MintToZeroAddress", "type": "error"},
+  {"inputs": [], "name": "MintZeroQuantity", "type": "error"},
+  {"inputs": [], "name": "NeedMoreThanCurrentSupply", "type": "error"},
+  {"inputs": [], "name": "NoRarity", "type": "error"},
+  {"inputs": [], "name": "NotAllowlisted", "type": "error"},
+  {"inputs": [], "name": "NotCompatibleWithSpotMints", "type": "error"},
+  {"inputs": [], "name": "NotStakedOwner", "type": "error"},
+  {
+    "inputs": [{"internalType": "address", "name": "owner", "type": "address"}],
+    "name": "OwnableInvalidOwner",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      {"internalType": "address", "name": "account", "type": "address"}
+    ],
+    "name": "OwnableUnauthorizedAccount",
+    "type": "error"
+  },
+  {"inputs": [], "name": "OwnerQueryForNonexistentToken", "type": "error"},
+  {
+    "inputs": [],
+    "name": "OwnershipNotInitializedForExtraData",
+    "type": "error"
+  },
+  {"inputs": [], "name": "PhaseClosed", "type": "error"},
+  {"inputs": [], "name": "ReentrancyGuardReentrantCall", "type": "error"},
+  {"inputs": [], "name": "SequentialMintExceedsLimit", "type": "error"},
+  {"inputs": [], "name": "SequentialUpToTooSmall", "type": "error"},
+  {"inputs": [], "name": "SpotMintTokenIdTooSmall", "type": "error"},
+  {"inputs": [], "name": "StakingClosed", "type": "error"},
+  {"inputs": [], "name": "TokenAlreadyExists", "type": "error"},
+  {"inputs": [], "name": "TooSoonForNextCheckIn", "type": "error"},
+  {
+    "inputs": [],
+    "name": "TransferCallerNotOwnerNorApproved",
+    "type": "error"
+  },
+  {"inputs": [], "name": "TransferFromIncorrectOwner", "type": "error"},
+  {
+    "inputs": [],
+    "name": "TransferToNonERC721ReceiverImplementer",
+    "type": "error"
+  },
+  {"inputs": [], "name": "TransferToZeroAddress", "type": "error"},
+  {"inputs": [], "name": "URIQueryForNonexistentToken", "type": "error"},
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "owner",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "quantity",
+        "type": "uint256"
+      }
+    ],
+    "name": "Airdropped",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "owner",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "approved",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      }
+    ],
+    "name": "Approval",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "owner",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "operator",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "bool",
+        "name": "approved",
+        "type": "bool"
+      }
+    ],
+    "name": "ApprovalForAll",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "fromTokenId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "toTokenId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "from",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "to",
+        "type": "address"
+      }
+    ],
+    "name": "ConsecutiveTransfer",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "sender",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "EtherReceived",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "owner",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "quantity",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "enum BlastMiners.Phase",
+        "name": "phase",
+        "type": "uint8"
+      }
+    ],
+    "name": "Minted",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "previousOwner",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "OwnershipTransferred",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "owner",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      }
+    ],
+    "name": "Staked",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "from",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "to",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      }
+    ],
+    "name": "Transfer",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "owner",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      }
+    ],
+    "name": "Unstaked",
+    "type": "event"
+  },
+  {
+    "inputs": [],
+    "name": "BASE_WEEK_BOOST",
+    "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "BLAST_GAS",
+    "outputs": [{"internalType": "address", "name": "", "type": "address"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "BLAST_POINTS",
+    "outputs": [{"internalType": "address", "name": "", "type": "address"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "BOOST_PERCENT",
+    "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "BOOST_PER_WEEK",
+    "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "BOOST_PRICE",
+    "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "BOOST_TOKEN",
+    "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "FINAL_TIMESTAMP",
+    "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "LAST_SNAPSHOT",
+    "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "MAX_BOOST_POSSIBLE",
+    "outputs": [{"internalType": "uint8", "name": "", "type": "uint8"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "MAX_SUPPLY",
+    "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "MAX_WEEK_BOOST",
+    "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "POINTS_INTERVAL",
+    "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "POINTS_PER_INTERVAL",
+    "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "PUNISHMENT",
+    "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "activePhase",
+    "outputs": [
+      {"internalType": "enum BlastMiners.Phase", "name": "", "type": "uint8"}
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "address[]", "name": "targets", "type": "address[]"},
+      {"internalType": "uint256[]", "name": "quantity", "type": "uint256[]"}
+    ],
+    "name": "airdrop",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "address", "name": "to", "type": "address"},
+      {"internalType": "uint256", "name": "tokenId", "type": "uint256"}
+    ],
+    "name": "approve",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [{"internalType": "address", "name": "owner", "type": "address"}],
+    "name": "balanceOf",
+    "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "uint256", "name": "tokenId", "type": "uint256"}
+    ],
+    "name": "boostToken",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "uint256", "name": "tokenId", "type": "uint256"}
+    ],
+    "name": "calculateRarity",
+    "outputs": [
+      {"internalType": "enum BlastMiners.Rarity", "name": "", "type": "uint8"}
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "enum BlastMiners.Phase",
+        "name": "phase",
+        "type": "uint8"
+      },
+      {
+        "components": [
+          {"internalType": "bool", "name": "saleActive", "type": "bool"},
+          {"internalType": "bool", "name": "whitelistActive", "type": "bool"},
+          {
+            "internalType": "uint256",
+            "name": "maxPerWallet",
+            "type": "uint256"
+          },
+          {"internalType": "bytes32", "name": "root", "type": "bytes32"},
+          {"internalType": "uint256", "name": "price", "type": "uint256"}
+        ],
+        "internalType": "struct BlastMiners.PhaseProps",
+        "name": "phaseProps",
+        "type": "tuple"
+      }
+    ],
+    "name": "changePhaseProps",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "uint256", "name": "tokenId", "type": "uint256"}
+    ],
+    "name": "checkIn",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "claimMaxGas",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "configureBlastGas",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "address", "name": "operator", "type": "address"}
+    ],
+    "name": "configureBlastPointsOperator",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "description",
+    "outputs": [{"internalType": "string", "name": "", "type": "string"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "uint256", "name": "tokenId", "type": "uint256"}
+    ],
+    "name": "getApproved",
+    "outputs": [{"internalType": "address", "name": "", "type": "address"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "uint256", "name": "weeksStaked", "type": "uint256"}
+    ],
+    "name": "getBoostFactor",
+    "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
+    "stateMutability": "pure",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "uint256", "name": "tokenId", "type": "uint256"}
+    ],
+    "name": "getBoosts",
+    "outputs": [{"internalType": "string", "name": "", "type": "string"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "uint256", "name": "tokenId", "type": "uint256"}
+    ],
+    "name": "getRarity",
+    "outputs": [{"internalType": "string", "name": "", "type": "string"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "uint256", "name": "tokenId", "type": "uint256"},
+      {
+        "internalType": "uint256",
+        "name": "targetTimestamp",
+        "type": "uint256"
+      }
+    ],
+    "name": "getTokenPoints",
+    "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{"internalType": "address", "name": "addr", "type": "address"}],
+    "name": "getTokensStaked",
+    "outputs": [{"internalType": "uint256[]", "name": "", "type": "uint256[]"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "address", "name": "addr", "type": "address"},
+      {
+        "internalType": "uint256",
+        "name": "targetTimestamp",
+        "type": "uint256"
+      }
+    ],
+    "name": "getUserPoints",
+    "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "address", "name": "owner", "type": "address"},
+      {"internalType": "address", "name": "operator", "type": "address"}
+    ],
+    "name": "isApprovedForAll",
+    "outputs": [{"internalType": "bool", "name": "", "type": "bool"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "address", "name": "_address", "type": "address"},
+      {
+        "internalType": "bytes32[]",
+        "name": "_merkleProof",
+        "type": "bytes32[]"
+      },
+      {
+        "internalType": "enum BlastMiners.Phase",
+        "name": "phaseToCheck",
+        "type": "uint8"
+      }
+    ],
+    "name": "isWhitelisted",
+    "outputs": [{"internalType": "bool", "name": "", "type": "bool"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "leaderboardIndex",
+    "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "uint256", "name": "", "type": "uint256"},
+      {"internalType": "address", "name": "", "type": "address"}
+    ],
+    "name": "leaderboards",
+    "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "uint256", "name": "quantity", "type": "uint256"},
+      {
+        "internalType": "bytes32[]",
+        "name": "merkleProof",
+        "type": "bytes32[]"
+      }
+    ],
+    "name": "mint",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "enum BlastMiners.Phase", "name": "", "type": "uint8"}
+    ],
+    "name": "mintPhases",
+    "outputs": [
+      {"internalType": "bool", "name": "saleActive", "type": "bool"},
+      {"internalType": "bool", "name": "whitelistActive", "type": "bool"},
+      {"internalType": "uint256", "name": "maxPerWallet", "type": "uint256"},
+      {"internalType": "bytes32", "name": "root", "type": "bytes32"},
+      {"internalType": "uint256", "name": "price", "type": "uint256"}
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "address", "name": "user", "type": "address"},
+      {
+        "internalType": "enum BlastMiners.Phase",
+        "name": "phase",
+        "type": "uint8"
+      }
+    ],
+    "name": "mintedPerAddress",
+    "outputs": [
+      {"internalType": "uint256", "name": "mintedTokens", "type": "uint256"}
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "name",
+    "outputs": [{"internalType": "string", "name": "", "type": "string"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "address", "name": "", "type": "address"},
+      {"internalType": "address", "name": "", "type": "address"},
+      {"internalType": "uint256", "name": "", "type": "uint256"},
+      {"internalType": "bytes", "name": "", "type": "bytes"}
+    ],
+    "name": "onERC721Received",
+    "outputs": [{"internalType": "bytes4", "name": "", "type": "bytes4"}],
+    "stateMutability": "pure",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "owner",
+    "outputs": [{"internalType": "address", "name": "", "type": "address"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "uint256", "name": "tokenId", "type": "uint256"}
+    ],
+    "name": "ownerOf",
+    "outputs": [{"internalType": "address", "name": "", "type": "address"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "renounceOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "address", "name": "from", "type": "address"},
+      {"internalType": "address", "name": "to", "type": "address"},
+      {"internalType": "uint256", "name": "tokenId", "type": "uint256"}
+    ],
+    "name": "safeTransferFrom",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "address", "name": "from", "type": "address"},
+      {"internalType": "address", "name": "to", "type": "address"},
+      {"internalType": "uint256", "name": "tokenId", "type": "uint256"},
+      {"internalType": "bytes", "name": "_data", "type": "bytes"}
+    ],
+    "name": "safeTransferFrom",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "enum BlastMiners.Phase",
+        "name": "_phase",
+        "type": "uint8"
+      }
+    ],
+    "name": "setActivePhase",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "address", "name": "operator", "type": "address"},
+      {"internalType": "bool", "name": "approved", "type": "bool"}
+    ],
+    "name": "setApprovalForAll",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [{"internalType": "address", "name": "addr", "type": "address"}],
+    "name": "setBlastGasAddress",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [{"internalType": "address", "name": "addr", "type": "address"}],
+    "name": "setBlastPointsAddress",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [{"internalType": "uint256", "name": "price", "type": "uint256"}],
+    "name": "setBoostPrice",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "string", "name": "_description", "type": "string"}
+    ],
+    "name": "setDescription",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "uint256", "name": "maxSupply", "type": "uint256"}
+    ],
+    "name": "setMaxSupply",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [{"internalType": "bool", "name": "open", "type": "bool"}],
+    "name": "setStakingMode",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "string", "name": "tokenImagePath_", "type": "string"}
+    ],
+    "name": "setTokenImagePath",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [{"internalType": "string", "name": "path", "type": "string"}],
+    "name": "setTraitMetadataPath",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [{"internalType": "bool", "name": "active", "type": "bool"}],
+    "name": "setTraitsActive",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "string", "name": "unrevealedImage_", "type": "string"}
+    ],
+    "name": "setUnrevealImagePath",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "uint256[]", "name": "tokenIds", "type": "uint256[]"}
+    ],
+    "name": "stake",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "address", "name": "user", "type": "address"},
+      {"internalType": "uint256", "name": "", "type": "uint256"}
+    ],
+    "name": "stakedTokenIds",
+    "outputs": [
+      {"internalType": "uint256", "name": "stakedTokens", "type": "uint256"}
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "uint256", "name": "tokenId", "type": "uint256"}
+    ],
+    "name": "stakedTokenProps",
+    "outputs": [
+      {"internalType": "address", "name": "owner", "type": "address"},
+      {"internalType": "uint256", "name": "boosted", "type": "uint256"},
+      {"internalType": "uint256", "name": "checkIns", "type": "uint256"},
+      {
+        "internalType": "uint256",
+        "name": "checkInTimestamp",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "stakingOpen",
+    "outputs": [{"internalType": "bool", "name": "", "type": "bool"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "bytes4", "name": "interfaceId", "type": "bytes4"}
+    ],
+    "name": "supportsInterface",
+    "outputs": [{"internalType": "bool", "name": "", "type": "bool"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "symbol",
+    "outputs": [{"internalType": "string", "name": "", "type": "string"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "uint64", "name": "timestamp", "type": "uint64"}
+    ],
+    "name": "takeSnapshot",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "enum BlastMiners.Phase",
+        "name": "phase",
+        "type": "uint8"
+      }
+    ],
+    "name": "toggleSaleActive",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "tokenImagePath",
+    "outputs": [{"internalType": "string", "name": "", "type": "string"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "uint256", "name": "tokenId", "type": "uint256"}
+    ],
+    "name": "tokenURI",
+    "outputs": [{"internalType": "string", "name": "", "type": "string"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{"internalType": "address", "name": "owner", "type": "address"}],
+    "name": "tokensOfOwner",
+    "outputs": [{"internalType": "uint256[]", "name": "", "type": "uint256[]"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "totalSupply",
+    "outputs": [
+      {"internalType": "uint256", "name": "result", "type": "uint256"}
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "traitsActivated",
+    "outputs": [{"internalType": "bool", "name": "", "type": "bool"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "traitsMetadataPath",
+    "outputs": [{"internalType": "string", "name": "", "type": "string"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "address", "name": "from", "type": "address"},
+      {"internalType": "address", "name": "to", "type": "address"},
+      {"internalType": "uint256", "name": "tokenId", "type": "uint256"}
+    ],
+    "name": "transferFrom",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "address", "name": "newOwner", "type": "address"}
+    ],
+    "name": "transferOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "unrevealedImage",
+    "outputs": [{"internalType": "string", "name": "", "type": "string"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "uint256[]", "name": "tokenIds", "type": "uint256[]"}
+    ],
+    "name": "unstake",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "withdraw",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {"stateMutability": "payable", "type": "receive"}
+]

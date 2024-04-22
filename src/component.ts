@@ -49,6 +49,11 @@ import {MtgStakingContractAdapter} from './adapters/mtg.adapter.js';
 import {OmniguardEternalsStakingContractAdapter} from './adapters/omniguard-eternals.adapter.js';
 import {PlutoallianceStakingAdapter} from './adapters/plutoalliance.adapter.js';
 import {PrimordiaStakingContractAdapter} from './adapters/primordia.adapter.js';
+import {
+  RailgunBinanceGovernanceAdapter,
+  RailgunEthereumGovernanceAdapter,
+  RailgunPolygonGovernanceAdapter,
+} from './adapters/railgun-governance.adapter.js';
 import {RandomStakingContractAdapter} from './adapters/random-staking.adapter.js';
 import {RDStakingContractAdapter} from './adapters/rd-staking.adapter.js';
 import {RektDogsStakingContractAdapter} from './adapters/rekt-dogs-adapter.js';
@@ -134,6 +139,9 @@ export class StakingContractsComponent implements Component {
     DwebUniV2PolygonStakingContractAdapter,
     SuperverseStakingContractAdapter,
     BlastminersStakingContractAdapter,
+    RailgunBinanceGovernanceAdapter,
+    RailgunEthereumGovernanceAdapter,
+    RailgunPolygonGovernanceAdapter,
   ];
   constructor() {}
 }

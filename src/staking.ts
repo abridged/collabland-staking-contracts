@@ -68,6 +68,12 @@ export interface StackingContractAdapter {
 
 const defaultEthersProviderService = {
   getProvider(chainId: string | number) {
+    if (chainId.toString() === '56') {
+      return new providers.JsonRpcProvider('https://bsc-dataseed.binance.org/');
+    }
+    if (chainId.toString() === '81457') {
+      return new providers.JsonRpcProvider('https://rpc.blast.io');
+    }
     const projectId =
       getEnvVar('INFURA_PROJECT_ID') ?? getEnvVar('STAKING_INFURA_PROJECT_ID');
     const projectSecret = getEnvVar('INFURA_PROJECT_SECRET');

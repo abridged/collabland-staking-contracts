@@ -3,7 +3,7 @@ import {BigNumber} from 'ethers';
 import {STAKING_ADAPTERS_EXTENSION_POINT} from '../keys.js';
 import {BaseStakingContractAdapter, StakingAsset} from '../staking.js';
 // Use the full path to import instead of `../types`
-import {Start__factory} from '../types/factories/Start__factory.js';
+import {StartNft__factory} from '../types/factories/StartNft__factory.js';
 
 @injectable(
   {
@@ -33,7 +33,7 @@ export class StartStakingContractAdapter extends BaseStakingContractAdapter {
    * @returns
    */
   getStakedTokenIds(owner: string): Promise<BigNumber[]> {
-    const contract = Start__factory.connect(
+    const contract = StartNft__factory.connect(
       this.contractAddress,
       this.provider,
     );

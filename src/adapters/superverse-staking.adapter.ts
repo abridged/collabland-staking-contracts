@@ -23,37 +23,11 @@ export class SuperverseStakingContractAdapter extends BaseStakingContractAdapter
    */
   supportedAssets: StakingAsset[] = [
     {
+      name: 'SuperVerse',
       asset: 'ERC20:0xe53EC727dbDEB9E2d5456c3be40cFF031AB40A55',
     },
-  ];
-
-  /**
-   * Get staked token ids for the given owner
-   * @param owner - Owner address
-   * @returns
-   */
-  async getStakedTokenBalance(owner: string): Promise<BigNumber> {
-    const contract = SuperverseStaking__factory.connect(
-      this.contractAddress,
-      this.provider,
-    );
-
-    const stakerInfo = await contract.stakerInfo(owner);
-    return stakerInfo.stakedTokens;
-  }
-}
-
-export class SuperverseStakingPowerContractAdapter extends BaseStakingContractAdapter {
-  /**
-   * The contract address
-   */
-  contractAddress = '0x8C96EdC82d111E3c5686F5ABE738A82d54d0b887';
-
-  /**
-   * Assets that can be staked to this contract: SuperVerse ERC20
-   */
-  supportedAssets: StakingAsset[] = [
     {
+      name: 'SuperVersePower',
       asset: 'ERC20:0xe53EC727dbDEB9E2d5456c3be40cFF031AB40A55',
     },
   ];
@@ -63,13 +37,19 @@ export class SuperverseStakingPowerContractAdapter extends BaseStakingContractAd
    * @param owner - Owner address
    * @returns
    */
-  async getStakedTokenBalance(owner: string): Promise<BigNumber> {
+  async getStakedTokenBalance(
+    owner: string,
+    name = 'SuperVerse',
+  ): Promise<BigNumber> {
+    name = name.toLowerCase();
     const contract = SuperverseStaking__factory.connect(
       this.contractAddress,
       this.provider,
     );
 
     const stakerInfo = await contract.stakerInfo(owner);
-    return stakerInfo.stakerPower;
+    return name === 'superverse'
+      ? stakerInfo.stakedTokens
+      : stakerInfo.stakerPower;
   }
 }

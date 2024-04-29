@@ -77,10 +77,13 @@ export class StakingContractsService {
         utils.getAddress(a.contractAddress) === contractAddress,
     );
     if (adapters.length === 0) return [];
-    const types = adapters[0].supportedAssets.map(a =>
-      new AssetName(a.asset).namespace.toUpperCase(),
+
+    const types = adapters.map(adapter =>
+      adapter.supportedAssets.map(a =>
+        new AssetName(a.asset).namespace.toUpperCase(),
+      ),
     );
-    return Array.from(new Set(types));
+    return Array.from(new Set(types.flat()));
   }
 
   /**
@@ -96,7 +99,7 @@ export class StakingContractsService {
     });
   }
 
-  private getAdapter(address: string, chainId = 1) {
+  private getAdapter(address: string, chainId = 1, name?: string) {
     address = utils.getAddress(address);
     const adapter = this.adapters.find(
       a =>

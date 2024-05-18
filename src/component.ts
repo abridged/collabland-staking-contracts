@@ -47,6 +47,7 @@ import {JnglStakingContractAdapter} from './adapters/Jngl-staking.adapter.js';
 import {MoonrunnersStakingContractAdapter} from './adapters/moonrunners.adapter.js';
 import {MtgStakingContractAdapter} from './adapters/mtg.adapter.js';
 import {OmniguardEternalsStakingContractAdapter} from './adapters/omniguard-eternals.adapter.js';
+import {PlanetXStakingV1ContractAdapter} from './adapters/planetx.v1.adapter.js';
 import {PlutoallianceStakingAdapter} from './adapters/plutoalliance.adapter.js';
 import {PrimordiaStakingContractAdapter} from './adapters/primordia.adapter.js';
 import {
@@ -144,6 +145,7 @@ export class StakingContractsComponent implements Component {
     RailgunBinanceGovernanceAdapter,
     RailgunEthereumGovernanceAdapter,
     RailgunPolygonGovernanceAdapter,
+    PlanetXStakingV1ContractAdapter,
   ];
   constructor() {}
 }

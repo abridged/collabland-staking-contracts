@@ -74,7 +74,7 @@
     "graphql-request": "^6.1.0",
     "hardhat": "^2.19.4",
     "@collabland/typechain": "^8.4.0",
-    "typescript": "~5.4.0"
+    "typescript": "~5.5.0"
   },
   "license": "MIT",
   "copyright.owner": "Abridged, Inc."

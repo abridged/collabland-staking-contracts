@@ -145,5 +145,5 @@ export class StakingContractsComponent implements Component {
     RailgunEthereumGovernanceAdapter,
     RailgunPolygonGovernanceAdapter,
   ];
-  constructor() {}
+  constructor() { }
 }

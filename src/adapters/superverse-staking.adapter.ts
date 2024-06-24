@@ -25,7 +25,7 @@ export class SuperverseStakingContractAdapter extends BaseStakingContractAdapter
     {
       name: 'SuperVerse',
       asset: 'ERC20:0xe53EC727dbDEB9E2d5456c3be40cFF031AB40A55',
-    }
+    },
   ];
 
   /**
@@ -33,15 +33,13 @@ export class SuperverseStakingContractAdapter extends BaseStakingContractAdapter
    * @param owner - Owner address
    * @returns
    */
-  async getStakedTokenBalance(
-    owner: string,
-  ): Promise<BigNumber> {
+  async getStakedTokenBalance(owner: string): Promise<BigNumber> {
     const contract = SuperverseStaking__factory.connect(
       this.contractAddress,
       this.provider,
     );
 
     const stakerInfo = await contract.stakerInfo(owner);
-    return stakerInfo.stakerPower
+    return stakerInfo.stakerPower;
   }
 }

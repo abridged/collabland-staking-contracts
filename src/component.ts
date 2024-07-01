@@ -73,6 +73,7 @@ import {SuperverseStakingContractAdapter} from './adapters/superverse-staking.ad
 import {SupremeKong2StakingContractAdapter} from './adapters/supreme-kong-2-staking.adapter.js';
 import {SupremeKongStakingContractAdapter} from './adapters/supreme-kong-staking.adapter.js';
 import {TtooStakingContractAdapter} from './adapters/ttoo-staking.adapter.js';
+import {UnizenStakingContractAdapter} from './adapters/unizen-staking.adapter.js';
 import {UwULendStakingContractAdapter} from './adapters/uwulend-staking.adapter.js';
 import {WarriorsofankhStakingContractAdapter} from './adapters/warriorsofankh-staking.adapter.js';
 import {XenoStakingContractAdapter} from './adapters/xeno-mining.adapter.js';
@@ -144,6 +145,7 @@ export class StakingContractsComponent implements Component {
     RailgunBinanceGovernanceAdapter,
     RailgunEthereumGovernanceAdapter,
     RailgunPolygonGovernanceAdapter,
+    UnizenStakingContractAdapter,
   ];
   constructor() {}
 }

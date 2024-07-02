@@ -12,12 +12,14 @@ import {UnizenStaking__factory} from '../types/factories/UnizenStaking__factory.
   // Mark it as an extension to staking contracts service
   extensionFor(STAKING_ADAPTERS_EXTENSION_POINT),
 )
+
 export class UnizenStakingContractAdapter extends BaseStakingContractAdapter {
   /**
    * The contract address
    */
-  contractAddress = '0x0Df016Fb18ef4195b2CF9d8623E236272ec52e14';
+  contractAddress = '0x5655B12f1e74D1D1fc3F1048a89850a0149Aa5d4';
 
+  PZCX_ADDRESS = '0xdd75542611d57c4b6e68168b14c3591c539022ed'
   /**
    * The chain the assets exist on
    */
@@ -29,7 +31,7 @@ export class UnizenStakingContractAdapter extends BaseStakingContractAdapter {
   supportedAssets: StakingAsset[] = [
     {
       name: 'pZCX',
-      asset: 'ERC20:0xDD75542611D57C4b6e68168B14C3591C539022eD',
+      asset: `ERC20:${this.PZCX_ADDRESS}`,
     },
   ];
 
@@ -38,11 +40,30 @@ export class UnizenStakingContractAdapter extends BaseStakingContractAdapter {
    * @param owner - Owner address
    * @returns
    */
-  getStakedTokenIds(owner: string): Promise<BigNumber[]> {
+  async getStakedTokenIds(owner: string): Promise<BigNumber[]> {
     const contract = UnizenStaking__factory.connect(
       this.contractAddress,
       this.provider,
     );
-    return contract['getUserStakes(address)'](owner);
+    try {
+      const userStakes = await contract.callStatic['getUsersStakedAmountOfToken'](owner, this.PZCX_ADDRESS);
+      return [userStakes]
+    } catch (error) {
+      return [BigNumber.from(0)]
+    }
+  }
+
+  async getStakedTokenBalance(owner: string, assetName: string): Promise<BigNumber> {
+    const contract = UnizenStaking__factory.connect(
+      this.contractAddress,
+      this.provider,
+    );
+    try {
+      const userStakes = await contract.callStatic['getUsersStakedAmountOfToken'](owner, this.PZCX_ADDRESS);
+      return userStakes
+    } catch (error) {
+      return BigNumber.from(0)
+    }
   }
 }
+

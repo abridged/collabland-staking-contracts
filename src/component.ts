@@ -62,6 +62,7 @@ import {
   ReNFTPolygonSylvesterV1StakingContractAdapter,
 } from './adapters/renft.adapter.js';
 import {ReplicantXStakingContractAdapter} from './adapters/replicantx-staking.adapter.js';
+import {RevenueCoinStakingContractAdapter} from './adapters/revenue.adapter.js';
 import {RirisuStakingContractAdapter} from './adapters/ririsu.adapter.js';
 import {RivalBearsStakingContractAdapter} from './adapters/rival-bears-staking.adapter.js';
 import {RoboStakingContractAdapter} from './adapters/robo.adapter.js';
@@ -146,6 +147,7 @@ export class StakingContractsComponent implements Component {
     RailgunEthereumGovernanceAdapter,
     RailgunPolygonGovernanceAdapter,
     XaiStakingContractAdapter,
+    RevenueCoinStakingContractAdapter,
   ];
-  constructor() {}
+  constructor() { }
 }

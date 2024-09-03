@@ -149,5 +149,5 @@ export class StakingContractsComponent implements Component {
     PlanetXStakingV1ContractAdapter,
     RevenueCoinStakingContractAdapter,
   ];
-  constructor() {}
+  constructor() { }
 }

@@ -11,7 +11,7 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "engines": {
-    "node": ">=16"
+    "node": ">=18"
   },
   "scripts": {
     "build": "npm run build:solidity && lb-tsc",
@@ -50,17 +50,17 @@
     "!*/__examples__"
   ],
   "dependencies": {
-    "ethcall": "^4.8.5",
+    "ethcall": "^5.0.1",
     "tslib": "^2.0.0"
   },
   "devDependencies": {
-    "@collabland/chain": "^0.39.0",
-    "@collabland/common": "^0.51.0",
-    "@loopback/build": "^10.1.4",
-    "@loopback/core": "^5.1.4",
+    "@collabland/chain": "^0.39.4",
+    "@collabland/common": "^0.51.4",
+    "@loopback/build": "^10.1.5",
+    "@loopback/core": "^5.1.5",
     "@loopback/eslint-config": "^14.0.5",
-    "@loopback/repository": "^6.1.4",
-    "@loopback/testlab": "^6.1.4",
+    "@loopback/repository": "^6.1.5",
+    "@loopback/testlab": "^6.1.5",
     "@nomiclabs/hardhat-ethers": "^2.2.3",
     "@nomiclabs/hardhat-solhint": "^3.0.1",
     "@collabland/typechain-ethers-v5": "^11.2.0",

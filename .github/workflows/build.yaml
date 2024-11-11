@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: ['16']
+        node-version: ['18']
 
     steps:
       - uses: actions/checkout@v4
@@ -28,4 +28,5 @@ jobs:
         env:
           INFURA_PROJECT_ID: ${{ secrets.INFURA_PROJECT_ID }}
           INFURA_PROJECT_SECRET: ${{ secrets.INFURA_PROJECT_SECRET }}
-          ANGEL_BLOCK_SUBGRAPH_API_KEY: ${{ secrets.ANGEL_BLOCK_SUBGRAPH_API_KEY }}
+          ANGEL_BLOCK_SUBGRAPH_API_KEY:
+            ${{ secrets.ANGEL_BLOCK_SUBGRAPH_API_KEY }}

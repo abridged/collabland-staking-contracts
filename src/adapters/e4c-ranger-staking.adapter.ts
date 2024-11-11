@@ -21,8 +21,7 @@ abstract class E4CStakingContractAdapter extends BaseStakingContractAdapter {
         this.contractAddress,
         E4cRangerStaking__factory.abi as unknown as JsonFragment[],
       );
-      this.ecProvider = new Provider();
-      await this.ecProvider.init(this.provider);
+      this.ecProvider = new Provider(this.chainId, this.provider);
     }
   }
 

@@ -60,7 +60,7 @@ export class AngelBlockStakingContractAdapter extends BaseStakingContractAdapter
       throw new Error(`API key for AngelBlock subgraph is missing.`);
     }
     // subgraph id
-    const subgraphId = '6W9sMStDyuvTuHGhYNQFSvtca1GPnUmQXz5FtCvkmCyq';
+    const subgraphId = 'Gzd5KzH5rceQSy3oo4y3bYcGMc9jwwnrhFuZ27JDhh7z';
     // fetching owner staked nfts
     const response = await request<Data>(
       `https://gateway.thegraph.com/api/${encodeURIComponent(

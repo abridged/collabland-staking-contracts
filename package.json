@@ -65,7 +65,7 @@
     "@nomiclabs/hardhat-solhint": "^4.0.0",
     "@collabland/typechain-ethers-v5": "^11.2.0",
     "@collabland/typechain-hardhat": "^9.2.0",
-    "@types/chai": "^4.3.11",
+    "@types/chai": "^5.0.0",
     "@types/mocha": "^10.0.6",
     "@types/node": "^16.18.68",
     "eslint": "^8.51.0",

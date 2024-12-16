@@ -32,6 +32,7 @@ import {BibizStakingContractAdapter} from './adapters/bibiz.adapter.js';
 import {BlastminersStakingContractAdapter} from './adapters/blastminers.adapter.js';
 import {BlastopiansStakingContractAdapter} from './adapters/blastopians.adapter.js';
 import {CbzGrowStakingContractAdapter} from './adapters/cbzgrow.adapter.js';
+import {CWStakingContractAdapter} from './adapters/cw-adapter.js';
 import {
   DwebEthereumStakingContractAdapter,
   DwebPolygonStakingContractAdapter,
@@ -127,6 +128,7 @@ export class StakingContractsComponent implements Component {
     PlutoallianceStakingAdapter,
     TtooStakingContractAdapter,
     PrimordiaStakingContractAdapter,
+    CWStakingContractAdapter,
     JnglStakingContractAdapter,
     SupremeKongStakingContractAdapter,
     SupremeKong2StakingContractAdapter,

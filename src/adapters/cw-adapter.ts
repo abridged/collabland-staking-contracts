@@ -20,9 +20,6 @@ export class CWStakingContractAdapter extends BaseStakingContractAdapter {
   contractAddressDiscount = '0x5E71a0c7022D02639dFfAA386a0044c51b3B339b';
   contractAddressWLTH = '0xF4AA59f5192856F41Ae19CaAb4929CCD3a265e70';
 
-  /**
-   * Assets that can be staked to this contract
-   */
   supportedAssets: StakingAsset[] = [
     {
       asset: 'ERC20:0x99b2B1A2aDB02B38222ADcD057783D7e5D1FCC7D',

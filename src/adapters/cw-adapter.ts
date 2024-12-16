@@ -15,9 +15,6 @@ import {CwStakingWLTH__factory} from '../types/factories/CwStakingWLTH__factory.
   extensionFor(STAKING_ADAPTERS_EXTENSION_POINT),
 )
 export class CWStakingContractAdapter extends BaseStakingContractAdapter {
-  /**
-   * The contract address
-   */
   chainId: 8453;
   contractAddressBonus = '0xD7E31990883250E53314b15EE555345f04D011E8';
   contractAddressDiscount = '0x5E71a0c7022D02639dFfAA386a0044c51b3B339b';

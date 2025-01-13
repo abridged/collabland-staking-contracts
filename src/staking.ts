@@ -74,6 +74,9 @@ const defaultEthersProviderService = {
     if (chainId.toString() === '81457') {
       return new providers.JsonRpcProvider('https://rpc.blast.io');
     }
+    if (chainId.toString() === '8453') {
+      return new providers.JsonRpcProvider('https://mainnet.base.org');
+    }
     const projectId =
       getEnvVar('INFURA_PROJECT_ID') ?? getEnvVar('STAKING_INFURA_PROJECT_ID');
     const projectSecret = getEnvVar('INFURA_PROJECT_SECRET');

@@ -24,6 +24,7 @@ export class W3ABPassContractAdapter extends BaseStakingContractAdapter {
    */
   supportedAssets: StakingAsset[] = [
     {
+      name: 'W3AB Pass',
       asset: 'ERC721:0xb1E19FA955A5612B5D849e5c641F0B4cf9879d17',
     },
   ];

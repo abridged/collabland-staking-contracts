@@ -22,6 +22,22 @@ describe('Staking contracts service', async () => {
     c => angelBlockApiKey != null || c.contractName !== 'AngelBlock',
   );
 
+  it('gets the total adapters count', () => {
+    debug(
+      'Injected adapters: %O',
+      service.stakingContracts.map(c => {
+        return {
+          contractName: c.contractName,
+          contractAddress: c.contractAddress,
+          chainId: c.chainId,
+          supportedAssets: c.supportedAssets,
+        };
+      }),
+    );
+    debug('Total adapters count: %s', service.stakingContracts.length);
+    expect(service.stakingContracts.length).to.be.greaterThan(0);
+  });
+
   contracts.forEach(contract => {
     it('gets staked token ids for ' + contract.contractName, async () => {
       debug('Contract: %s', contract.contractName);

@@ -78,6 +78,10 @@ import {TtooStakingContractAdapter} from './adapters/ttoo-staking.adapter.js';
 import {UwULendStakingContractAdapter} from './adapters/uwulend-staking.adapter.js';
 import {W3ABPassContractAdapter} from './adapters/W3ABPass.adapter.js';
 import {WarriorsofankhStakingContractAdapter} from './adapters/warriorsofankh-staking.adapter.js';
+import {Z1labs3mStakingContractAdapter} from './adapters/z1labs-3m-staking.adapter.js';
+import {Z1labs6mStakingContractAdapter} from './adapters/z1labs-6m-staking.adapter.js';
+import {Z1labs9mStakingContractAdapter} from './adapters/z1labs-9m-staking.adapter.js';
+import {Z1labsOpenVaultContractAdapter} from './adapters/z1labs-open-vault.adapter.js';
 import {XenoStakingContractAdapter} from './adapters/xeno-mining.adapter.js';
 import {STAKING_CONTRACTS_COMPONENT} from './keys.js';
 import {StakingContractsService} from './services/staking-contracts.service.js';
@@ -150,6 +154,9 @@ export class StakingContractsComponent implements Component {
     PlanetXStakingV1ContractAdapter,
     RevenueCoinStakingContractAdapter,
     W3ABPassContractAdapter,
+    Z1labs3mStakingContractAdapter,
+    Z1labs6mStakingContractAdapter,
+    Z1labs9mStakingContractAdapter
   ];
   constructor() {}
 }

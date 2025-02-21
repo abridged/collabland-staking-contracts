@@ -157,7 +157,7 @@ export class StakingContractsComponent implements Component {
     Z1labs3mStakingContractAdapter,
     Z1labs6mStakingContractAdapter,
     Z1labs9mStakingContractAdapter,
-    Z1labsOpenVaultContractAdapter
+    Z1labsOpenVaultContractAdapter,
   ];
   constructor() {}
 }

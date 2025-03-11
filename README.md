@@ -1,7 +1,6 @@
 # @collabland/staking-contracts
 
-This project maintains a curated list of stacking contracts for Collab.Land's
-token gating capabilities.
+This project maintains a curated list of stacking contracts for Collab.Land's token gating capabilities. We offer integration and ongoing support for your staking contract for a one-time fee. To get started, fill out the form [here](https://forms.gle/t6Xr5xwkLivgbw53A)
 
 ## Get started
 
@@ -163,6 +162,8 @@ before submitting a pull request.
     https://git-scm.com/docs/git-commit#Documentation/git-commit.txt--s.
 
 ## What's Next?
+
+We offer integration and ongoing support for your staking contract for a one-time fee. So if you haven't yet, fill out the form [here](https://forms.gle/t6Xr5xwkLivgbw53A) and a Collab.Land team member will reach out to you.
 
 After your pull request is merged, we'll publish a release of
 [this package](https://www.npmjs.com/package/@collabland/staking-contracts) to

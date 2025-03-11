@@ -81,6 +81,7 @@ import {WarriorsofankhStakingContractAdapter} from './adapters/warriorsofankh-st
 import {XenoStakingContractAdapter} from './adapters/xeno-mining.adapter.js';
 import {STAKING_CONTRACTS_COMPONENT} from './keys.js';
 import {StakingContractsService} from './services/staking-contracts.service.js';
+import {CambriaCoresStakingContractAdapter} from './adapters/cambria-cores-staking.adapter.js';
 
 // Configure the binding for StakingContractsComponent
 @injectable({
@@ -88,6 +89,7 @@ import {StakingContractsService} from './services/staking-contracts.service.js';
 })
 export class StakingContractsComponent implements Component {
   services: ServiceOrProviderClass<unknown>[] = [
+    CambriaCoresStakingContractAdapter,
     RivalBearsStakingContractAdapter,
     RDStakingContractAdapter,
     Meltdown03ContractAdapter,

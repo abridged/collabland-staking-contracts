@@ -151,5 +151,5 @@ export class StakingContractsComponent implements Component {
     RevenueCoinStakingContractAdapter,
     W3ABPassContractAdapter,
   ];
-  constructor() {}
+  constructor() { }
 }

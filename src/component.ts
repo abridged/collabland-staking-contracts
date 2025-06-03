@@ -26,6 +26,7 @@ import {MeltdownContractAdapter} from './adapters/meltdown-1.adapter.js';
 import {Meltdown03ContractAdapter} from './adapters/meltdown.adapter.js';
 
 import {AngelBlockStakingContractAdapter} from './adapters/ab.adapter.js';
+import {AcolytStakingContractAdapter} from './adapters/acolyt-staking.adapter.js';
 import {BansheesStakingContractAdapter} from './adapters/banshees-staking.adapter.js';
 import {BapeliensStakingContractAdapter} from './adapters/bapeliens-staking.adapter.js';
 import {BibizStakingContractAdapter} from './adapters/bibiz.adapter.js';
@@ -150,6 +151,7 @@ export class StakingContractsComponent implements Component {
     PlanetXStakingV1ContractAdapter,
     RevenueCoinStakingContractAdapter,
     W3ABPassContractAdapter,
+    AcolytStakingContractAdapter,
   ];
   constructor() {}
 }

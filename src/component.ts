@@ -70,6 +70,7 @@ import {RivalBearsStakingContractAdapter} from './adapters/rival-bears-staking.a
 import {RoboStakingContractAdapter} from './adapters/robo.adapter.js';
 import {SkyFarmStakingContractAdapter} from './adapters/sky-farm.adapter.js';
 import {SpitYardContractAdapter} from './adapters/spit-yard.adapter.js';
+import {MyProjectStakingAdapter} from './adapters/staked-token.adapter.js';
 import {StartStakingContractAdapter} from './adapters/start.adapter.js';
 import {SugartownStakingContractAdapter} from './adapters/sugartown.adapter.js';
 import {SuperverseStakingContractAdapter} from './adapters/superverse-staking.adapter.js';
@@ -152,6 +153,7 @@ export class StakingContractsComponent implements Component {
     RevenueCoinStakingContractAdapter,
     W3ABPassContractAdapter,
     AcolytStakingContractAdapter,
+    MyProjectStakingAdapter,
   ];
   constructor() {}
 }

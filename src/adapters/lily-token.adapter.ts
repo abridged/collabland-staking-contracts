@@ -12,11 +12,16 @@ import {Coco__factory} from '../types/factories/Coco__factory.js';
   // Mark it as an extension to staking contracts service
   extensionFor(STAKING_ADAPTERS_EXTENSION_POINT),
 )
-export class MyProjectStakingAdapter extends BaseStakingContractAdapter {
+export class LilyStakingAdapter extends BaseStakingContractAdapter {
   /**
    * The contract address
    */
   contractAddress = '0x97f15A410D285E562671f48c0AE2b5466deC0D39';
+
+  /**
+   * Chain ID for Base Mainnet
+   */
+  chainId = 8453;
 
   /**
    * Assets that can be staked to this contract

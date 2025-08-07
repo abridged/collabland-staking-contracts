@@ -45,6 +45,7 @@ import {FlooringProtocolStakingContractAdapter} from './adapters/flooring-protoc
 import {GenKStakingContractAdapter} from './adapters/genk-staking.adapter.js';
 import {HabibizRoyalsStakingContractAdapter} from './adapters/habibiz-royals.adapter.js';
 import {JnglStakingContractAdapter} from './adapters/Jngl-staking.adapter.js';
+import {LilyStakingAdapter} from './adapters/lily-token.adapter.js';
 import {MoonrunnersStakingContractAdapter} from './adapters/moonrunners.adapter.js';
 import {MtgStakingContractAdapter} from './adapters/mtg.adapter.js';
 import {OmniguardEternalsStakingContractAdapter} from './adapters/omniguard-eternals.adapter.js';
@@ -152,6 +153,7 @@ export class StakingContractsComponent implements Component {
     RevenueCoinStakingContractAdapter,
     W3ABPassContractAdapter,
     AcolytStakingContractAdapter,
+    LilyStakingAdapter,
   ];
   constructor() {}
 }

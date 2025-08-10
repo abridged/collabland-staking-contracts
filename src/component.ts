@@ -155,5 +155,5 @@ export class StakingContractsComponent implements Component {
     AcolytStakingContractAdapter,
     LilyStakingAdapter,
   ];
-  constructor() {}
+  constructor() { }
 }

@@ -69,6 +69,7 @@ import {RevenueCoinStakingContractAdapter} from './adapters/revenue.adapter.js';
 import {RirisuStakingContractAdapter} from './adapters/ririsu.adapter.js';
 import {RivalBearsStakingContractAdapter} from './adapters/rival-bears-staking.adapter.js';
 import {RoboStakingContractAdapter} from './adapters/robo.adapter.js';
+import {SharpAiStakingContractAdapter} from './adapters/sharpai.adapter.js';
 import {SkyFarmStakingContractAdapter} from './adapters/sky-farm.adapter.js';
 import {SpitYardContractAdapter} from './adapters/spit-yard.adapter.js';
 import {StartStakingContractAdapter} from './adapters/start.adapter.js';
@@ -107,6 +108,7 @@ export class StakingContractsComponent implements Component {
     MtgStakingContractAdapter,
     RirisuStakingContractAdapter,
     RoboStakingContractAdapter,
+    SharpAiStakingContractAdapter,
     SkyFarmStakingContractAdapter,
     UwULendStakingContractAdapter,
     DogsUnchainedStakingContractAdapter,

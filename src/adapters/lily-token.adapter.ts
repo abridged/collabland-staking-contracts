@@ -44,6 +44,5 @@ export class LilyStakingAdapter extends BaseStakingContractAdapter {
     );
     const stake = await contract.balanceOf(owner);
     return [stake];
-    // return contract.balanceOf(owner);
   }
 }

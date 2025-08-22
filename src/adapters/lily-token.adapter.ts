@@ -3,7 +3,7 @@ import {BigNumber} from 'ethers';
 import {STAKING_ADAPTERS_EXTENSION_POINT} from '../keys.js';
 import {BaseStakingContractAdapter, StakingAsset} from '../staking.js';
 // Use the full path to import instead of `../types`
-import {Coco__factory} from '../types/factories/Coco__factory.js';
+import {LilyTokenAbi__factory} from '../types/factories/LilyTokenAbi__factory.js';
 
 @injectable(
   {
@@ -37,8 +37,13 @@ export class LilyStakingAdapter extends BaseStakingContractAdapter {
    * @param owner - Owner address
    * @returns
    */
-  getStakedTokenIds(owner: string): Promise<BigNumber[]> {
-    const contract = Coco__factory.connect(this.contractAddress, this.provider);
-    return contract.getStakes(owner);
+  async getStakedTokenIds(owner: string): Promise<BigNumber[]> {
+    const contract = LilyTokenAbi__factory.connect(
+      this.contractAddress,
+      this.provider,
+    );
+    const stake = await contract.balanceOf(owner);
+    return [stake];
+    // return contract.balanceOf(owner);
   }
 }

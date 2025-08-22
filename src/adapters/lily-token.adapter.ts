@@ -19,7 +19,7 @@ export class LilyStakingAdapter extends BaseStakingContractAdapter {
   contractAddress = '0x97f15A410D285E562671f48c0AE2b5466deC0D39';
 
   /**
-   * Chain ID for Base Mainnet
+   * Chain ID for BaseMainnet
    */
   chainId = 8453;
 

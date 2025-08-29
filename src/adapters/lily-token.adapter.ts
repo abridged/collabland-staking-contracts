@@ -37,12 +37,12 @@ export class LilyStakingAdapter extends BaseStakingContractAdapter {
    * @param owner - Owner address
    * @returns
    */
-  async getStakedTokenIds(owner: string): Promise<BigNumber[]> {
+  async getStakedTokenBalance(owner: string): Promise<BigNumber> {
     const contract = LilyTokenAbi__factory.connect(
       this.contractAddress,
       this.provider,
     );
-    const stake = await contract.balanceOf(owner);
-    return [stake];
+    const balance = await contract.balanceOf(owner);
+    return balance; // single BigNumber
   }
 }

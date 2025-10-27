@@ -72,6 +72,8 @@ import {RoboStakingContractAdapter} from './adapters/robo.adapter.js';
 import {SkyFarmStakingContractAdapter} from './adapters/sky-farm.adapter.js';
 import {SpitYardContractAdapter} from './adapters/spit-yard.adapter.js';
 import {StartStakingContractAdapter} from './adapters/start.adapter.js';
+import {StellaswapStellaMaxiAdapter} from './adapters/stellaswap-stella-maxi.adapter.js';
+import {StellaswapUsdcMaxiAdapter} from './adapters/stellaswap-usdc-maxi.adapter.js';
 import {SugartownStakingContractAdapter} from './adapters/sugartown.adapter.js';
 import {SuperverseStakingContractAdapter} from './adapters/superverse-staking.adapter.js';
 import {SupremeKong2StakingContractAdapter} from './adapters/supreme-kong-2-staking.adapter.js';
@@ -154,6 +156,8 @@ export class StakingContractsComponent implements Component {
     W3ABPassContractAdapter,
     AcolytStakingContractAdapter,
     LilyStakingAdapter,
+    StellaswapStellaMaxiAdapter,
+    StellaswapUsdcMaxiAdapter,
   ];
-  constructor() {}
+  constructor() { }
 }

@@ -72,7 +72,7 @@
     "ethers": "^5.7.0",
     "graphql": "^16.8.1",
     "graphql-request": "^7.0.0",
-    "hardhat": "^2.19.4",
+    "hardhat": "^3.0.0",
     "@collabland/typechain": "^8.4.0",
     "typescript": "~5.9.0"
   },

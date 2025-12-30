@@ -41,6 +41,7 @@ import {
   DwebUniV2EthereumStakingContractAdapter,
   DwebUniV2PolygonStakingContractAdapter,
 } from './adapters/dweb-uni-v2-staking.adapter.js';
+import {FishingFrenzyStakingContractAdapter} from './adapters/ff-staking.adapter.js';
 import {FlooringProtocolStakingContractAdapter} from './adapters/flooring-protocol-staking.adapter.js';
 import {GenKStakingContractAdapter} from './adapters/genk-staking.adapter.js';
 import {HabibizRoyalsStakingContractAdapter} from './adapters/habibiz-royals.adapter.js';
@@ -154,6 +155,7 @@ export class StakingContractsComponent implements Component {
     W3ABPassContractAdapter,
     AcolytStakingContractAdapter,
     LilyStakingAdapter,
+    FishingFrenzyStakingContractAdapter,
   ];
   constructor() {}
 }

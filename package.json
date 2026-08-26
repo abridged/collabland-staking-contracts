@@ -69,7 +69,7 @@
     "@types/mocha": "^10.0.6",
     "@types/node": "^16.18.68",
     "eslint": "^8.51.0",
-    "ethers": "^5.7.0",
+    "ethers": "^6.0.0",
     "graphql": "^16.8.1",
     "graphql-request": "^7.0.0",
     "hardhat": "^2.19.4",

@@ -62,7 +62,7 @@
     "@loopback/repository": "^8.0.0",
     "@loopback/testlab": "^8.0.0",
     "@nomiclabs/hardhat-ethers": "^2.2.3",
-    "@nomiclabs/hardhat-solhint": "^4.0.0",
+    "@nomiclabs/hardhat-solhint": "^5.0.0",
     "@collabland/typechain-ethers-v5": "^11.2.0",
     "@collabland/typechain-hardhat": "^9.2.0",
     "@types/chai": "^5.0.0",

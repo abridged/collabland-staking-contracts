@@ -21,6 +21,7 @@ import {
 import {PerionCreditsStakingContractAdapter} from './adapters/erc20-staking.adapter.js';
 import {IdolMarketplaceContractAdapter} from './adapters/idol-marketplace.adapter.js';
 import {LifestoryPlanetStakingAdapter} from './adapters/lifestory-planet-staking.adapter.js';
+import {LingoStakingContractAdapter} from './adapters/lingo-staking.adapter.js';
 import {LuckyNFTStakingContractAdapter} from './adapters/luckynft.adapter.js';
 import {MeltdownContractAdapter} from './adapters/meltdown-1.adapter.js';
 import {Meltdown03ContractAdapter} from './adapters/meltdown.adapter.js';
@@ -104,6 +105,7 @@ export class StakingContractsComponent implements Component {
     ChillRxStakingContractAdapter,
     CocoStakingContractAdapter,
     LuckyNFTStakingContractAdapter,
+    LingoStakingContractAdapter,
     MtgStakingContractAdapter,
     RirisuStakingContractAdapter,
     RoboStakingContractAdapter,
